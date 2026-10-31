@@ -27,7 +27,9 @@ pnpm dev           # http://localhost:3000
 | Name | Where | Purpose |
 |---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | Vercel (Production) | Canonical site URL, e.g. `https://nexushorizon.in`. Used for canonical tags, sitemap, JSON-LD and `llms.txt`. |
-| `VERCEL_ENV` | Set by Vercel | Only `production` is indexable; previews and local builds are `noindex` and `robots.txt` disallows all. |
+| `SITE_INDEXING` | Vercel (Production) | Set to `on` **only after** replacing every `PLACEHOLDER` in `site.config.ts` (real MahaRERA number, phone, address). Until then the live site is `noindex` and `robots.txt` disallows all. |
+| `VERCEL_ENV` | Set by Vercel | Search engines may index only when this is `production` **and** `SITE_INDEXING=on`. Previews and local builds are always `noindex`. |
+| `VERCEL_PROJECT_PRODUCTION_URL` | Set by Vercel | Fallback site URL when `NEXT_PUBLIC_SITE_URL` is unset. A production build that would resolve to localhost fails. |
 
 ## Editing content
 
@@ -37,7 +39,7 @@ pnpm dev           # http://localhost:3000
 
 ## Deployment (Vercel)
 
-- Root directory: `apps/web`. Framework: Next.js. Install and build commands are the defaults (pnpm is detected from the lockfile).
+- Root directory: `apps/web`. Keep "Include files outside the root directory" enabled (the app imports `packages/ui` and `packages/config`). Framework: Next.js. Install and build commands are the defaults (pnpm is detected from the lockfile).
 - Set `NEXT_PUBLIC_SITE_URL` for the Production environment.
 - The build runs `scripts/check-seo.mjs` after `next build` and fails if any page is missing a title, description, canonical, single H1 or valid JSON-LD.
 

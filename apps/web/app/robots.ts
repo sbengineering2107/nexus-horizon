@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/site.config";
-import { isProduction } from "@/lib/seo/env";
+import { isIndexable } from "@/lib/seo/env";
 
 /** AI answer-engine crawlers we explicitly welcome (spec §6, AI SEO #1). */
 export const AI_CRAWLERS = [
@@ -16,7 +16,7 @@ export const AI_CRAWLERS = [
 const PRIVATE_PATHS = ["/admin", "/api", "/thank-you"];
 
 export default function robots(): MetadataRoute.Robots {
-  if (!isProduction()) {
+  if (!isIndexable()) {
     return { rules: [{ userAgent: "*", disallow: "/" }] };
   }
   return {

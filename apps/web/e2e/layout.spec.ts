@@ -10,15 +10,15 @@ test("mobile CTA bar shows Call and WhatsApp links", async ({ page }) => {
   expect(hrefs[1]).toMatch(/^https:\/\/wa\.me\/91\d{10}\?text=/);
 });
 
-test("mobile CTA bar does not cover the footer's last line", async ({ page }) => {
+test("mobile CTA bar does not cover the bottom of the footer", async ({ page }) => {
   await page.goto("/");
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-  const maharera = page.getByTestId("maharera");
-  await expect(maharera).toBeInViewport();
-  const footerBox = await maharera.boundingBox();
+  const footer = page.locator("footer");
+  await expect(footer).toBeInViewport();
+  const footerBox = await footer.boundingBox();
   const barBox = await page.getByTestId("mobile-cta-bar").boundingBox();
   expect(footerBox && barBox).toBeTruthy();
-  expect(footerBox!.y + footerBox!.height).toBeLessThanOrEqual(barBox!.y);
+  expect(footerBox!.y + footerBox!.height).toBeLessThanOrEqual(barBox!.y + 0.5);
 });
 
 test("page language is en-IN", async ({ page }) => {

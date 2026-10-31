@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { display, sans } from "./fonts";
 import { siteConfig } from "@/site.config";
-import { isProduction } from "@/lib/seo/env";
+import { isIndexable } from "@/lib/seo/env";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo/jsonld";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: { default: `${siteConfig.name} | Real Estate Advisors in Pune`, template: `%s | ${siteConfig.name}` },
   description: siteConfig.description,
   applicationName: siteConfig.name,
-  robots: { index: isProduction(), follow: isProduction() },
+  robots: { index: isIndexable(), follow: isIndexable() },
   openGraph: { siteName: siteConfig.name, locale: "en_IN", type: "website" },
   formatDetection: { telephone: false },
 };

@@ -1,3 +1,5 @@
+import { resolveSiteUrl } from "./lib/seo/site-url";
+
 /**
  * Single source of truth for business details.
  * Every value marked PLACEHOLDER must be replaced with real data before launch.
@@ -7,7 +9,7 @@ export const siteConfig = {
   legalName: "Nexus Horizon Advisors", // PLACEHOLDER: registered firm name
   description:
     "Independent real estate advisors in Pune helping buyers choose new projects, ready-to-move homes, resale flats and commercial spaces with clarity.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
+  url: resolveSiteUrl(process.env),
   phone: "+91 98765 43210", // PLACEHOLDER
   whatsapp: "+91 98765 43210", // PLACEHOLDER
   email: "hello@nexushorizon.in", // PLACEHOLDER

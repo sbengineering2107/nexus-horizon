@@ -15,6 +15,7 @@ const rulesFor = (agent: string) =>
 describe("robots", () => {
   test.each(AI_BOTS)("production allows %s on the whole site except private paths", (bot) => {
     vi.stubEnv("VERCEL_ENV", "production");
+    vi.stubEnv("SITE_INDEXING", "on");
     const [rule] = rulesFor(bot);
     expect(asArray(rule?.allow)).toContain("/");
     expect(asArray(rule?.disallow)).toEqual(expect.arrayContaining(["/admin", "/api", "/thank-you"]));
@@ -22,9 +23,15 @@ describe("robots", () => {
 
   test("production disallows private paths for all agents and points to the sitemap", () => {
     vi.stubEnv("VERCEL_ENV", "production");
+    vi.stubEnv("SITE_INDEXING", "on");
     const [rule] = rulesFor("*");
     expect(asArray(rule?.disallow)).toEqual(expect.arrayContaining(["/admin", "/api", "/thank-you"]));
     expect(robots().sitemap).toBe(`${siteConfig.url}/sitemap.xml`);
+  });
+
+  test("production without SITE_INDEXING disallows everything", () => {
+    vi.stubEnv("VERCEL_ENV", "production");
+    expect(robots().rules).toEqual([{ userAgent: "*", disallow: "/" }]);
   });
 
   test("preview disallows everything", () => {

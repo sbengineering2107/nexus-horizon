@@ -17,14 +17,27 @@ describe("buildMetadata", () => {
     expect(robotsOf(buildMetadata({ title: "X", description: "Y", path: "/" })).index).toBe(false);
   });
 
-  test("is indexable in production", () => {
+  test("is not indexable in production until SITE_INDEXING is on", () => {
     vi.stubEnv("VERCEL_ENV", "production");
+    expect(robotsOf(buildMetadata({ title: "X", description: "Y", path: "/" })).index).toBe(false);
+  });
+
+  test("is indexable in production with SITE_INDEXING=on", () => {
+    vi.stubEnv("VERCEL_ENV", "production");
+    vi.stubEnv("SITE_INDEXING", "on");
     expect(robotsOf(buildMetadata({ title: "X", description: "Y", path: "/" })).index).toBe(true);
   });
 
   test("honours noindex in production", () => {
     vi.stubEnv("VERCEL_ENV", "production");
+    vi.stubEnv("SITE_INDEXING", "on");
     expect(robotsOf(buildMetadata({ title: "X", description: "Y", path: "/", noindex: true })).index).toBe(false);
+  });
+
+  test("always sets a share image for Open Graph and Twitter", () => {
+    const m = buildMetadata({ title: "Resale", description: "Y", path: "/services/resale" });
+    expect(JSON.stringify(m.openGraph)).toContain("/opengraph-image");
+    expect(JSON.stringify(m.twitter)).toContain("/opengraph-image");
   });
 
   test("sets Open Graph URL, title and en_IN locale", () => {

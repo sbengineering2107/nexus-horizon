@@ -7,10 +7,10 @@
     "build": "next build && node scripts/check-seo.mjs",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "velite build && tsc --noEmit",
-    "test": "velite build && vitest run",
+    "typecheck": "node scripts/content.mjs && tsc --noEmit",
+    "test": "node scripts/content.mjs && vitest run",
     "e2e": "playwright test",
-    "content": "velite build"
+    "content": "node scripts/content.mjs"
   },
   "dependencies": {
     "@nh/ui": "workspace:*",

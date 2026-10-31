@@ -3,7 +3,7 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "env": ["NEXT_PUBLIC_SITE_URL", "VERCEL_ENV"],
+      "env": ["NEXT_PUBLIC_SITE_URL", "VERCEL_ENV", "VERCEL_PROJECT_PRODUCTION_URL", "SITE_INDEXING"],
       "outputs": [".next/**", "!.next/cache/**", ".velite/**", "public/static/**"]
     },
     "dev": { "cache": false, "persistent": true },

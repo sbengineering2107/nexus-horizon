@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 /**
- * Post-build SEO gate. Scans prerendered HTML in .next/server/app and fails when an
- * indexable page is missing a <title>, meta description or canonical, does not have
- * exactly one <h1>, or contains JSON-LD that isn't valid JSON.
+ * Post-build SEO gate. Scans prerendered HTML in .next/server/app and fails when a
+ * page is missing a <title>, meta description, canonical or og:image, does not have
+ * exactly one <h1>, or contains JSON-LD that isn't valid JSON. In a production build
+ * (VERCEL_ENV=production) any localhost URL fails the build.
  * Usage: node scripts/check-seo.mjs [appDir]
  */
 import { readdirSync, readFileSync, statSync } from "node:fs";
@@ -10,6 +11,8 @@ import { join, relative } from "node:path";
 
 const root = process.argv[2] ?? ".next/server/app";
 const SKIP = new Set(["_global-error.html"]);
+const isProductionBuild = process.env.VERCEL_ENV === "production";
+const LOCALHOST = /https?:\/\/(localhost|127\.0\.0\.1)[:/"]/;
 
 function walk(dir) {
   return readdirSync(dir).flatMap((name) => {
@@ -32,7 +35,9 @@ for (const file of files) {
   if (!isNotFound) {
     if (!/<meta name="description" content="[^"]+"/.test(html)) fail("missing meta description");
     if (!/<link rel="canonical" href="https?:\/\/[^"]+"/.test(html)) fail("missing absolute canonical");
+    if (!/<meta property="og:image" content="[^"]+"/.test(html)) fail("missing og:image");
   }
+  if (isProductionBuild && LOCALHOST.test(html)) fail("production build contains localhost URLs; set NEXT_PUBLIC_SITE_URL");
   const h1s = count(html, /<h1[\s>]/g);
   if (h1s !== 1) fail(`expected exactly one <h1>, found ${h1s}`);
 
