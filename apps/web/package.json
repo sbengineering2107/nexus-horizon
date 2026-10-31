@@ -7,9 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit",
-    "test": "vitest run",
-    "e2e": "playwright test"
+    "typecheck": "velite build && tsc --noEmit",
+    "test": "velite build && vitest run",
+    "e2e": "playwright test",
+    "content": "velite build"
   },
   "dependencies": {
     "next": "~16.2.12",
@@ -27,6 +28,7 @@
     "eslint-config-next": "16.2.12",
     "tailwindcss": "^4",
     "typescript": "^5",
+    "velite": "^0.4.0",
     "vitest": "^5.0.5"
   }
 }
