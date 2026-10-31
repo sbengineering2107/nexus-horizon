@@ -10,7 +10,7 @@ const variants: Record<Variant, string> = {
   secondary:
     "bg-forest text-paper hover:bg-forest-deep focus-visible:outline-marigold",
   ghost:
-    "bg-transparent text-forest underline-offset-4 hover:underline focus-visible:outline-forest",
+    "bg-transparent px-1 text-forest underline-offset-4 hover:underline focus-visible:outline-forest",
 };
 
 export type ButtonProps = ComponentPropsWithoutRef<"button"> & {

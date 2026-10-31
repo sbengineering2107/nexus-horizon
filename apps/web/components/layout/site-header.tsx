@@ -4,6 +4,14 @@ import { getServices } from "@/lib/content/services";
 import { consultationHref } from "@/lib/cta";
 import { Logo } from "./logo";
 
+/** Short labels so the desktop nav stays on one line. */
+const NAV_LABELS: Record<string, string> = {
+  "new-projects": "New projects",
+  "ready-to-move": "Ready to move",
+  resale: "Resale",
+  commercial: "Commercial",
+};
+
 export function SiteHeader() {
   const services = getServices();
   return (
@@ -20,12 +28,12 @@ export function SiteHeader() {
         </Link>
         <nav aria-label="Main" className="hidden items-center gap-6 text-[0.95rem] lg:flex">
           {services.map((s) => (
-            <Link key={s.slug} href={`/services/${s.slug}`} className="text-slate hover:text-forest">
-              {s.title}
+            <Link key={s.slug} href={`/services/${s.slug}`} className="whitespace-nowrap text-slate hover:text-forest">
+              {NAV_LABELS[s.slug] ?? s.title}
             </Link>
           ))}
         </nav>
-        <Button asChild variant="primary" className="hidden sm:inline-flex">
+        <Button asChild variant="primary" className="hidden whitespace-nowrap sm:inline-flex">
           <a href={consultationHref("/")} target="_blank" rel="noopener">
             Book a free consultation
           </a>

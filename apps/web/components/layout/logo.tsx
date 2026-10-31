@@ -14,7 +14,7 @@ export function Logo({ tone = "dark" }: { tone?: "dark" | "light" }) {
         />
         <line x1="1" y1="22.5" x2="39" y2="22.5" stroke="var(--color-marigold)" strokeWidth="2" strokeLinecap="round" />
       </svg>
-      <span className="font-display text-lg leading-none font-semibold tracking-tight">
+      <span className="whitespace-nowrap font-display text-lg leading-none font-semibold tracking-tight">
         Nexus Horizon
         <span className="block text-[0.7rem] font-normal tracking-normal opacity-80">Advisors</span>
       </span>
