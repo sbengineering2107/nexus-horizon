@@ -12,7 +12,7 @@ export type SiteImage = { src: StaticImageData; alt: string };
 
 export const heroImage: SiteImage = {
   src: hero,
-  alt: "Modern residential towers with balconies at sunset, with hills on the horizon",
+  alt: "Modern residential towers at sunset beside green hills",
 };
 
 export const interiorImage: SiteImage = {

@@ -43,7 +43,7 @@ describe("robots", () => {
 describe("sitemap", () => {
   test("lists home, services hub and all service pages as absolute URLs", () => {
     const urls = sitemap().map((e) => e.url);
-    for (const path of ["", "/services", "/services/new-projects", "/services/ready-to-move", "/services/resale", "/services/commercial", "/tools", "/tools/emi-calculator", "/tools/stamp-duty-calculator"]) {
+    for (const path of ["", "/services", "/services/new-projects", "/services/ready-to-move", "/services/resale", "/services/commercial", "/tools", "/tools/emi-calculator", "/tools/stamp-duty-calculator", "/tools/home-loan-calculator", "/tools/loan-eligibility-calculator", "/tools/loan-transfer-calculator", "/tools/rental-yield-calculator"]) {
       expect(urls).toContain(`${siteConfig.url}${path}`);
     }
     expect(urls.every((u) => u.startsWith("http"))).toBe(true);

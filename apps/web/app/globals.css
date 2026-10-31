@@ -161,18 +161,6 @@
       animation-timeline: view();
       animation-range: cover;
     }
-    /* Interior photo uncovers from the bottom like a curtain. */
-    .fx-curtain {
-      animation: curtain linear both;
-      animation-timeline: view();
-      animation-range: entry 10% cover 40%;
-    }
-    /* Process: a line fills across the steps. */
-    .fx-progress-line {
-      animation: progress-line linear both;
-      animation-timeline: --process;
-      animation-range: entry 70% cover 60%;
-    }
     /* Header separates from content once you leave the top. */
     .fx-header-shadow {
       animation: header-shadow linear both;
@@ -197,22 +185,6 @@
     transform: scale(1.12) translateY(5%);
   }
 }
-@keyframes curtain {
-  from {
-    clip-path: inset(100% 0 0 0 round var(--radius-lg));
-  }
-  to {
-    clip-path: inset(0 0 0 0 round var(--radius-lg));
-  }
-}
-@keyframes progress-line {
-  from {
-    scale: var(--line-from, 0 1);
-  }
-  to {
-    scale: 1 1;
-  }
-}
 @keyframes header-shadow {
   from {
     box-shadow: 0 0 0 0 rgb(30 42 46 / 0);
@@ -222,64 +194,4 @@
   }
 }
 
-/* Process timeline: one named view timeline drives the line and the step dots together. */
-.process-track {
-  view-timeline-name: --process;
-}
-.process-line {
-  --line-from: 1 0;
-  transform-origin: top center;
-}
-@media (min-width: 1024px) {
-  .process-line {
-    --line-from: 0 1;
-    transform-origin: left center;
-  }
-}
-
-@supports (animation-timeline: scroll()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .fx-step-dot-0,
-    .fx-step-dot-1,
-    .fx-step-dot-2,
-    .fx-step-dot-3 {
-      animation-timing-function: linear;
-      animation-fill-mode: both;
-      animation-timeline: --process;
-      animation-range: entry 70% cover 60%;
-    }
-    .fx-step-dot-0 {
-      animation-name: step-dot-0;
-    }
-    .fx-step-dot-1 {
-      animation-name: step-dot-1;
-    }
-    .fx-step-dot-2 {
-      animation-name: step-dot-2;
-    }
-    .fx-step-dot-3 {
-      animation-name: step-dot-3;
-    }
-  }
-}
 /* Each dot fills when the line reaches its step (columns start at ~0%, 26%, 52%, 78%), then its ring fades. */
-@keyframes step-dot-0 {
-  0% { background: #fff; box-shadow: 0 0 0 0 rgb(15 77 71 / 0.22); }
-  3% { background: var(--color-forest); box-shadow: 0 0 0 7px rgb(15 77 71 / 0.18); }
-  16%, 100% { background: var(--color-forest); box-shadow: 0 0 0 0 rgb(15 77 71 / 0); }
-}
-@keyframes step-dot-1 {
-  0%, 25% { background: #fff; box-shadow: 0 0 0 0 rgb(15 77 71 / 0.22); }
-  28% { background: var(--color-forest); box-shadow: 0 0 0 7px rgb(15 77 71 / 0.18); }
-  41%, 100% { background: var(--color-forest); box-shadow: 0 0 0 0 rgb(15 77 71 / 0); }
-}
-@keyframes step-dot-2 {
-  0%, 51% { background: #fff; box-shadow: 0 0 0 0 rgb(15 77 71 / 0.22); }
-  54% { background: var(--color-forest); box-shadow: 0 0 0 7px rgb(15 77 71 / 0.18); }
-  67%, 100% { background: var(--color-forest); box-shadow: 0 0 0 0 rgb(15 77 71 / 0); }
-}
-@keyframes step-dot-3 {
-  0%, 77% { background: #fff; box-shadow: 0 0 0 0 rgb(15 77 71 / 0.22); }
-  80% { background: var(--color-forest); box-shadow: 0 0 0 7px rgb(15 77 71 / 0.18); }
-  93%, 100% { background: var(--color-forest); box-shadow: 0 0 0 0 rgb(15 77 71 / 0); }
-}

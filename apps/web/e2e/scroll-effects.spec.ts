@@ -5,10 +5,7 @@ const anim = (sel: string) => (page: import("@playwright/test").Page) =>
 
 const EFFECTS: [string, string][] = [
   ['[data-fx="hero-parallax"]', "hero-parallax"],
-  ['[data-fx="step-dot"]', "step-dot-0"],
   ['[data-fx="card-parallax"]', "card-parallax"],
-  ['[data-fx="curtain"]', "curtain"],
-  ['[data-fx="progress-line"]', "progress-line"],
   ['[data-fx="header-shadow"]', "header-shadow"],
 ];
 
@@ -31,14 +28,6 @@ test.describe("reduced motion", () => {
   });
 });
 
-test("each process step has a dot that fills in order", async ({ page }) => {
-  await page.goto("/");
-  const names = await page
-    .locator('[data-fx="step-dot"]')
-    .evaluateAll((els) => els.map((el) => getComputedStyle(el).animationName));
-  expect(names).toEqual(["step-dot-0", "step-dot-1", "step-dot-2", "step-dot-3"]);
-});
-
 test.describe("hero height on a laptop screen", () => {
   test.use({ viewport: { width: 1440, height: 900 } });
   test("hero leaves room to see the next section", async ({ page }) => {
@@ -51,4 +40,14 @@ test.describe("hero height on a laptop screen", () => {
 test("hero has no skyline animation", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator('[data-fx="skyline"]')).toHaveCount(0);
+});
+
+test("process steps have no dots or progress line", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator('[data-fx="step-dot"], [data-fx="progress-line"]')).toHaveCount(0);
+});
+
+test("why-us image has no reveal animation", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator('[data-fx="curtain"]')).toHaveCount(0);
 });
