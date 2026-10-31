@@ -11,20 +11,22 @@
   body {
     @apply bg-paper font-sans text-basalt;
     font-size: 1.0625rem;
-    line-height: 1.6;
+    line-height: 1.65;
+    font-optical-sizing: auto;
   }
   h1,
   h2,
   h3 {
     @apply font-display text-forest-deep;
     font-optical-sizing: auto;
-    font-weight: 400;
-    letter-spacing: -0.015em;
-    line-height: 1.12;
+    font-weight: 450;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
     text-wrap: balance;
   }
   h3 {
     font-weight: 500;
+    letter-spacing: -0.015em;
   }
   p {
     text-wrap: pretty;
@@ -177,10 +179,21 @@
       stroke-dasharray: 1600;
       animation: ridge-scroll-draw linear both;
       animation-timeline: view();
-      animation-range: entry 20% cover 55%;
+      animation-range: entry 100% cover 70%;
     }
     .ridge-scroll-far {
-      animation-range: entry 35% cover 65%;
+      animation-range: entry 100% cover 80%;
+    }
+    /* On wide screens the ridge is visible on load: draw from the first scroll instead. */
+    @media (min-width: 1024px) {
+      .ridge-scroll-near,
+      .ridge-scroll-far {
+        animation-timeline: scroll(root);
+        animation-range: 0 35vh;
+      }
+      .ridge-scroll-far {
+        animation-range: 5vh 45vh;
+      }
     }
     /* Service photos shift gently inside their frames. */
     .fx-card-parallax {

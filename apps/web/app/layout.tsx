@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { display, sans } from "./fonts";
+import { googleSans, rupeeGlyph } from "./fonts";
 import { siteConfig } from "@/site.config";
 import { isIndexable } from "@/lib/seo/env";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo/jsonld";
@@ -23,7 +23,7 @@ export const viewport: Viewport = { themeColor: "#0f4d47" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-IN" className={`${sans.variable} ${display.variable} h-full antialiased`}>
+    <html lang="en-IN" className={`${googleSans.variable} ${rupeeGlyph.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col pb-16 md:pb-0">
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={websiteJsonLd()} />

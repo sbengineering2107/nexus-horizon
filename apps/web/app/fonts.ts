@@ -1,20 +1,22 @@
 import localFont from "next/font/local";
 
-/** Body: Mukta (Ek Type, Mumbai). Latin + Devanagari family, ready for a Marathi edition. */
-export const sans = localFont({
-  src: [
-    { path: "./fonts/mukta-400.woff2", weight: "400", style: "normal" },
-    { path: "./fonts/mukta-600.woff2", weight: "600", style: "normal" },
-    { path: "./fonts/mukta-700.woff2", weight: "700", style: "normal" },
-  ],
-  variable: "--font-mukta",
+/**
+ * Google Sans Flex (OFL 1.1, open-sourced by Google in Nov 2025), weight + optical-size axes.
+ * The Latin file has no ₹ glyph, so a separate 2 KB face supplies it; with unicode-range
+ * the browser downloads it only on pages that show a rupee sign.
+ */
+export const googleSans = localFont({
+  src: "./fonts/google-sans-flex.woff2",
+  variable: "--font-google-sans",
+  weight: "1 1000",
   display: "swap",
 });
 
-/** Headings: Fraunces variable. */
-export const display = localFont({
-  src: "./fonts/fraunces-var.woff2",
-  variable: "--font-fraunces",
-  weight: "100 900",
+export const rupeeGlyph = localFont({
+  src: "./fonts/google-sans-flex-rupee.woff2",
+  variable: "--font-rupee",
+  weight: "1 1000",
   display: "swap",
+  preload: false,
+  declarations: [{ prop: "unicode-range", value: "U+20B9" }],
 });
