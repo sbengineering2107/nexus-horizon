@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+.turbo/
+.velite/
+coverage/
+playwright-report/
+test-results/
+.vercel/
+.env*
+!.env.example
+*.tsbuildinfo
+.DS_Store
+.superpowers/
