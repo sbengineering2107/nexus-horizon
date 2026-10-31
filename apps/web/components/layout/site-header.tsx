@@ -1,21 +1,17 @@
 import Link from "next/link";
 import { Button, Container } from "@nh/ui";
-import { getServices } from "@/lib/content/services";
 import { consultationHref } from "@/lib/cta";
 import { Logo } from "./logo";
 
-/** Short labels so the desktop nav stays on one line. */
-const NAV_LABELS: Record<string, string> = {
-  "new-projects": "New projects",
-  "ready-to-move": "Ready to move",
-  resale: "Resale",
-  commercial: "Commercial",
-};
+const NAV = [
+  { href: "/services", label: "Services" },
+  { href: "/tools", label: "Calculators" },
+  { href: "/#areas", label: "Areas" },
+];
 
 export function SiteHeader() {
-  const services = getServices();
   return (
-    <header className="sticky top-0 z-40 border-b border-mist-strong/60 bg-paper/90 backdrop-blur supports-[backdrop-filter]:bg-paper/75">
+    <header className="sticky top-0 z-40 border-b border-line bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/80">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:rounded-sm focus:bg-forest focus:px-3 focus:py-2 focus:text-paper"
@@ -26,21 +22,22 @@ export function SiteHeader() {
         <Link href="/" aria-label="Nexus Horizon Advisors, home" className="rounded-sm">
           <Logo />
         </Link>
-        <nav aria-label="Main" className="hidden items-center gap-6 text-[0.95rem] lg:flex">
-          {services.map((s) => (
-            <Link key={s.slug} href={`/services/${s.slug}`} className="whitespace-nowrap text-slate hover:text-forest">
-              {NAV_LABELS[s.slug] ?? s.title}
+        <nav aria-label="Main" className="hidden items-center gap-8 text-[0.95rem] md:flex">
+          {NAV.map((item) => (
+            <Link key={item.href} href={item.href} className="whitespace-nowrap text-slate transition-colors hover:text-forest-deep">
+              {item.label}
             </Link>
           ))}
         </nav>
-        <Button asChild variant="primary" className="hidden whitespace-nowrap sm:inline-flex">
+        <Button asChild variant="primary" className="hidden min-h-10 whitespace-nowrap px-4 sm:inline-flex">
           <a href={consultationHref("/")} target="_blank" rel="noopener">
-            Book a free consultation
+            Book a consultation
           </a>
         </Button>
-        <Link href="/services" className="font-semibold text-forest sm:hidden">
-          Services
-        </Link>
+        <nav aria-label="Main" className="flex gap-5 text-[0.95rem] font-semibold text-forest md:hidden">
+          <Link href="/services">Services</Link>
+          <Link href="/tools">Calculators</Link>
+        </nav>
       </Container>
     </header>
   );

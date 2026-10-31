@@ -3,6 +3,7 @@ import type {
   FAQPage,
   RealEstateAgent,
   Service as SchemaService,
+  WebApplication,
   WebSite,
   WithContext,
 } from "schema-dts";
@@ -88,5 +89,19 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]): WithC
       name: item.name,
       item: absoluteUrl(item.path),
     })),
+  };
+}
+
+export function webApplicationJsonLd(t: { title: string; short: string; path: string }): WithContext<WebApplication> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: t.title,
+    description: t.short,
+    url: absoluteUrl(t.path),
+    applicationCategory: "FinanceApplication",
+    operatingSystem: "Any",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
+    provider: { "@id": orgId() },
   };
 }

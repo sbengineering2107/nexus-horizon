@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container } from "@nh/ui";
 import { siteConfig } from "@/site.config";
 import { getServices } from "@/lib/content/services";
+import { getTools } from "@/lib/content/tools";
 import { callHref } from "@/lib/cta";
 import { Logo } from "./logo";
 
@@ -9,7 +10,7 @@ export function SiteFooter() {
   const { address } = siteConfig;
   return (
     <footer className="mt-auto bg-forest-deep text-mist">
-      <Container className="grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
+      <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <Logo tone="light" />
           <p className="mt-4 max-w-sm text-mist/85">{siteConfig.description}</p>
@@ -21,6 +22,18 @@ export function SiteFooter() {
               <li key={s.slug}>
                 <Link href={`/services/${s.slug}`} className="hover:text-marigold">
                   {s.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 className="font-sans text-base font-semibold text-paper">Calculators</h2>
+          <ul className="mt-3 space-y-2">
+            {getTools().map((t) => (
+              <li key={t.slug}>
+                <Link href={`/tools/${t.slug}`} className="hover:text-marigold">
+                  {t.title}
                 </Link>
               </li>
             ))}

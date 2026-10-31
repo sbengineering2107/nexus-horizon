@@ -1,5 +1,6 @@
 import { siteConfig } from "@/site.config";
 import { getServices } from "@/lib/content/services";
+import { getTools } from "@/lib/content/tools";
 import { absoluteUrl } from "@/lib/seo/metadata";
 
 export const dynamic = "force-static";
@@ -16,6 +17,10 @@ export function GET(): Response {
     "## Services",
     "",
     ...getServices().map((s) => `- [${s.title}](${absoluteUrl(`/services/${s.slug}`)}): ${s.summary}`),
+    "",
+    "## Tools",
+    "",
+    ...getTools().map((t) => `- [${t.title}](${absoluteUrl(`/tools/${t.slug}`)}): ${t.short}`),
     "",
     "## Site",
     "",

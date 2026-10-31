@@ -11,5 +11,8 @@ describe("llms.txt", () => {
     for (const slug of ["new-projects", "ready-to-move", "resale", "commercial"]) {
       expect(body).toContain(`${siteConfig.url}/services/${slug}`);
     }
+    for (const slug of ["emi-calculator", "stamp-duty-calculator"]) {
+      expect(body).toContain(`${siteConfig.url}/tools/${slug}`);
+    }
   });
 });

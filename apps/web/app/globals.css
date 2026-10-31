@@ -18,9 +18,13 @@
   h3 {
     @apply font-display text-forest-deep;
     font-optical-sizing: auto;
-    letter-spacing: -0.01em;
-    line-height: 1.15;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.12;
     text-wrap: balance;
+  }
+  h3 {
+    font-weight: 500;
   }
   p {
     text-wrap: pretty;
@@ -98,13 +102,13 @@
 /* Hero entrance: one orchestrated moment on load. */
 @media (prefers-reduced-motion: no-preference) {
   .hero-rise {
-    animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: hero-rise 0.7s ease-out both;
   }
 }
 @keyframes hero-rise {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(8px);
   }
 }
 
@@ -117,13 +121,40 @@
     .reveal {
       animation: reveal linear both;
       animation-timeline: view();
-      animation-range: entry 0% entry 40%;
+      animation-range: entry 0% entry 30%;
     }
   }
 }
 @keyframes reveal {
   from {
     opacity: 0;
-    transform: translateY(32px);
+    transform: translateY(12px);
   }
+}
+
+/* Calculator sliders */
+.nh-range {
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-mist-strong);
+  accent-color: var(--color-forest);
+}
+.nh-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--color-forest);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px var(--color-forest);
+  cursor: pointer;
+}
+.nh-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--color-forest);
+  border: 3px solid #fff;
+  cursor: pointer;
 }

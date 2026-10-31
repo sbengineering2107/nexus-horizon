@@ -7,6 +7,7 @@ import { ServicesList } from "@/components/home/services-list";
 import { AreaCards } from "@/components/home/area-cards";
 import { WhyUs } from "@/components/home/why-us";
 import { Process } from "@/components/home/process";
+import { ToolsTeaser } from "@/components/home/tools-teaser";
 import { Testimonials } from "@/components/home/testimonials";
 import { CtaBand } from "@/components/shared/cta-band";
 
@@ -29,6 +30,7 @@ export default function HomePage() {
       <AreaCards />
       <WhyUs />
       <Process />
+      <ToolsTeaser />
       <Testimonials />
       <CtaBand
         pagePath="/"

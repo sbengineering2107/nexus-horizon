@@ -5,14 +5,16 @@ import { enquiryHref } from "@/lib/enquiry";
 
 type Option = { slug: string; title: string };
 
-/** Glass card over the hero: pick a service, continue on WhatsApp with it pre-filled. */
+/** Inline service picker under the hero copy: choose a service, continue on WhatsApp with it pre-filled. */
 export function EnquiryCard({ services }: { services: Option[] }) {
   const [selected, setSelected] = useState<string | null>(null);
   const chosen = services.find((s) => s.slug === selected);
   return (
-    <div className="hero-rise rounded-lg border border-paper/20 bg-paper/10 p-6 shadow-2xl shadow-black/20 backdrop-blur-xl [animation-delay:150ms] sm:p-7">
-      <h2 className="font-sans text-lg font-semibold text-paper">What are you looking for?</h2>
-      <div role="group" aria-label="Choose a service" className="mt-4 flex flex-wrap gap-2">
+    <div className="mt-8">
+      <p id="enquiry-label" className="text-sm font-semibold text-basalt">
+        What are you looking for?
+      </p>
+      <div role="group" aria-labelledby="enquiry-label" className="mt-3 flex flex-wrap gap-2">
         {services.map((s) => {
           const active = s.slug === selected;
           return (
@@ -21,10 +23,8 @@ export function EnquiryCard({ services }: { services: Option[] }) {
               type="button"
               aria-pressed={active}
               onClick={() => setSelected(active ? null : s.slug)}
-              className={`rounded-full border px-4 py-2 text-[0.95rem] font-semibold transition-colors ${
-                active
-                  ? "border-marigold bg-marigold text-basalt"
-                  : "border-paper/30 bg-paper/5 text-paper hover:border-paper/60 hover:bg-paper/15"
+              className={`rounded-full border px-3.5 py-1.5 text-sm transition-colors ${
+                active ? "border-forest bg-forest text-paper" : "border-line bg-white text-basalt hover:border-forest/50"
               }`}
             >
               {s.title}
@@ -37,11 +37,10 @@ export function EnquiryCard({ services }: { services: Option[] }) {
         href={enquiryHref({ service: chosen?.title, pagePath: "/" })}
         target="_blank"
         rel="noopener"
-        className="mt-6 flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-marigold px-5 font-semibold text-basalt transition-colors hover:bg-marigold-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper"
+        className="mt-6 inline-flex min-h-12 items-center justify-center rounded-md bg-forest px-6 font-semibold text-paper transition-colors hover:bg-forest-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
       >
         {chosen ? `Get advice on ${chosen.title.toLowerCase()}` : "Book a free consultation"}
       </a>
-      <p className="mt-3 text-center text-sm text-mist/80">Opens WhatsApp with your choice filled in.</p>
     </div>
   );
 }

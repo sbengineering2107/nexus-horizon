@@ -10,18 +10,13 @@ const ITEMS = [
 
 export function TrustStrip() {
   return (
-    <section aria-label="Why you can trust us" className="border-b border-mist-strong bg-paper">
+    <section aria-label="Why you can trust us" className="border-y border-line bg-paper">
       <Container>
-        <ul className="grid grid-cols-2 gap-x-6 gap-y-6 py-8 lg:grid-cols-4">
+        <ul className="grid grid-cols-2 divide-line py-7 lg:grid-cols-4 lg:divide-x">
           {ITEMS.map((item) => (
-            <li key={item.label} className="flex gap-3">
-              <svg viewBox="0 0 24 24" aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-forest" fill="none" stroke="currentColor" strokeWidth="2.2">
-                <path d="M5 12.5l4.5 4.5L19 7.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <div>
-                <p className="font-semibold text-forest-deep">{item.label}</p>
-                <p className="text-sm text-slate">{item.detail}</p>
-              </div>
+            <li key={item.label} className="py-2 pr-4 lg:px-6 lg:first:pl-0">
+              <p className="font-semibold text-forest-deep">{item.label}</p>
+              <p className="mt-0.5 text-sm text-slate">{item.detail}</p>
             </li>
           ))}
         </ul>

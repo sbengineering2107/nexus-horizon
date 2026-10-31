@@ -1,6 +1,5 @@
 import { Container } from "@nh/ui";
 import testimonials from "@/content/home/testimonials.json";
-import { CarouselControls } from "./carousel-controls";
 
 function initials(name: string) {
   return name
@@ -12,25 +11,22 @@ function initials(name: string) {
 }
 
 export function Testimonials() {
+  const items = testimonials.slice(0, 3);
   return (
-    <section aria-labelledby="testimonials-heading" className="bg-mist py-16 sm:py-24">
+    <section aria-labelledby="testimonials-heading" className="border-t border-line bg-paper py-20 sm:py-28">
       <Container>
-        <div className="reveal flex flex-wrap items-end justify-between gap-4">
-          <h2 id="testimonials-heading" className="text-3xl sm:text-5xl">
+        <div className="reveal max-w-2xl">
+          <h2 id="testimonials-heading" className="text-3xl sm:text-[2.6rem]">
             What clients say
           </h2>
-          <CarouselControls target="testimonial-track" />
         </div>
-        <ul
-          id="testimonial-track"
-          className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
-          {testimonials.map((t, i) => (
-            <li key={i} className="w-[88%] shrink-0 snap-start sm:w-[60%] lg:w-[calc((100%-2.5rem)/3)]">
-              <figure className="flex h-full flex-col justify-between rounded-lg bg-paper p-7 shadow-sm">
-                <blockquote className="font-display text-xl leading-snug text-forest-deep">“{t.quote}”</blockquote>
-                <figcaption className="mt-6 flex items-center gap-3">
-                  <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full bg-forest font-semibold text-paper">
+        <ul className="mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 [scrollbar-width:none] md:grid md:grid-cols-3 md:overflow-visible [&::-webkit-scrollbar]:hidden">
+          {items.map((t, i) => (
+            <li key={i} className="reveal w-[85%] shrink-0 snap-start md:w-auto">
+              <figure className="flex h-full flex-col justify-between rounded-lg border border-line bg-white p-7">
+                <blockquote className="text-lg leading-relaxed text-basalt">“{t.quote}”</blockquote>
+                <figcaption className="mt-6 flex items-center gap-3 border-t border-line pt-5">
+                  <span aria-hidden="true" className="flex h-10 w-10 items-center justify-center rounded-full bg-mist text-sm font-semibold text-forest-deep">
                     {initials(t.name)}
                   </span>
                   <span className="text-sm text-slate">

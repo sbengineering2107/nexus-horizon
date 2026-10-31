@@ -44,31 +44,34 @@ export default async function ServicePage({ params }: Props) {
   return (
     <>
       <JsonLd data={serviceJsonLd(service)} />
-      <section className="relative isolate overflow-hidden bg-forest-deep">
-        <Image
-          src={img.src}
-          alt={img.alt}
-          fill
-          preload
-          fetchPriority="high"
-          loading="eager"
-          sizes="100vw"
-          quality={70}
-          className="-z-20 object-cover"
-        />
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-forest-deep/95 via-forest-deep/60 to-forest-deep/30" />
-        <Container className="pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pt-20">
-          <div className="text-mist [&_a:hover]:text-paper [&_a]:text-mist [&_span]:text-mist/80">
-            <Breadcrumbs
-              items={[
-                { name: "Home", path: "/" },
-                { name: "Services", path: "/services" },
-                { name: service.title, path },
-              ]}
-            />
+      <section className="border-b border-line bg-white">
+        <Container className="pt-10 pb-12 sm:pt-14">
+          <Breadcrumbs
+            items={[
+              { name: "Home", path: "/" },
+              { name: "Services", path: "/services" },
+              { name: service.title, path },
+            ]}
+          />
+          <div className="mt-8 grid items-end gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+            <div className="hero-rise">
+              <h1 className="text-4xl sm:text-[3.2rem]">{service.title}</h1>
+              <p className="mt-5 max-w-[56ch] text-lg text-slate">{service.summary}</p>
+            </div>
+            <div className="hero-rise relative aspect-[16/9] overflow-hidden rounded-lg [animation-delay:120ms]">
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                preload
+                fetchPriority="high"
+                loading="eager"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                quality={70}
+                className="object-cover"
+              />
+            </div>
           </div>
-          <h1 className="hero-rise mt-8 max-w-3xl text-4xl text-paper sm:text-6xl">{service.title}</h1>
-          <p className="hero-rise mt-5 max-w-[62ch] text-xl text-mist [animation-delay:120ms]">{service.summary}</p>
         </Container>
       </section>
       <Container className="py-12 sm:py-16">
@@ -85,7 +88,7 @@ export default async function ServicePage({ params }: Props) {
             </div>
           </article>
           <aside className="lg:sticky lg:top-24 lg:self-start">
-            <div className="rounded-lg bg-mist p-6">
+            <div className="rounded-lg border border-line bg-paper p-6">
               <h2 className="text-xl">Talk to an advisor</h2>
               <p className="mt-2 text-slate">Free first consultation, on WhatsApp or a call.</p>
               <div className="mt-5 flex flex-col gap-3">

@@ -3,31 +3,31 @@ import { AREAS, enquiryHref } from "@/lib/enquiry";
 
 export function AreaCards() {
   return (
-    <section aria-labelledby="areas-heading" className="bg-forest-deep py-16 text-paper sm:py-24">
+    <section id="areas" aria-labelledby="areas-heading" className="scroll-mt-20 border-t border-line bg-paper py-20 sm:py-28">
       <Container>
         <div className="reveal max-w-2xl">
-          <h2 id="areas-heading" className="text-3xl text-paper sm:text-5xl">
+          <h2 id="areas-heading" className="text-3xl sm:text-[2.6rem]">
             Where buyers are looking in Pune
           </h2>
-          <p className="mt-4 text-lg text-mist/85">
-            Ask us about prices, upcoming projects and resale availability in any micro-market.
+          <p className="mt-4 text-lg text-slate">
+            Ask about prices, upcoming projects and resale availability in any micro-market.
           </p>
         </div>
-        <ul className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:thin] lg:grid lg:grid-cols-4 lg:overflow-visible">
+        <ul className="mt-12 grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
           {AREAS.map((area) => (
-            <li key={area.name} className="reveal w-[78%] shrink-0 snap-start sm:w-[45%] lg:w-auto">
+            <li key={area.name} className="reveal bg-white">
               <a
                 href={enquiryHref({ area: area.name, pagePath: "/" })}
                 target="_blank"
                 rel="noopener"
                 data-testid="area-card"
-                className="group flex h-full flex-col justify-between gap-8 rounded-lg border border-paper/15 bg-paper/5 p-6 transition-colors hover:border-marigold/70 hover:bg-paper/10"
+                className="group flex h-full flex-col justify-between gap-8 p-7 transition-colors hover:bg-paper"
               >
                 <div>
-                  <h3 className="text-3xl text-paper">{area.name}</h3>
-                  <p className="mt-3 text-mist/85">{area.note}</p>
+                  <h3 className="text-2xl">{area.name}</h3>
+                  <p className="mt-3 text-[0.95rem] text-slate">{area.note}</p>
                 </div>
-                <span className="font-semibold text-marigold group-hover:underline">Ask about {area.name}</span>
+                <span className="text-sm font-semibold text-forest group-hover:underline">Ask about {area.name}</span>
               </a>
             </li>
           ))}

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getServices } from "@/lib/content/services";
+import { getTools } from "@/lib/content/tools";
 import { absoluteUrl } from "@/lib/seo/metadata";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -13,6 +14,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: s.updated,
       changeFrequency: "monthly" as const,
       priority: 0.9,
+    })),
+    { url: absoluteUrl("/tools"), lastModified: latest, changeFrequency: "monthly", priority: 0.7 },
+    ...getTools().map((t) => ({
+      url: absoluteUrl(`/tools/${t.slug}`),
+      lastModified: t.updated,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
     })),
   ];
 }
