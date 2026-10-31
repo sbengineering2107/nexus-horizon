@@ -1,0 +1,57 @@
+import Link from "next/link";
+import { Container } from "@nh/ui";
+import { siteConfig } from "@/site.config";
+import { getServices } from "@/lib/content/services";
+import { callHref } from "@/lib/cta";
+import { Logo } from "./logo";
+
+export function SiteFooter() {
+  const { address } = siteConfig;
+  return (
+    <footer className="mt-auto bg-forest-deep text-mist">
+      <Container className="grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
+        <div>
+          <Logo tone="light" />
+          <p className="mt-4 max-w-sm text-mist/85">{siteConfig.description}</p>
+        </div>
+        <div>
+          <h2 className="font-sans text-base font-semibold text-paper">Services</h2>
+          <ul className="mt-3 space-y-2">
+            {getServices().map((s) => (
+              <li key={s.slug}>
+                <Link href={`/services/${s.slug}`} className="hover:text-marigold">
+                  {s.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <address className="not-italic">
+          <h2 className="font-sans text-base font-semibold text-paper">Office</h2>
+          <p className="mt-3">
+            {address.street}
+            <br />
+            {address.city} {address.postalCode}, {address.region}
+          </p>
+          <p className="mt-3">
+            <a href={callHref} className="hover:text-marigold">
+              {siteConfig.phone}
+            </a>
+            <br />
+            <a href={`mailto:${siteConfig.email}`} className="hover:text-marigold">
+              {siteConfig.email}
+            </a>
+          </p>
+        </address>
+      </Container>
+      <div className="border-t border-paper/15">
+        <Container className="flex flex-col gap-2 py-5 text-sm text-mist/75 sm:flex-row sm:justify-between">
+          <p data-testid="maharera">MahaRERA registration no. {siteConfig.maharera}</p>
+          <p>
+            © {new Date().getFullYear()} {siteConfig.legalName}
+          </p>
+        </Container>
+      </div>
+    </footer>
+  );
+}

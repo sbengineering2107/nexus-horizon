@@ -1,26 +1,78 @@
 @import "tailwindcss";
+@import "@nh/ui/styles/tokens.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@source "../../../packages/ui/src";
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper font-sans text-basalt;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display text-forest-deep;
+    font-optical-sizing: auto;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-forest);
+    outline-offset: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* MDX body copy */
+@layer components {
+  .prose-nh {
+    max-width: 68ch;
+  }
+  .prose-nh h2 {
+    @apply mt-12 mb-3 text-2xl sm:text-3xl;
+  }
+  .prose-nh h3 {
+    @apply mt-8 mb-2 text-xl;
+  }
+  .prose-nh p,
+  .prose-nh ul,
+  .prose-nh ol {
+    @apply mb-4;
+  }
+  .prose-nh ul {
+    @apply list-disc pl-6;
+  }
+  .prose-nh ol {
+    @apply list-decimal pl-6;
+  }
+  .prose-nh li {
+    @apply mb-1.5;
+  }
+  .prose-nh strong {
+    @apply font-semibold text-forest-deep;
+  }
+  .prose-nh em {
+    @apply text-slate;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
