@@ -83,24 +83,6 @@
   }
 }
 
-/* Signature moment: the ridge draws itself once on load. */
-@media (prefers-reduced-motion: no-preference) {
-  .ridge-near,
-  .ridge-far {
-    stroke-dasharray: 1600;
-    stroke-dashoffset: 1600;
-    animation: ridge-draw 1.6s cubic-bezier(0.65, 0, 0.35, 1) forwards;
-  }
-  .ridge-far {
-    animation-delay: 0.25s;
-  }
-}
-@keyframes ridge-draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
 /* Hero entrance: one orchestrated moment on load. */
 @media (prefers-reduced-motion: no-preference) {
   .hero-rise {
@@ -173,28 +155,6 @@
       animation-timeline: scroll(root);
       animation-range: 0 100vh;
     }
-    /* Brand ridge under the hero draws itself with scroll. */
-    .ridge-scroll-near,
-    .ridge-scroll-far {
-      stroke-dasharray: 1600;
-      animation: ridge-scroll-draw linear both;
-      animation-timeline: view();
-      animation-range: entry 100% cover 70%;
-    }
-    .ridge-scroll-far {
-      animation-range: entry 100% cover 80%;
-    }
-    /* On wide screens the ridge is visible on load: draw from the first scroll instead. */
-    @media (min-width: 1024px) {
-      .ridge-scroll-near,
-      .ridge-scroll-far {
-        animation-timeline: scroll(root);
-        animation-range: 0 35vh;
-      }
-      .ridge-scroll-far {
-        animation-range: 5vh 45vh;
-      }
-    }
     /* Service photos shift gently inside their frames. */
     .fx-card-parallax {
       animation: card-parallax linear both;
@@ -209,10 +169,9 @@
     }
     /* Process: a line fills across the steps. */
     .fx-progress-line {
-      transform-origin: left center;
       animation: progress-line linear both;
-      animation-timeline: view();
-      animation-range: entry 60% cover 55%;
+      animation-timeline: --process;
+      animation-range: entry 70% cover 60%;
     }
     /* Header separates from content once you leave the top. */
     .fx-header-shadow {
@@ -228,14 +187,6 @@
   }
   to {
     transform: scale(1) translateY(6%);
-  }
-}
-@keyframes ridge-scroll-draw {
-  from {
-    stroke-dashoffset: 1600;
-  }
-  to {
-    stroke-dashoffset: 0;
   }
 }
 @keyframes card-parallax {
@@ -256,10 +207,10 @@
 }
 @keyframes progress-line {
   from {
-    transform: scaleX(0);
+    scale: var(--line-from, 0 1);
   }
   to {
-    transform: scaleX(1);
+    scale: 1 1;
   }
 }
 @keyframes header-shadow {
@@ -269,4 +220,128 @@
   to {
     box-shadow: 0 6px 24px -12px rgb(30 42 46 / 0.18);
   }
+}
+
+/* Process timeline: one named view timeline drives the line and the step dots together. */
+.process-track {
+  view-timeline-name: --process;
+}
+.process-line {
+  --line-from: 1 0;
+  transform-origin: top center;
+}
+@media (min-width: 1024px) {
+  .process-line {
+    --line-from: 0 1;
+    transform-origin: left center;
+  }
+}
+
+/* Skyline: buildings rise in turn, details fade in, the crane jib swings into place. */
+.skyline .bldg {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+.skyline .crane-jib {
+  transform-box: view-box;
+}
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .skyline .bldg {
+      animation: bldg-rise linear both;
+      animation-timeline: view();
+      animation-range: entry calc(40% + var(--i) * 4%) cover calc(35% + var(--i) * 3%);
+    }
+    .skyline .bldg-detail {
+      animation: bldg-detail linear both;
+      animation-timeline: view();
+      animation-range: cover calc(25% + var(--i) * 3%) cover calc(45% + var(--i) * 3%);
+    }
+    .skyline .crane-jib {
+      animation: crane-swing linear both;
+      animation-timeline: view();
+      animation-range: entry 80% cover 55%;
+    }
+    /* Wide screens: the skyline is on screen at load, so build it from the first scroll. */
+    @media (min-width: 1024px) {
+      .skyline .bldg {
+        animation-timeline: scroll(root);
+        animation-range: calc(var(--i) * 2.2vh) calc(12vh + var(--i) * 2.2vh);
+      }
+      .skyline .bldg-detail {
+        animation-timeline: scroll(root);
+        animation-range: calc(8vh + var(--i) * 2.2vh) calc(18vh + var(--i) * 2.2vh);
+      }
+      .skyline .crane-jib {
+        animation-timeline: scroll(root);
+        animation-range: 10vh 34vh;
+      }
+    }
+    .fx-step-dot-0,
+    .fx-step-dot-1,
+    .fx-step-dot-2,
+    .fx-step-dot-3 {
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: --process;
+      animation-range: entry 70% cover 60%;
+    }
+    .fx-step-dot-0 {
+      animation-name: step-dot-0;
+    }
+    .fx-step-dot-1 {
+      animation-name: step-dot-1;
+    }
+    .fx-step-dot-2 {
+      animation-name: step-dot-2;
+    }
+    .fx-step-dot-3 {
+      animation-name: step-dot-3;
+    }
+  }
+}
+@keyframes bldg-rise {
+  from {
+    transform: scaleY(0.06);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes bldg-detail {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes crane-swing {
+  from {
+    transform: rotate(-38deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+/* Each dot fills when the line reaches its step (columns start at ~0%, 26%, 52%, 78%), then its ring fades. */
+@keyframes step-dot-0 {
+  0% { background: #fff; box-shadow: 0 0 0 0 rgb(15 77 71 / 0.22); }
+  3% { background: var(--color-forest); box-shadow: 0 0 0 7px rgb(15 77 71 / 0.18); }
+  16%, 100% { background: var(--color-forest); box-shadow: 0 0 0 0 rgb(15 77 71 / 0); }
+}
+@keyframes step-dot-1 {
+  0%, 25% { background: #fff; box-shadow: 0 0 0 0 rgb(15 77 71 / 0.22); }
+  28% { background: var(--color-forest); box-shadow: 0 0 0 7px rgb(15 77 71 / 0.18); }
+  41%, 100% { background: var(--color-forest); box-shadow: 0 0 0 0 rgb(15 77 71 / 0); }
+}
+@keyframes step-dot-2 {
+  0%, 51% { background: #fff; box-shadow: 0 0 0 0 rgb(15 77 71 / 0.22); }
+  54% { background: var(--color-forest); box-shadow: 0 0 0 7px rgb(15 77 71 / 0.18); }
+  67%, 100% { background: var(--color-forest); box-shadow: 0 0 0 0 rgb(15 77 71 / 0); }
+}
+@keyframes step-dot-3 {
+  0%, 77% { background: #fff; box-shadow: 0 0 0 0 rgb(15 77 71 / 0.22); }
+  80% { background: var(--color-forest); box-shadow: 0 0 0 7px rgb(15 77 71 / 0.18); }
+  93%, 100% { background: var(--color-forest); box-shadow: 0 0 0 0 rgb(15 77 71 / 0); }
 }

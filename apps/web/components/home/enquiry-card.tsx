@@ -10,7 +10,7 @@ export function EnquiryCard({ services }: { services: Option[] }) {
   const [selected, setSelected] = useState<string | null>(null);
   const chosen = services.find((s) => s.slug === selected);
   return (
-    <div className="mt-8">
+    <div className="mt-6">
       <p id="enquiry-label" className="text-sm font-semibold text-basalt">
         What are you looking for?
       </p>
@@ -37,7 +37,7 @@ export function EnquiryCard({ services }: { services: Option[] }) {
         href={enquiryHref({ service: chosen?.title, pagePath: "/" })}
         target="_blank"
         rel="noopener"
-        className="mt-6 inline-flex min-h-12 items-center justify-center rounded-md bg-forest px-6 font-semibold text-paper transition-colors hover:bg-forest-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+        className="mt-5 inline-flex min-h-12 items-center justify-center rounded-md bg-forest px-6 font-semibold text-paper transition-colors hover:bg-forest-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
       >
         {chosen ? `Get advice on ${chosen.title.toLowerCase()}` : "Book a free consultation"}
       </a>
