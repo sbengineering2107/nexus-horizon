@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/site.config";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { Hero } from "@/components/home/hero";
+import { TrustStrip } from "@/components/home/trust-strip";
 import { ServicesList } from "@/components/home/services-list";
+import { AreaCards } from "@/components/home/area-cards";
 import { WhyUs } from "@/components/home/why-us";
 import { Process } from "@/components/home/process";
 import { Testimonials } from "@/components/home/testimonials";
@@ -22,7 +24,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <TrustStrip />
       <ServicesList />
+      <AreaCards />
       <WhyUs />
       <Process />
       <Testimonials />

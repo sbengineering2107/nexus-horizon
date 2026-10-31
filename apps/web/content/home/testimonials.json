@@ -1,17 +1,22 @@
 [
   {
     "quote": "They shortlisted three projects that actually fit our budget and showed us the delivery record of each builder. We booked within two weeks.",
-    "name": "Placeholder Client",
+    "name": "Placeholder Client A",
     "detail": "Bought a 2 BHK in Hinjewadi"
   },
   {
     "quote": "Living in Dubai, I needed someone on the ground I could trust. Every document was checked before I signed anything.",
-    "name": "Placeholder Client",
+    "name": "Placeholder Client B",
     "detail": "NRI buyer, resale flat in Baner"
   },
   {
     "quote": "They compared five office spaces on rent, lock-in and commute for our team. Saved us weeks of site visits.",
-    "name": "Placeholder Client",
+    "name": "Placeholder Client C",
     "detail": "Leased an office in Kharadi"
+  },
+  {
+    "quote": "We were comparing resale and new projects in Wakad. They laid out the real cost of each option side by side, and the decision became easy.",
+    "name": "Placeholder Client D",
+    "detail": "Family buyer, Wakad"
   }
 ]

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Button, Container } from "@nh/ui";
+import { serviceImages } from "@/lib/images";
 import { getService, getServices } from "@/lib/content/services";
 import { MdxContent } from "@/lib/content/mdx-content";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -37,23 +39,42 @@ export default async function ServicePage({ params }: Props) {
   if (!service) notFound();
   const path = `/services/${service.slug}`;
   const others = getServices().filter((s) => s.slug !== service.slug);
+  const img = serviceImages[service.slug];
 
   return (
     <>
       <JsonLd data={serviceJsonLd(service)} />
-      <Container className="py-12 sm:py-16">
-        <Breadcrumbs
-          items={[
-            { name: "Home", path: "/" },
-            { name: "Services", path: "/services" },
-            { name: service.title, path },
-          ]}
+      <section className="relative isolate overflow-hidden bg-forest-deep">
+        <Image
+          src={img.src}
+          alt={img.alt}
+          fill
+          preload
+          fetchPriority="high"
+          loading="eager"
+          sizes="100vw"
+          quality={70}
+          className="-z-20 object-cover"
         />
-        <div className="mt-6 grid gap-12 lg:grid-cols-[1fr_20rem]">
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-forest-deep/95 via-forest-deep/60 to-forest-deep/30" />
+        <Container className="pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pt-20">
+          <div className="text-mist [&_a:hover]:text-paper [&_a]:text-mist [&_span]:text-mist/80">
+            <Breadcrumbs
+              items={[
+                { name: "Home", path: "/" },
+                { name: "Services", path: "/services" },
+                { name: service.title, path },
+              ]}
+            />
+          </div>
+          <h1 className="hero-rise mt-8 max-w-3xl text-4xl text-paper sm:text-6xl">{service.title}</h1>
+          <p className="hero-rise mt-5 max-w-[62ch] text-xl text-mist [animation-delay:120ms]">{service.summary}</p>
+        </Container>
+      </section>
+      <Container className="py-12 sm:py-16">
+        <div className="grid gap-12 lg:grid-cols-[1fr_20rem]">
           <article>
-            <h1 className="text-4xl sm:text-5xl">{service.title}</h1>
-            <p className="mt-5 max-w-[62ch] text-xl text-slate">{service.summary}</p>
-            <p className="mt-4 text-sm text-slate">
+            <p className="text-sm text-slate">
               Last updated <time dateTime={service.updated}>{dateFmt.format(new Date(service.updated))}</time>
             </p>
             <div className="prose-nh mt-4">
