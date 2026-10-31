@@ -5,8 +5,6 @@ const anim = (sel: string) => (page: import("@playwright/test").Page) =>
 
 const EFFECTS: [string, string][] = [
   ['[data-fx="hero-parallax"]', "hero-parallax"],
-  ['[data-fx="skyline"] .bldg', "bldg-rise"],
-  ['[data-fx="skyline"] .crane-jib', "crane-swing"],
   ['[data-fx="step-dot"]', "step-dot-0"],
   ['[data-fx="card-parallax"]', "card-parallax"],
   ['[data-fx="curtain"]', "curtain"],
@@ -48,4 +46,9 @@ test.describe("hero height on a laptop screen", () => {
     const h = await page.locator("main > section").first().evaluate((el) => el.getBoundingClientRect().height);
     expect(h).toBeLessThanOrEqual(900 * 0.8);
   });
+});
+
+test("hero has no skyline animation", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator('[data-fx="skyline"]')).toHaveCount(0);
 });

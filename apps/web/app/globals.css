@@ -237,46 +237,8 @@
   }
 }
 
-/* Skyline: buildings rise in turn, details fade in, the crane jib swings into place. */
-.skyline .bldg {
-  transform-box: fill-box;
-  transform-origin: 50% 100%;
-}
-.skyline .crane-jib {
-  transform-box: view-box;
-}
 @supports (animation-timeline: scroll()) {
   @media (prefers-reduced-motion: no-preference) {
-    .skyline .bldg {
-      animation: bldg-rise linear both;
-      animation-timeline: view();
-      animation-range: entry calc(40% + var(--i) * 4%) cover calc(35% + var(--i) * 3%);
-    }
-    .skyline .bldg-detail {
-      animation: bldg-detail linear both;
-      animation-timeline: view();
-      animation-range: cover calc(25% + var(--i) * 3%) cover calc(45% + var(--i) * 3%);
-    }
-    .skyline .crane-jib {
-      animation: crane-swing linear both;
-      animation-timeline: view();
-      animation-range: entry 80% cover 55%;
-    }
-    /* Wide screens: the skyline is on screen at load, so build it from the first scroll. */
-    @media (min-width: 1024px) {
-      .skyline .bldg {
-        animation-timeline: scroll(root);
-        animation-range: calc(var(--i) * 2.2vh) calc(12vh + var(--i) * 2.2vh);
-      }
-      .skyline .bldg-detail {
-        animation-timeline: scroll(root);
-        animation-range: calc(8vh + var(--i) * 2.2vh) calc(18vh + var(--i) * 2.2vh);
-      }
-      .skyline .crane-jib {
-        animation-timeline: scroll(root);
-        animation-range: 10vh 34vh;
-      }
-    }
     .fx-step-dot-0,
     .fx-step-dot-1,
     .fx-step-dot-2,
@@ -298,30 +260,6 @@
     .fx-step-dot-3 {
       animation-name: step-dot-3;
     }
-  }
-}
-@keyframes bldg-rise {
-  from {
-    transform: scaleY(0.06);
-  }
-  to {
-    transform: scaleY(1);
-  }
-}
-@keyframes bldg-detail {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes crane-swing {
-  from {
-    transform: rotate(-38deg);
-  }
-  to {
-    transform: rotate(0deg);
   }
 }
 /* Each dot fills when the line reaches its step (columns start at ~0%, 26%, 52%, 78%), then its ring fades. */

@@ -4,13 +4,12 @@ import { Container } from "@nh/ui";
 import { heroImage } from "@/lib/images";
 import { getServices } from "@/lib/content/services";
 import { EnquiryCard } from "./enquiry-card";
-import { Skyline } from "./skyline";
 
 export function Hero() {
   const services = getServices().map((s) => ({ slug: s.slug, title: s.title }));
   return (
     <section className="bg-white">
-      <Container className="grid items-center gap-10 pt-10 pb-8 sm:pt-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pt-9 lg:pb-4">
+      <Container className="grid items-center gap-10 pt-10 pb-8 sm:pt-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:py-12">
         <div className="hero-rise">
           <p className="text-[0.95rem] font-semibold text-forest">Real estate advisors in Pune</p>
           <h1 className="mt-3 max-w-xl text-[2.4rem] leading-[1.06] sm:text-[3.2rem] lg:text-[3.4rem]">
@@ -42,9 +41,6 @@ export function Hero() {
             data-fx="hero-parallax"
           />
         </div>
-      </Container>
-      <Container>
-        <Skyline className="mx-auto max-h-24 sm:max-h-28 lg:max-h-24" />
       </Container>
     </section>
   );
