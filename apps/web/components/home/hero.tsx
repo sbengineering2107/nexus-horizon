@@ -4,6 +4,7 @@ import { Container } from "@nh/ui";
 import { heroImage } from "@/lib/images";
 import { getServices } from "@/lib/content/services";
 import { EnquiryCard } from "./enquiry-card";
+import { HorizonRidge } from "@/components/shared/horizon-ridge";
 
 export function Hero() {
   const services = getServices().map((s) => ({ slug: s.slug, title: s.title }));
@@ -37,10 +38,12 @@ export function Hero() {
             loading="eager"
             sizes="(min-width: 1024px) 45vw, 100vw"
             quality={70}
-            className="object-cover"
+            className="fx-hero-parallax object-cover"
+            data-fx="hero-parallax"
           />
         </div>
       </Container>
+      <HorizonRidge scrollDraw className="-mt-4" />
     </section>
   );
 }

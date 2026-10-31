@@ -158,3 +158,102 @@
   border: 3px solid #fff;
   cursor: pointer;
 }
+
+/*
+ * Scroll-driven effects. Pure CSS (animation-timeline), progressive enhancement:
+ * browsers without support, and anyone preferring reduced motion, see the static page.
+ */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* Hero photo drifts and settles from a slight zoom as the page scrolls. */
+    .fx-hero-parallax {
+      animation: hero-parallax linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 100vh;
+    }
+    /* Brand ridge under the hero draws itself with scroll. */
+    .ridge-scroll-near,
+    .ridge-scroll-far {
+      stroke-dasharray: 1600;
+      animation: ridge-scroll-draw linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 55%;
+    }
+    .ridge-scroll-far {
+      animation-range: entry 35% cover 65%;
+    }
+    /* Service photos shift gently inside their frames. */
+    .fx-card-parallax {
+      animation: card-parallax linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+    /* Interior photo uncovers from the bottom like a curtain. */
+    .fx-curtain {
+      animation: curtain linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 40%;
+    }
+    /* Process: a line fills across the steps. */
+    .fx-progress-line {
+      transform-origin: left center;
+      animation: progress-line linear both;
+      animation-timeline: view();
+      animation-range: entry 60% cover 55%;
+    }
+    /* Header separates from content once you leave the top. */
+    .fx-header-shadow {
+      animation: header-shadow linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 120px;
+    }
+  }
+}
+@keyframes hero-parallax {
+  from {
+    transform: scale(1.08) translateY(0);
+  }
+  to {
+    transform: scale(1) translateY(6%);
+  }
+}
+@keyframes ridge-scroll-draw {
+  from {
+    stroke-dashoffset: 1600;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes card-parallax {
+  from {
+    transform: scale(1.12) translateY(-5%);
+  }
+  to {
+    transform: scale(1.12) translateY(5%);
+  }
+}
+@keyframes curtain {
+  from {
+    clip-path: inset(100% 0 0 0 round var(--radius-lg));
+  }
+  to {
+    clip-path: inset(0 0 0 0 round var(--radius-lg));
+  }
+}
+@keyframes progress-line {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes header-shadow {
+  from {
+    box-shadow: 0 0 0 0 rgb(30 42 46 / 0);
+  }
+  to {
+    box-shadow: 0 6px 24px -12px rgb(30 42 46 / 0.18);
+  }
+}

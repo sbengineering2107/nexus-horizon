@@ -16,7 +16,9 @@ export function Process() {
             How it works
           </h2>
         </div>
-        <ol className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="relative mt-12">
+          <div aria-hidden="true" data-fx="progress-line" className="fx-progress-line absolute inset-x-0 top-0 hidden h-0.5 -translate-y-px bg-forest lg:block" />
+          <ol className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((step, i) => (
             <li key={step.title} className="reveal border-t border-forest/25 pt-6">
               <span aria-hidden="true" className="text-sm font-semibold tabular-nums text-forest">
@@ -25,8 +27,9 @@ export function Process() {
               <h3 className="mt-2 text-xl">{step.title}</h3>
               <p className="mt-2 text-[0.95rem] text-slate">{step.text}</p>
             </li>
-          ))}
-        </ol>
+            ))}
+          </ol>
+        </div>
       </Container>
     </section>
   );

@@ -21,7 +21,7 @@ export function WhyUs() {
   return (
     <section aria-labelledby="why-heading" className="bg-white py-20 sm:py-28">
       <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-        <div className="reveal relative aspect-[4/3] overflow-hidden rounded-lg lg:aspect-square">
+        <div data-fx="curtain" className="fx-curtain relative aspect-[4/3] overflow-hidden rounded-lg lg:aspect-square">
           <Image
             src={interiorImage.src}
             alt={interiorImage.alt}
