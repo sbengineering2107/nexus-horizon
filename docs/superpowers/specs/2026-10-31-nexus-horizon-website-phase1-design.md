@@ -1,7 +1,7 @@
 # Nexus Horizon Advisors — Website Phase 1 Design
 
 **Date:** 2026-10-31
-**Status:** Draft — awaiting review
+**Status:** Approved 2026-10-31
 **Scope:** Phase 1 (launch) only. Later phases are listed under "Out of scope".
 
 ## 1. Intent
@@ -107,7 +107,7 @@ nexus-horizon/
 | Analytics | GA4, Google Search Console, Bing Webmaster Tools, Microsoft Clarity, Vercel Speed Insights |
 | Testing | Vitest, Playwright, Lighthouse CI |
 | CI | GitHub Actions |
-| Hosting | **Open decision:** Vercel Pro (recommended) or Cloudflare via OpenNext |
+| Hosting | Vercel Hobby (free) for launch; move to Pro when the site is used commercially (Hobby terms are non-commercial) |
 | DNS | Cloudflare |
 
 ## 6. SEO and AI SEO
