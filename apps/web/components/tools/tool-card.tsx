@@ -14,7 +14,8 @@ export function ToolCard({ tool, headingLevel = "h3" }: { tool: Tool; headingLev
         <ToolVisual kind={tool.visual} />
       </div>
       <div className="flex flex-1 flex-col p-6">
-        <Heading className="text-xl group-hover:text-forest">{tool.title}</Heading>
+        <p className="text-sm font-semibold text-forest">{tool.question}</p>
+        <Heading className="mt-1 text-xl group-hover:text-forest">{tool.title}</Heading>
         <p className="mt-2 flex-1 text-[0.95rem] text-slate">{tool.short}</p>
         <div className="mt-5 flex items-end justify-between gap-4 border-t border-line pt-4">
           <div>

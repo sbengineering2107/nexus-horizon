@@ -9,9 +9,14 @@ export type ToolSlug =
 /** Which mini infographic represents the tool on cards. */
 export type ToolVisual = "donut" | "bars" | "gauge" | "converge" | "stack" | "ring";
 
+export type ToolGroup = "loan" | "property";
+
 export type Tool = {
   slug: ToolSlug;
   title: string;
+  /** The buyer's question this calculator answers; used on cards and in the loan guide. */
+  question: string;
+  group: ToolGroup;
   short: string;
   seoTitle: string;
   seoDescription: string;
@@ -24,63 +29,21 @@ export type Tool = {
 
 export const TOOLS: Tool[] = [
   {
-    slug: "emi-calculator",
-    title: "Home Loan EMI Calculator",
-    short: "Work out your monthly instalment, total interest and total repayment for any loan amount, rate and tenure.",
-    seoTitle: "Home Loan EMI Calculator for Pune Buyers",
-    seoDescription: "Calculate your home loan EMI, total interest and total repayment instantly. Adjust loan amount, interest rate and tenure to plan your Pune property budget.",
-    updated: "2026-10-31",
-    visual: "donut",
-    sample: { label: "₹50 L at 8.5% for 20 years", value: "₹43,391 / month" },
-    faqs: [
-      {
-        q: "How is a home loan EMI calculated?",
-        a: "EMI = P × r × (1 + r)^n ÷ ((1 + r)^n − 1), where P is the loan amount, r is the monthly interest rate (annual rate ÷ 12 ÷ 100) and n is the number of monthly instalments.",
-      },
-      {
-        q: "Does a longer tenure reduce my EMI?",
-        a: "Yes. A longer tenure lowers the monthly EMI but increases the total interest you pay over the life of the loan. Compare both numbers before choosing.",
-      },
-      {
-        q: "Is this EMI exactly what my bank will charge?",
-        a: "It is a close estimate for a reducing-balance loan. Your bank's figure can differ slightly because of processing fees, rate resets on floating loans and how they round instalments.",
-      },
-    ],
-  },
-  {
-    slug: "home-loan-calculator",
-    title: "Home Loan Calculator",
-    short: "Plan a purchase from the property price: down payment, loan amount, EMI and a year-by-year repayment schedule.",
-    seoTitle: "Home Loan Calculator with Repayment Schedule",
-    seoDescription: "Plan your home loan from the property price. See down payment, loan amount, EMI and a yearly principal and interest schedule for Pune purchases.",
-    updated: "2026-10-31",
-    visual: "bars",
-    sample: { label: "₹1 Cr flat, 20% down, 8.5%", value: "₹80 L loan" },
-    faqs: [
-      {
-        q: "How much down payment do I need for a home loan?",
-        a: "Lenders in India usually finance 75–90% of the property value depending on the loan size, so plan for a down payment of at least 10–25%, plus stamp duty and registration, which loans generally do not cover.",
-      },
-      {
-        q: "Why is most of my early EMI going to interest?",
-        a: "Interest is charged on the outstanding balance, which is highest at the start. As the balance falls, a larger share of each EMI repays principal. The yearly schedule shows this shift.",
-      },
-      {
-        q: "Does a bigger down payment save much interest?",
-        a: "Yes. Every rupee you do not borrow avoids interest for the full tenure, so a larger down payment lowers both the EMI and the total interest. Compare scenarios with the calculator.",
-      },
-    ],
-  },
-  {
     slug: "loan-eligibility-calculator",
+    question: "How much home loan can I get?",
+    group: "loan",
     title: "Home Loan Eligibility Calculator",
     short: "Estimate the largest home loan you could get from your income, existing EMIs, rate and tenure.",
-    seoTitle: "Home Loan Eligibility Calculator",
+    seoTitle: "Home Loan Eligibility Calculator: How Much Can I Borrow?",
     seoDescription: "Estimate how much home loan you are eligible for based on monthly income, existing EMIs, interest rate and tenure. Plan your Pune property budget.",
     updated: "2026-10-31",
     visual: "gauge",
     sample: { label: "₹1.5 L income, ₹10k EMIs", value: "≈ ₹74.9 L" },
     faqs: [
+      {
+        q: "What is the difference between eligibility and EMI calculators?",
+        a: "Eligibility works backwards from your income to the largest loan you could get. The EMI and home loan calculators work forwards from a loan or property price to the instalment you would pay. Check eligibility first, then plan the loan.",
+      },
       {
         q: "How do banks decide home loan eligibility?",
         a: "Mainly on how much of your income can go to EMIs, called FOIR (fixed obligations to income ratio). Many lenders allow 40–60% of net monthly income for all EMIs combined, then check age, credit score, employer and property value.",
@@ -96,10 +59,72 @@ export const TOOLS: Tool[] = [
     ],
   },
   {
+    slug: "home-loan-calculator",
+    question: "How will my loan be repaid, year by year?",
+    group: "loan",
+    title: "Home Loan Calculator & Repayment Planner",
+    short: "Plan a purchase from the property price: down payment, loan amount, EMI and a year-by-year repayment schedule.",
+    seoTitle: "Home Loan Calculator with Yearly Repayment Schedule",
+    seoDescription: "Plan your home loan from the property price. See down payment, loan amount, EMI and a yearly principal and interest schedule for Pune purchases.",
+    updated: "2026-10-31",
+    visual: "bars",
+    sample: { label: "₹1 Cr flat, 20% down, 8.5%", value: "₹80 L loan" },
+    faqs: [
+      {
+        q: "What is the difference between this and the EMI calculator?",
+        a: "The EMI calculator needs a loan amount and returns the monthly instalment. This planner starts from the property price and down payment, works out the loan, and shows how every year's payments split between principal and interest.",
+      },
+      {
+        q: "How much down payment do I need for a home loan?",
+        a: "Lenders in India usually finance 75–90% of the property value depending on the loan size, so plan for a down payment of at least 10–25%, plus stamp duty and registration, which loans generally do not cover.",
+      },
+      {
+        q: "Why is most of my early EMI going to interest?",
+        a: "Interest is charged on the outstanding balance, which is highest at the start. As the balance falls, a larger share of each EMI repays principal. The yearly schedule shows this shift.",
+      },
+      {
+        q: "Does a bigger down payment save much interest?",
+        a: "Yes. Every rupee you do not borrow avoids interest for the full tenure, so a larger down payment lowers both the EMI and the total interest. Compare scenarios with the calculator.",
+      },
+    ],
+  },
+  {
+    slug: "emi-calculator",
+    question: "What will my monthly EMI be?",
+    group: "loan",
+    title: "Home Loan EMI Calculator",
+    short: "Work out your monthly instalment, total interest and total repayment for any loan amount, rate and tenure.",
+    seoTitle: "Home Loan EMI Calculator – Monthly EMI & Interest",
+    seoDescription: "Calculate your home loan EMI, total interest and total repayment instantly. Adjust loan amount, interest rate and tenure to plan your Pune property budget.",
+    updated: "2026-10-31",
+    visual: "donut",
+    sample: { label: "₹50 L at 8.5% for 20 years", value: "₹43,391 / month" },
+    faqs: [
+      {
+        q: "What is the difference between the EMI calculator and the home loan calculator?",
+        a: "The EMI calculator starts from a loan amount and gives your monthly instalment. The Home Loan Calculator & Repayment Planner starts from the property price and down payment, then adds a year-by-year repayment schedule. To find how much you can borrow first, use the eligibility calculator.",
+      },
+      {
+        q: "How is a home loan EMI calculated?",
+        a: "EMI = P × r × (1 + r)^n ÷ ((1 + r)^n − 1), where P is the loan amount, r is the monthly interest rate (annual rate ÷ 12 ÷ 100) and n is the number of monthly instalments.",
+      },
+      {
+        q: "Does a longer tenure reduce my EMI?",
+        a: "Yes. A longer tenure lowers the monthly EMI but increases the total interest you pay over the life of the loan. Compare both numbers before choosing.",
+      },
+      {
+        q: "Is this EMI exactly what my bank will charge?",
+        a: "It is a close estimate for a reducing-balance loan. Your bank's figure can differ slightly because of processing fees, rate resets on floating loans and how they round instalments.",
+      },
+    ],
+  },
+  {
     slug: "loan-transfer-calculator",
+    question: "Is moving my loan to a lower rate worth it?",
+    group: "loan",
     title: "Home Loan Balance Transfer Calculator",
     short: "See whether moving your home loan to a lower rate saves money after transfer charges.",
-    seoTitle: "Home Loan Balance Transfer Calculator",
+    seoTitle: "Home Loan Balance Transfer Calculator: Is It Worth It?",
     seoDescription: "Check if a home loan balance transfer is worth it. Compare EMIs and total interest at your current and new rate, after processing and legal charges.",
     updated: "2026-10-31",
     visual: "converge",
@@ -121,9 +146,11 @@ export const TOOLS: Tool[] = [
   },
   {
     slug: "stamp-duty-calculator",
+    question: "How much stamp duty will I pay in Pune?",
+    group: "property",
     title: "Stamp Duty Calculator for Pune",
     short: "Estimate Maharashtra stamp duty and registration fees for a property in Pune municipal areas.",
-    seoTitle: "Stamp Duty & Registration Calculator for Pune",
+    seoTitle: "Stamp Duty & Registration Charges Calculator, Pune",
     seoDescription: "Estimate stamp duty, metro cess and registration fees for property in Pune (PMC and PCMC areas), including the concession for women buyers.",
     updated: "2026-10-31",
     visual: "stack",
@@ -149,9 +176,11 @@ export const TOOLS: Tool[] = [
   },
   {
     slug: "rental-yield-calculator",
+    question: "What return will rent give me?",
+    group: "property",
     title: "Rental Yield Calculator",
     short: "Work out the gross and net rental yield of a property after maintenance, property tax and vacancy.",
-    seoTitle: "Rental Yield Calculator for Pune Property",
+    seoTitle: "Rental Yield Calculator for Pune Property (Gross & Net)",
     seoDescription: "Calculate gross and net rental yield for a Pune flat or office. Include maintenance, property tax and vacant months to see your real annual return.",
     updated: "2026-10-31",
     visual: "ring",
@@ -172,6 +201,9 @@ export const TOOLS: Tool[] = [
     ],
   },
 ];
+
+/** Order a buyer should use the three loan calculators in. */
+export const LOAN_JOURNEY: ToolSlug[] = ["loan-eligibility-calculator", "home-loan-calculator", "emi-calculator"];
 
 export function getTools(): Tool[] {
   return TOOLS;

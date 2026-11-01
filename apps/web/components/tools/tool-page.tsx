@@ -5,7 +5,8 @@ import { webApplicationJsonLd } from "@/lib/seo/jsonld";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { FaqList } from "@/components/shared/faq-list";
-import { getTools } from "@/lib/content/tools";
+import { getTools, LOAN_JOURNEY } from "@/lib/content/tools";
+import { LoanGuide } from "./loan-guide";
 
 const dateFmt = new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "long", year: "numeric" });
 
@@ -27,6 +28,11 @@ export function ToolPage({ tool, children, explainer }: { tool: Tool; children: 
         <h1 className="mt-8 max-w-3xl text-4xl sm:text-5xl">{tool.title}</h1>
         <p className="mt-4 max-w-[62ch] text-lg text-slate">{tool.short}</p>
         <div className="mt-10">{children}</div>
+        {LOAN_JOURNEY.includes(tool.slug) && (
+          <div className="mt-10">
+            <LoanGuide current={tool.slug} />
+          </div>
+        )}
         <div className="mt-16 grid gap-14 lg:grid-cols-[1fr_18rem]">
           <div>
             <div className="prose-nh">{explainer}</div>
