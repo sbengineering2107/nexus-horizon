@@ -9,7 +9,7 @@ const tool = getTool("loan-eligibility-calculator")!;
 export const metadata: Metadata = buildMetadata({
   title: tool.seoTitle,
   description: tool.seoDescription,
-  path: `/tools/${tool.slug}`,
+  path: `/calculators/${tool.slug}`,
 });
 
 export default function Page() {

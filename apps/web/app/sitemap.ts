@@ -15,9 +15,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.9,
     })),
-    { url: absoluteUrl("/tools"), lastModified: latest, changeFrequency: "monthly", priority: 0.7 },
+    { url: absoluteUrl("/calculators"), lastModified: latest, changeFrequency: "monthly", priority: 0.7 },
     ...getTools().map((t) => ({
-      url: absoluteUrl(`/tools/${t.slug}`),
+      url: absoluteUrl(`/calculators/${t.slug}`),
       lastModified: t.updated,
       changeFrequency: "monthly" as const,
       priority: 0.8,

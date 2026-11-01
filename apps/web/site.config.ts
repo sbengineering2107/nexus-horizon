@@ -22,7 +22,7 @@ export const siteConfig = {
     country: "IN",
   },
   geo: { lat: 18.559, lng: 73.7868 }, // PLACEHOLDER: office coordinates
-  maharera: "A52100000000", // PLACEHOLDER: MahaRERA agent registration no.
+  maharera: "A031262605250", // MahaRERA agent registration no.
   socials: [
     "https://www.linkedin.com/company/nexus-horizon-advisors", // PLACEHOLDER
     "https://www.instagram.com/nexushorizonadvisors", // PLACEHOLDER

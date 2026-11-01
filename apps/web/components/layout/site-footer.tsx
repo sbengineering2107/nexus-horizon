@@ -16,7 +16,7 @@ export function SiteFooter() {
           <p className="mt-4 max-w-sm text-mist/85">{siteConfig.description}</p>
         </div>
         <div>
-          <h2 className="font-sans text-base font-semibold text-paper">Services</h2>
+          <h2 className="font-sans text-base font-semibold text-paper">Our Services</h2>
           <ul className="mt-3 space-y-2">
             {getServices().map((s) => (
               <li key={s.slug}>
@@ -28,11 +28,11 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <h2 className="font-sans text-base font-semibold text-paper">Calculators</h2>
+          <h2 className="font-sans text-base font-semibold text-paper">Home Loan Calculators</h2>
           <ul className="mt-3 space-y-2">
             {getTools().map((t) => (
               <li key={t.slug}>
-                <Link href={`/tools/${t.slug}`} className="hover:text-marigold">
+                <Link href={`/calculators/${t.slug}`} className="hover:text-marigold">
                   {t.title}
                 </Link>
               </li>

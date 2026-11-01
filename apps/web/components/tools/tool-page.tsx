@@ -11,7 +11,7 @@ const dateFmt = new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "long"
 
 /** Shared frame for calculator pages: heading, calculator, explainer, FAQs, related tools. */
 export function ToolPage({ tool, children, explainer }: { tool: Tool; children: React.ReactNode; explainer: React.ReactNode }) {
-  const path = `/tools/${tool.slug}`;
+  const path = `/calculators/${tool.slug}`;
   const other = getTools().filter((t) => t.slug !== tool.slug);
   return (
     <>
@@ -20,7 +20,7 @@ export function ToolPage({ tool, children, explainer }: { tool: Tool; children: 
         <Breadcrumbs
           items={[
             { name: "Home", path: "/" },
-            { name: "Calculators", path: "/tools" },
+            { name: "Home Loan Calculators", path: "/calculators" },
             { name: tool.title, path },
           ]}
         />
@@ -42,7 +42,7 @@ export function ToolPage({ tool, children, explainer }: { tool: Tool; children: 
             <ul className="mt-3 space-y-2">
               {other.map((t) => (
                 <li key={t.slug}>
-                  <Link href={`/tools/${t.slug}`} className="text-forest hover:underline">
+                  <Link href={`/calculators/${t.slug}`} className="text-forest hover:underline">
                     {t.title}
                   </Link>
                 </li>

@@ -10,7 +10,7 @@ const tool = getTool("stamp-duty-calculator")!;
 export const metadata: Metadata = buildMetadata({
   title: tool.seoTitle,
   description: tool.seoDescription,
-  path: `/tools/${tool.slug}`,
+  path: `/calculators/${tool.slug}`,
 });
 
 const dateFmt = new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "long", year: "numeric" });

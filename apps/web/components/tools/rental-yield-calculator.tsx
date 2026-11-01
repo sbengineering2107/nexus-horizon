@@ -15,8 +15,8 @@ export function RentalYieldCalculator() {
   const r = calculateRentalYield({ propertyPrice: price, monthlyRent: rent, monthlyMaintenance: maint, annualPropertyTax: tax, vacantMonths: vacant });
 
   const message = r
-    ? `Hi Nexus Horizon, I'm comparing a ${formatInr(price)} property at ${formatInr(rent)}/month rent: ${r.grossYieldPct}% gross, ${r.netYieldPct}% net yield. I'd like investment advice. (from /tools/rental-yield-calculator)`
-    : "Hi Nexus Horizon, I'd like advice on rental investment. (from /tools/rental-yield-calculator)";
+    ? `Hi Nexus Horizon, I'm comparing a ${formatInr(price)} property at ${formatInr(rent)}/month rent: ${r.grossYieldPct}% gross, ${r.netYieldPct}% net yield. I'd like investment advice. (from /calculators/rental-yield-calculator)`
+    : "Hi Nexus Horizon, I'd like advice on rental investment. (from /calculators/rental-yield-calculator)";
 
   return (
     <CalculatorShell

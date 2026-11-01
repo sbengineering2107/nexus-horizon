@@ -4,9 +4,9 @@ import { consultationHref } from "@/lib/cta";
 import { Logo } from "./logo";
 
 const NAV = [
-  { href: "/services", label: "Services" },
-  { href: "/tools", label: "Calculators" },
-  { href: "/#areas", label: "Areas" },
+  { href: "/services", label: "Our Services" },
+  { href: "/calculators", label: "Home Loan Calculators" },
+  { href: "/#areas", label: "Areas We Serve" },
 ];
 
 export function SiteHeader() {
@@ -22,7 +22,7 @@ export function SiteHeader() {
         <Link href="/" aria-label="Nexus Horizon Advisors, home" className="rounded-sm">
           <Logo />
         </Link>
-        <nav aria-label="Main" className="hidden items-center gap-8 text-[0.95rem] md:flex">
+        <nav aria-label="Main" className="hidden items-center gap-7 text-[0.95rem] lg:flex">
           {NAV.map((item) => (
             <Link key={item.href} href={item.href} className="whitespace-nowrap text-slate transition-colors hover:text-forest-deep">
               {item.label}
@@ -34,9 +34,9 @@ export function SiteHeader() {
             Book a consultation
           </a>
         </Button>
-        <nav aria-label="Main" className="flex gap-5 text-[0.95rem] font-semibold text-forest md:hidden">
+        <nav aria-label="Main" className="flex gap-5 text-[0.95rem] font-semibold text-forest lg:hidden">
           <Link href="/services">Services</Link>
-          <Link href="/tools">Calculators</Link>
+          <Link href="/calculators">Calculators</Link>
         </nav>
       </Container>
     </header>

@@ -45,7 +45,7 @@ export function Hero() {
           <EnquiryCard services={services} />
           <p className="mt-4 text-sm text-slate">
             Planning a budget?{" "}
-            <Link href="/tools/loan-eligibility-calculator" className="font-semibold text-forest underline-offset-4 hover:underline">
+            <Link href="/calculators/loan-eligibility-calculator" className="font-semibold text-forest underline-offset-4 hover:underline">
               Check your loan eligibility
             </Link>
           </p>

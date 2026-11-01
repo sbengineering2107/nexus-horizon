@@ -15,8 +15,8 @@ export function LoanTransferCalculator() {
   const r = compareLoanTransfer({ outstanding, currentRatePct: current, newRatePct: next, yearsLeft: years, transferCharges: charges });
 
   const message = r
-    ? `Hi Nexus Horizon, I'm considering moving my ${formatInr(outstanding)} home loan from ${current}% to ${next}%: estimated net saving ${formatInr(r.netSaving)}. Can you help? (from /tools/loan-transfer-calculator)`
-    : "Hi Nexus Horizon, I'd like advice on a home loan balance transfer. (from /tools/loan-transfer-calculator)";
+    ? `Hi Nexus Horizon, I'm considering moving my ${formatInr(outstanding)} home loan from ${current}% to ${next}%: estimated net saving ${formatInr(r.netSaving)}. Can you help? (from /calculators/loan-transfer-calculator)`
+    : "Hi Nexus Horizon, I'd like advice on a home loan balance transfer. (from /calculators/loan-transfer-calculator)";
 
   return (
     <CalculatorShell

@@ -4,6 +4,13 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   transpilePackages: ["@nh/ui"],
   images: { formats: ["image/avif", "image/webp"], qualities: [60, 70, 72, 75] },
+  // Calculators moved from /tools to /calculators (better search match); keep old links working.
+  async redirects() {
+    return [
+      { source: "/tools", destination: "/calculators", permanent: true },
+      { source: "/tools/:slug", destination: "/calculators/:slug", permanent: true },
+    ];
+  },
 };
 
 /**

@@ -11,7 +11,7 @@ test("body text and headings use Google Sans Flex", async ({ page }) => {
 });
 
 test("the rupee sign loads its own small font face on calculator pages", async ({ page }) => {
-  await page.goto("/tools/stamp-duty-calculator");
+  await page.goto("/calculators/stamp-duty-calculator");
   await page.evaluate(() => document.fonts.ready);
   const loaded = await page.evaluate(() =>
     [...document.fonts].some((f) => /rupeeGlyph/i.test(f.family) && f.status === "loaded"),

@@ -9,7 +9,7 @@ const tool = getTool("home-loan-calculator")!;
 export const metadata: Metadata = buildMetadata({
   title: tool.seoTitle,
   description: tool.seoDescription,
-  path: `/tools/${tool.slug}`,
+  path: `/calculators/${tool.slug}`,
 });
 
 export default function Page() {

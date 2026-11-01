@@ -20,7 +20,7 @@ export function GET(): Response {
     "",
     "## Tools",
     "",
-    ...getTools().map((t) => `- [${t.title}](${absoluteUrl(`/tools/${t.slug}`)}): ${t.short}`),
+    ...getTools().map((t) => `- [${t.title}](${absoluteUrl(`/calculators/${t.slug}`)}): ${t.short}`),
     "",
     "## Site",
     "",

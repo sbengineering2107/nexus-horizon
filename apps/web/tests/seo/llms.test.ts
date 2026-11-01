@@ -12,7 +12,7 @@ describe("llms.txt", () => {
       expect(body).toContain(`${siteConfig.url}/services/${slug}`);
     }
     for (const slug of ["emi-calculator", "stamp-duty-calculator", "home-loan-calculator", "loan-eligibility-calculator", "loan-transfer-calculator", "rental-yield-calculator"]) {
-      expect(body).toContain(`${siteConfig.url}/tools/${slug}`);
+      expect(body).toContain(`${siteConfig.url}/calculators/${slug}`);
     }
   });
 });

@@ -6,7 +6,7 @@ export function ToolCard({ tool, headingLevel = "h3" }: { tool: Tool; headingLev
   const Heading = headingLevel;
   return (
     <Link
-      href={`/tools/${tool.slug}`}
+      href={`/calculators/${tool.slug}`}
       data-testid="tool-card"
       className="group flex h-full flex-col overflow-hidden rounded-lg border border-line bg-white transition-colors hover:border-forest/50"
     >

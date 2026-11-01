@@ -15,8 +15,8 @@ export function EligibilityCalculator() {
   const r = calculateEligibility({ monthlyIncome: income, existingEmis: existing, foirPct: foir, annualRatePct: rate, years });
 
   const message = r
-    ? `Hi Nexus Horizon, my estimated home loan eligibility is ${formatInr(r.maxLoan)} (EMI up to ${formatInr(r.affordableEmi)}). I'd like to see properties in that budget. (from /tools/loan-eligibility-calculator)`
-    : "Hi Nexus Horizon, I'd like help with my home loan eligibility. (from /tools/loan-eligibility-calculator)";
+    ? `Hi Nexus Horizon, my estimated home loan eligibility is ${formatInr(r.maxLoan)} (EMI up to ${formatInr(r.affordableEmi)}). I'd like to see properties in that budget. (from /calculators/loan-eligibility-calculator)`
+    : "Hi Nexus Horizon, I'd like help with my home loan eligibility. (from /calculators/loan-eligibility-calculator)";
 
   return (
     <CalculatorShell
