@@ -1,0 +1,32 @@
+{
+  "slug": "balewadi",
+  "name": "Balewadi",
+  "zone": "west",
+  "order": 2,
+  "civicBody": "PMC",
+  "civicNote": "Brought into PMC limits in 1997 along with 22 other villages.",
+  "summary": "A residential suburb in Pune's western corridor, next to Baner and Aundh, that grew from a fringe village after joining PMC in 1997.",
+  "knownFor": [
+    "Shree Shiv Chhatrapati Sports Complex, venue of the 1994 National Games",
+    "Balewadi High Street dining area",
+    "Office parks shared with neighbouring Baner"
+  ],
+  "connectivity": [
+    "Baner Road links Balewadi to central Pune",
+    "Katraj-Dehu Road bypass corridor passes the area",
+    "Pune Metro Line 3 (Hinjewadi-Shivajinagar), opening in phases from November 2026"
+  ],
+  "suits": "Professionals working in Baner, Balewadi or Hinjewadi who want a newer residential area close to the western IT belt.",
+  "nearby": [
+    "baner",
+    "mahalunge",
+    "aundh",
+    "wakad"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Balewadi",
+    "https://themetrorailguy.com/pune-metro-line-3-project-information-route-map-fares-tenders-updates/",
+    "https://www.freepressjournal.in/pune/pune-metro-line-3-hinjawadi-shivajinagar-route-to-open-on-nov-4-timings-ticket-fares-special-features-and-more"
+  ],
+  "updated": "2026-11-02"
+}

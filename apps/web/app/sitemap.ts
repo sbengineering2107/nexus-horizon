@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getServices } from "@/lib/content/services";
 import { getTools } from "@/lib/content/tools";
+import { getAreas } from "@/lib/content/areas";
 import { absoluteUrl } from "@/lib/seo/metadata";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -21,6 +22,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: t.updated,
       changeFrequency: "monthly" as const,
       priority: 0.8,
+    })),
+    { url: absoluteUrl("/pune"), lastModified: latest, changeFrequency: "monthly", priority: 0.8 },
+    ...getAreas().map((a) => ({
+      url: absoluteUrl(`/pune/${a.slug}`),
+      lastModified: a.updated,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     })),
   ];
 }

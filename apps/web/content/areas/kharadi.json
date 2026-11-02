@@ -1,0 +1,31 @@
+{
+  "slug": "kharadi",
+  "name": "Kharadi",
+  "zone": "east",
+  "order": 1,
+  "civicBody": "PMC",
+  "civicNote": "Governed by Pune Municipal Corporation.",
+  "summary": "A suburb in north-east Pune on the Mula-Mutha river, between Viman Nagar and Wagholi. It is one of the city's main eastern office hubs.",
+  "knownFor": [
+    "World Trade Center Pune, the city's only WTC",
+    "EON IT Park, with offices of firms such as Barclays and Zensar"
+  ],
+  "connectivity": [
+    "Kharadi bypass links Hadapsar to the Pune-Ahmednagar highway",
+    "Keshavnagar-Kharadi bridge, opened Aug 2026, connects to Mundhwa side"
+  ],
+  "suits": "Professionals working in Kharadi's IT and business parks who want to live close to the office.",
+  "nearby": [
+    "wadgaon-sheri",
+    "viman-nagar",
+    "wagholi",
+    "keshav-nagar"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Kharadi",
+    "https://www.freepressjournal.in/pune/not-just-hinjawadi-from-kharadi-to-magarpatta-pune-has-these-it-parks-too-watch-videos",
+    "https://www.punekarnews.in/?p=242242",
+    "https://en.wikipedia.org/wiki/Hadapsar"
+  ],
+  "updated": "2026-11-02"
+}

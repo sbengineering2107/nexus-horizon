@@ -1,0 +1,28 @@
+{
+  "slug": "koregaon-park",
+  "name": "Koregaon Park",
+  "zone": "east",
+  "order": 4,
+  "civicBody": "PMC",
+  "civicNote": "Governed by Pune Municipal Corporation.",
+  "summary": "A leafy, mainly residential neighbourhood close to central Pune, known for its dining and nightlife and increasingly for commercial use.",
+  "knownFor": [
+    "Osho International Meditation Resort",
+    "Osho Teerth Park",
+    "Restaurants, nightlife, art galleries and music venues"
+  ],
+  "connectivity": [
+    "North Main Road and South Main Road are the main roads",
+    "Bund Garden bridge links to Yerawada; Aga Khan Bridge links to Kalyani Nagar",
+    "About 3.8 km from Pune Junction railway station"
+  ],
+  "suits": "Households wanting a central, leafy neighbourhood close to restaurants and the city centre.",
+  "nearby": [
+    "kalyani-nagar",
+    "mundhwa"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Koregaon_Park"
+  ],
+  "updated": "2026-11-02"
+}

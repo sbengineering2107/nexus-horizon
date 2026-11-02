@@ -1,0 +1,31 @@
+{
+  "slug": "baner",
+  "name": "Baner",
+  "zone": "west",
+  "order": 1,
+  "civicBody": "PMC",
+  "civicNote": "Within Pune Municipal Corporation limits; a former fringe village absorbed as the city expanded.",
+  "summary": "A residential and commercial suburb in Pune's western corridor, north of Pashan and east of Balewadi. Once a fruit-farming village, it grew with IT offices and housing.",
+  "knownFor": [
+    "Baner Hill (678 m), part of the Baner-Pashan Biodiversity Park",
+    "IT and business parks such as Panchshil Business Park and Amar Tech Centre",
+    "Restaurants and cafes along Baner Road"
+  ],
+  "connectivity": [
+    "Baner Road links the area to Aundh, Balewadi and central Pune",
+    "Pune Metro Line 3 (Hinjewadi-Shivajinagar) runs through Baner; its Baner stations open after the first phase"
+  ],
+  "suits": "IT professionals working in the western IT belt (Baner, Balewadi, Hinjewadi) who want to live near work.",
+  "nearby": [
+    "balewadi",
+    "aundh",
+    "pashan",
+    "sus"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Baner",
+    "https://www.freepressjournal.in/pune/not-just-hinjawadi-from-kharadi-to-magarpatta-pune-has-these-it-parks-too-watch-videos",
+    "https://www.freepressjournal.in/pune/pune-metro-line-3-hinjawadi-shivajinagar-route-to-open-on-nov-4-timings-ticket-fares-special-features-and-more"
+  ],
+  "updated": "2026-11-02"
+}

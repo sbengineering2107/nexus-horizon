@@ -1,0 +1,28 @@
+{
+  "slug": "dhanori",
+  "name": "Dhanori",
+  "zone": "east",
+  "order": 8,
+  "civicBody": "PMC",
+  "civicNote": "Residents pay taxes to and petition Pune Municipal Corporation; part of PMC's Vishrantwadi area.",
+  "summary": "A fast-developing residential suburb in north Pune, part of the wider Vishrantwadi area and next to Lohegaon.",
+  "knownFor": [
+    "Large-scale new residential construction",
+    "Part of the Vishrantwadi locality cluster in north Pune"
+  ],
+  "connectivity": [
+    "Dhanori Road links to Alandi Road via Vishrantwadi",
+    "Road links to Lohegaon and the airport area"
+  ],
+  "suits": "Buyers wanting newer housing in north-east Pune near the airport.",
+  "nearby": [
+    "lohegaon",
+    "viman-nagar"
+  ],
+  "sources": [
+    "https://www.thebridgechronicle.com/news/pune-dhanori-lohegaon-protest-pmc-basic-services-taxes",
+    "https://en.wikipedia.org/wiki/Vishrantwadi",
+    "https://en.wikipedia.org/wiki/Lohegaon"
+  ],
+  "updated": "2026-11-02"
+}

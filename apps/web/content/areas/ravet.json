@@ -1,0 +1,30 @@
+{
+  "slug": "ravet",
+  "name": "Ravet",
+  "zone": "west",
+  "order": 14,
+  "civicBody": "PCMC",
+  "civicNote": "Brought into PCMC from gram panchayat in 1997.",
+  "summary": "A neighbourhood in Pimpri-Chinchwad where the Mumbai-Pune Expressway meets the Katraj-Dehu bypass, with the Pavana river on its southern side.",
+  "knownFor": [
+    "Sant Tukaram Bridge over the Pavana river",
+    "D Y Patil International University on the Akurdi border",
+    "Home to many students and young IT professionals"
+  ],
+  "connectivity": [
+    "Junction of the Mumbai-Pune Expressway and the Katraj-Dehu bypass",
+    "Aundh-Ravet BRT road (Rainbow BRTS)",
+    "Akurdi is the nearest railway station"
+  ],
+  "suits": "Students and young IT professionals who want expressway access and links to both Pimpri-Chinchwad and Hinjewadi.",
+  "nearby": [
+    "punawale",
+    "tathawade",
+    "wakad"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Ravet,_Pune",
+    "https://www.freepressjournal.in/pune/pimpri-chinchwad-faces-traffic-pollution-water-crises-citizens-of-punawale-ravet-tathawade-warn-politicians-ahead-of-pcmc-polls"
+  ],
+  "updated": "2026-11-02"
+}

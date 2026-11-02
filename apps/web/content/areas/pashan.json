@@ -1,0 +1,31 @@
+{
+  "slug": "pashan",
+  "name": "Pashan",
+  "zone": "west",
+  "order": 4,
+  "civicBody": "PMC",
+  "civicNote": "Under Pune Municipal Corporation, with two ward representatives.",
+  "summary": "A mainly residential suburb in west Pune between Baner and Bavdhan. Large parts are taken up by government research and educational campuses.",
+  "knownFor": [
+    "National Chemical Laboratory (NCL), IISER Pune and IITM research campuses",
+    "Pashan Lake, a man-made lake that draws migratory birds",
+    "The largest hill area within Pune municipal limits"
+  ],
+  "connectivity": [
+    "Lies off the Mumbai-Bengaluru highway bypass",
+    "Pashan Road is the main approach towards the Mumbai-Pune Expressway",
+    "Pashan-Sus Road links it to Sus"
+  ],
+  "suits": "Residents who want a quieter area with a lot of green space, including people linked to its research institutions.",
+  "nearby": [
+    "baner",
+    "sus",
+    "bavdhan",
+    "aundh"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Pashan",
+    "https://en.wikipedia.org/wiki/Pashan_Lake"
+  ],
+  "updated": "2026-11-02"
+}

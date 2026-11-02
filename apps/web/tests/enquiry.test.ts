@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { AREAS, enquiryHref } from "@/lib/enquiry";
+import { enquiryHref } from "@/lib/enquiry";
 
 describe("enquiryHref", () => {
   test("names the chosen service and source page in the WhatsApp message", () => {
@@ -18,11 +18,5 @@ describe("enquiryHref", () => {
   test("falls back to a general consultation request", () => {
     const text = decodeURIComponent(enquiryHref({ pagePath: "/services" }).split("?text=")[1]!);
     expect(text).toContain("free consultation");
-  });
-});
-
-describe("AREAS", () => {
-  test("lists the four launch micro-markets in Pune", () => {
-    expect(AREAS.map((a) => a.name)).toEqual(["Baner", "Hinjewadi", "Kharadi", "Wakad"]);
   });
 });

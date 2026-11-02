@@ -43,7 +43,7 @@ describe("robots", () => {
 describe("sitemap", () => {
   test("lists home, services hub and all service pages as absolute URLs", () => {
     const urls = sitemap().map((e) => e.url);
-    for (const path of ["", "/services", "/services/new-projects", "/services/ready-to-move", "/services/resale", "/services/commercial", "/calculators", "/calculators/emi-calculator", "/calculators/stamp-duty-calculator", "/calculators/home-loan-calculator", "/calculators/loan-eligibility-calculator", "/calculators/loan-transfer-calculator", "/calculators/rental-yield-calculator"]) {
+    for (const path of ["", "/services", "/services/new-projects", "/services/ready-to-move", "/services/resale", "/services/commercial", "/calculators", "/calculators/emi-calculator", "/calculators/stamp-duty-calculator", "/calculators/home-loan-calculator", "/calculators/loan-eligibility-calculator", "/calculators/loan-transfer-calculator", "/calculators/rental-yield-calculator", "/pune", "/pune/baner", "/pune/kharadi", "/pune/pimple-saudagar"]) {
       expect(urls).toContain(`${siteConfig.url}${path}`);
     }
     expect(urls.every((u) => u.startsWith("http"))).toBe(true);

@@ -1,0 +1,28 @@
+{
+  "slug": "wagholi",
+  "name": "Wagholi",
+  "zone": "east",
+  "order": 6,
+  "civicBody": "PMC",
+  "civicNote": "One of 23 villages notified into PMC (draft Dec 2020, final 2021).",
+  "summary": "A former village on Pune's north-eastern edge, east of Kharadi along the Pune-Ahmednagar road. It became part of PMC in 2021.",
+  "knownFor": [
+    "Wagheshwar temple, after which the town is named",
+    "Historical link to Maratha commander Pilajirao Jadhavrao"
+  ],
+  "connectivity": [
+    "Pune-Ahmednagar highway runs through Wagholi",
+    "Road link to Lohegaon and the airport side"
+  ],
+  "suits": "Buyers working in Kharadi and east Pune who want newer housing on the city's north-eastern edge.",
+  "nearby": [
+    "kharadi",
+    "lohegaon"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Wagholi,_Pune",
+    "https://www.thebridgechronicle.com/pune/pune-wagholi-sus-mhalunge-among-23-villages-now-under-civic-limits",
+    "https://en.wikipedia.org/wiki/Lohegaon"
+  ],
+  "updated": "2026-11-02"
+}

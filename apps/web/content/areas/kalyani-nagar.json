@@ -1,0 +1,30 @@
+{
+  "slug": "kalyani-nagar",
+  "name": "Kalyani Nagar",
+  "zone": "east",
+  "order": 3,
+  "civicBody": "PMC",
+  "civicNote": "Administered by PMC's Nagar Road-Wadgaonsheri ward office.",
+  "summary": "A mostly residential neighbourhood in east Pune on the north bank of the Mula-Mutha, across the river from Koregaon Park.",
+  "knownFor": [
+    "Aga Khan Palace, where Mahatma Gandhi was held from 1942 to 1945",
+    "Cerebrum IT Park"
+  ],
+  "connectivity": [
+    "Pune Metro Line 2 (Aqua) Kalyani Nagar station, open since March 2024",
+    "Aga Khan Bridge connects it to Koregaon Park",
+    "About 4 km from Pune airport and about 5 km from Pune Junction"
+  ],
+  "suits": "Households wanting an established central-east neighbourhood near the airport, Koregaon Park and a metro line.",
+  "nearby": [
+    "koregaon-park",
+    "wadgaon-sheri",
+    "viman-nagar"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Kalyani_Nagar",
+    "https://en.wikipedia.org/wiki/Kalyani_Nagar_metro_station",
+    "https://www.freepressjournal.in/pune/not-just-hinjawadi-from-kharadi-to-magarpatta-pune-has-these-it-parks-too-watch-videos"
+  ],
+  "updated": "2026-11-02"
+}

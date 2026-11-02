@@ -22,7 +22,7 @@ test.describe("desktop menu", () => {
     const nav = page.getByRole("navigation", { name: "Main" }).first();
     await expect(nav.getByRole("link", { name: "Our Services" })).toHaveAttribute("href", "/services");
     await expect(nav.getByRole("link", { name: "Home Loan Calculators" })).toHaveAttribute("href", "/calculators");
-    await expect(nav.getByRole("link", { name: "Areas We Serve" })).toHaveAttribute("href", "/#areas");
+    await expect(nav.getByRole("link", { name: "Areas We Serve" })).toHaveAttribute("href", "/pune");
   });
 });
 

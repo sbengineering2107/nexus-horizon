@@ -1,0 +1,27 @@
+{
+  "slug": "warje",
+  "name": "Warje",
+  "zone": "west",
+  "order": 8,
+  "civicBody": "PMC",
+  "civicNote": "Under PMC; the area falls in PMC's Warje-Karvenagar ward office jurisdiction.",
+  "summary": "A residential area in south-west Pune at the end of Karve Road, beyond Kothrud, on the Mutha river where the Mumbai-Bengaluru bypass crosses it.",
+  "knownFor": [
+    "Western end of Karve Road, beyond Kothrud and Karve Nagar",
+    "Mumbai-Bengaluru bypass crossing over the Mutha river"
+  ],
+  "connectivity": [
+    "Mumbai-Bengaluru highway bypass runs through Warje",
+    "Karve Road connects Warje to Kothrud and Deccan"
+  ],
+  "suits": "Households wanting a residential area next to Kothrud with direct access to the Mumbai-Bengaluru highway.",
+  "nearby": [
+    "kothrud",
+    "bavdhan"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Kothrud",
+    "https://www.freepressjournal.in/pune/warje-mutha-river-bridge-nears-completion-relief-for-mumbaibengaluru-bypass-commuters-from-next-month"
+  ],
+  "updated": "2026-11-02"
+}

@@ -1,0 +1,28 @@
+{
+  "slug": "wadgaon-sheri",
+  "name": "Wadgaon Sheri",
+  "zone": "east",
+  "order": 5,
+  "civicBody": "PMC",
+  "civicNote": "Administered by PMC; ward office on Nagar Road.",
+  "summary": "A residential and commercial neighbourhood in east Pune between Nagar Road and the Mula-Mutha river. It was formerly a village outside the city.",
+  "knownFor": [
+    "Christ College and De Nobili College",
+    "Offices and warehouses of several IT and e-commerce firms"
+  ],
+  "connectivity": [
+    "Bounded by Nagar Road to the north; Pune Metro Line 2 (Aqua) Ramwadi terminus is nearby",
+    "About 5 km from Pune airport and about 6.5 km from Pune Junction"
+  ],
+  "suits": "Families and professionals who want to be near the Kharadi and Viman Nagar office hubs and the airport.",
+  "nearby": [
+    "kalyani-nagar",
+    "viman-nagar",
+    "kharadi"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Vadgaon_Sheri",
+    "https://en.wikipedia.org/wiki/Kalyani_Nagar_metro_station"
+  ],
+  "updated": "2026-11-02"
+}

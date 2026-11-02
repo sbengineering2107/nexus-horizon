@@ -1,0 +1,31 @@
+{
+  "slug": "mundhwa",
+  "name": "Mundhwa",
+  "zone": "east",
+  "order": 11,
+  "civicBody": "PMC",
+  "civicNote": "Under PMC; its remaining Keshav Nagar part was merged in 2017.",
+  "summary": "A developing residential area in east Pune, about 11 km east of the city centre, between Koregaon Park and Kharadi.",
+  "knownFor": [
+    "Lies between Koregaon Park and the Kharadi office hub",
+    "Rapid residential growth together with neighbouring Keshav Nagar"
+  ],
+  "connectivity": [
+    "Keshavnagar-Kharadi bridge (opened Aug 2026) links the area to Kharadi",
+    "Road links to Koregaon Park, Hadapsar and Magarpatta"
+  ],
+  "suits": "Professionals working in Kharadi or Magarpatta who want to live between those hubs and Koregaon Park.",
+  "nearby": [
+    "keshav-nagar",
+    "koregaon-park",
+    "kharadi",
+    "magarpatta"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Keshavnagar-Mundwa",
+    "https://www.thebridgechronicle.com/pune/state-govt-merge-11-villages-pmc-limits-2909",
+    "https://www.freepressjournal.in/pune/pune-keshavnagar-mundhwa-residents-decry-years-of-neglect-amid-rapid-growth-in-neighbouring-areas",
+    "https://www.punekarnews.in/?p=242242"
+  ],
+  "updated": "2026-11-02"
+}

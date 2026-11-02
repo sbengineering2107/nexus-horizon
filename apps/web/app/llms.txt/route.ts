@@ -1,6 +1,7 @@
 import { siteConfig } from "@/site.config";
 import { getServices } from "@/lib/content/services";
 import { getTools } from "@/lib/content/tools";
+import { getAreasByZone, ZONES } from "@/lib/content/areas";
 import { absoluteUrl } from "@/lib/seo/metadata";
 
 export const dynamic = "force-static";
@@ -29,6 +30,14 @@ export function GET(): Response {
     "",
     ...getTools().map((t) => `- [${t.title}](${absoluteUrl(`/calculators/${t.slug}`)}): ${t.short}`),
     "",
+    "## Pune area guides",
+    "",
+    ...ZONES.flatMap((z) => [
+      `### ${z.name}`,
+      "",
+      ...getAreasByZone(z.id).map((a) => `- [${a.name}](${absoluteUrl(`/pune/${a.slug}`)}): ${a.summary}`),
+      "",
+    ]),
     "## Site",
     "",
     `- [Home](${absoluteUrl("/")})`,

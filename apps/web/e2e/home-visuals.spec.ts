@@ -16,15 +16,6 @@ test("choosing a service in the hero card pre-fills WhatsApp with it", async ({ 
   await expect(cta).toHaveAttribute("href", /Resale%20%26%20Secondary%20Market/);
 });
 
-test("each area card opens WhatsApp asking about that area", async ({ page }) => {
-  await page.goto("/");
-  const cards = page.getByTestId("area-card");
-  await expect(cards).toHaveCount(4);
-  for (const area of ["Baner", "Hinjewadi", "Kharadi", "Wakad"]) {
-    await expect(page.locator(`[data-testid="area-card"][href*="in%20${area}"]`)).toHaveCount(1);
-  }
-});
-
 test("service cards on home show photos and link to service pages", async ({ page }) => {
   await page.goto("/");
   const card = page.locator('#services a[href="/services/resale"]');

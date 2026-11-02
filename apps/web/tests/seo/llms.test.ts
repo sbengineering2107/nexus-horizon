@@ -11,6 +11,7 @@ describe("llms.txt", () => {
     for (const slug of ["new-projects", "ready-to-move", "resale", "commercial"]) {
       expect(body).toContain(`${siteConfig.url}/services/${slug}`);
     }
+    for (const slug of ["baner", "kharadi"]) expect(body).toContain(`${siteConfig.url}/pune/${slug}`);
     for (const slug of ["emi-calculator", "stamp-duty-calculator", "home-loan-calculator", "loan-eligibility-calculator", "loan-transfer-calculator", "rental-yield-calculator"]) {
       expect(body).toContain(`${siteConfig.url}/calculators/${slug}`);
     }

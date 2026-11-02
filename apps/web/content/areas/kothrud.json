@@ -1,0 +1,28 @@
+{
+  "slug": "kothrud",
+  "name": "Kothrud",
+  "zone": "west",
+  "order": 7,
+  "civicBody": "PMC",
+  "civicNote": "Within Pune Municipal Corporation limits.",
+  "summary": "A large, established residential suburb in west-central Pune. It has many schools, colleges and businesses, and older buildings are being redeveloped.",
+  "knownFor": [
+    "MIT World Peace University campus",
+    "ARAI on Vetal Tekdi hill and the long-running Cummins Kothrud engine plant",
+    "Mrutyunjayeshwar Temple, dating from Peshwa times"
+  ],
+  "connectivity": [
+    "Karve Road links Kothrud to Deccan and the city centre; Paud Road runs to Chandani Chowk",
+    "Pune Metro Line 2 (Aqua): Vanaz, Anand Nagar and Ideal Colony stations, operating since 2022"
+  ],
+  "suits": "Families wanting an established neighbourhood with schools and colleges and a metro link to the city centre.",
+  "nearby": [
+    "warje",
+    "bavdhan",
+    "pashan"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Kothrud"
+  ],
+  "updated": "2026-11-02"
+}

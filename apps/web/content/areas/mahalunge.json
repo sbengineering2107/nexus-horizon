@@ -1,0 +1,30 @@
+{
+  "slug": "mahalunge",
+  "name": "Mahalunge",
+  "zone": "west",
+  "order": 9,
+  "civicBody": "PMC",
+  "civicNote": "Among the 23 villages added to PMC in 2021. PMRDA remains the planning authority for the Mahalunge-Maan town planning scheme.",
+  "summary": "A developing area in Mulshi taluka west of Balewadi, between Pune city and Hinjewadi. Much of it falls under PMRDA's Mahalunge-Maan town planning scheme.",
+  "knownFor": [
+    "Mahalunge-Maan Town Planning Scheme 1 (Hi-Tech City), prepared by PMRDA",
+    "Lies between Balewadi and the Hinjewadi-Maan IT area"
+  ],
+  "connectivity": [
+    "Pune Metro Line 3 (Hinjewadi-Shivajinagar) passes through neighbouring Balewadi",
+    "The TPS reserves about 50 ha for planned roads"
+  ],
+  "suits": "Buyers working in Hinjewadi or Balewadi who want newer development in a planned township area.",
+  "nearby": [
+    "balewadi",
+    "hinjewadi",
+    "sus",
+    "baner"
+  ],
+  "sources": [
+    "https://www.pmrda.gov.in/en/town-planning-scheme/mahalunge-maan-tps-1/",
+    "https://www.thebridgechronicle.com/pune/pune-wagholi-sus-mhalunge-among-23-villages-now-under-civic-limits",
+    "https://propnewstime.com/latestnewsstories/MzAzMDY=/pmrda-likely-to-transfer-mahalunge-maan-town-planning-scheme-to-pmc-after-prolonged-delay"
+  ],
+  "updated": "2026-11-02"
+}

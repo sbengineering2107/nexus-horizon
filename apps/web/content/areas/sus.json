@@ -1,0 +1,31 @@
+{
+  "slug": "sus",
+  "name": "Sus",
+  "zone": "west",
+  "order": 5,
+  "civicBody": "PMC",
+  "civicNote": "One of 23 villages notified into PMC (draft notification Dec 2020, final 2021).",
+  "summary": "A newer residential area in a valley north-west of Pune, west of Pashan. It was a village before joining PMC and is still urbanising.",
+  "knownFor": [
+    "Surrounded by Baner, Pashan, Sutarwadi and Lavale hills",
+    "Newer residential development close to the Hinjewadi IT park"
+  ],
+  "connectivity": [
+    "Pashan-Sus Road is the main access road",
+    "Dehu Road-Katraj bypass lies just off Sus, leading to the Mumbai-Pune Expressway",
+    "Rajiv Gandhi Infotech Park, Hinjewadi is about 13 km away"
+  ],
+  "suits": "IT professionals working in Hinjewadi or Baner who want a newer, greener area.",
+  "nearby": [
+    "pashan",
+    "baner",
+    "bavdhan",
+    "mahalunge"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Sus,_Pune",
+    "https://www.thebridgechronicle.com/pune/pune-wagholi-sus-mhalunge-among-23-villages-now-under-civic-limits",
+    "https://en.wikipedia.org/wiki/Pune_Municipal_Corporation"
+  ],
+  "updated": "2026-11-02"
+}

@@ -1,0 +1,31 @@
+{
+  "slug": "keshav-nagar",
+  "name": "Keshav Nagar",
+  "zone": "east",
+  "order": 12,
+  "civicBody": "PMC",
+  "civicNote": "Merged into PMC in 2017 as the remaining part of Mundhwa.",
+  "summary": "A developing residential area in the Mundhwa belt of east Pune, across from Kharadi and next to Amanora in Hadapsar.",
+  "knownFor": [
+    "Large new residential projects in the Mundhwa-Keshav Nagar belt",
+    "Located between Kharadi and Amanora Park Town"
+  ],
+  "connectivity": [
+    "Keshavnagar-Kharadi bridge, about 411 m long, opened Aug 2026",
+    "Railway underbridge links Keshav Nagar towards Amanora"
+  ],
+  "suits": "Professionals working in Kharadi or Hadapsar who want newer housing projects.",
+  "nearby": [
+    "mundhwa",
+    "kharadi",
+    "hadapsar",
+    "manjri"
+  ],
+  "sources": [
+    "https://www.thebridgechronicle.com/pune/state-govt-merge-11-villages-pmc-limits-2909",
+    "https://www.punekarnews.in/?p=242242",
+    "https://www.freepressjournal.in/pune/pune-keshavnagar-mundhwa-residents-decry-years-of-neglect-amid-rapid-growth-in-neighbouring-areas",
+    "https://en.wikipedia.org/wiki/Manjri"
+  ],
+  "updated": "2026-11-02"
+}

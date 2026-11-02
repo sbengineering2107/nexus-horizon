@@ -1,0 +1,29 @@
+{
+  "slug": "punawale",
+  "name": "Punawale",
+  "zone": "west",
+  "order": 13,
+  "civicBody": "PCMC",
+  "civicNote": "Brought into PCMC from gram panchayat in 1997.",
+  "summary": "A fast-growing residential area in Pimpri-Chinchwad between Tathawade and Ravet, along the Mumbai-Bengaluru highway near the Wakad and Hinjewadi IT hubs.",
+  "knownFor": [
+    "Forest area of more than 60 acres within the locality",
+    "Close to the Wakad and Hinjewadi IT hubs"
+  ],
+  "connectivity": [
+    "Mumbai-Bengaluru highway runs along the area",
+    "Road access to Wakad, Tathawade and Ravet"
+  ],
+  "suits": "People who want to live close to the Hinjewadi-Wakad IT corridor in a newer residential area.",
+  "nearby": [
+    "tathawade",
+    "ravet",
+    "wakad",
+    "hinjewadi"
+  ],
+  "sources": [
+    "https://www.freepressjournal.in/pune/pimpri-chinchwad-faces-traffic-pollution-water-crises-citizens-of-punawale-ravet-tathawade-warn-politicians-ahead-of-pcmc-polls",
+    "https://en.wikipedia.org/wiki/Ravet,_Pune"
+  ],
+  "updated": "2026-11-02"
+}

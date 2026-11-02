@@ -1,0 +1,30 @@
+{
+  "slug": "viman-nagar",
+  "name": "Viman Nagar",
+  "zone": "east",
+  "order": 2,
+  "civicBody": "PMC",
+  "civicNote": "Within PMC limits; PMC developed the Udaan Biodiversity Park here.",
+  "summary": "A residential and retail neighbourhood in east Pune, next to Pune airport and north of Wadgaon Sheri.",
+  "knownFor": [
+    "Next to Pune International Airport",
+    "Symbiosis campuses and Phoenix Market City mall",
+    "Commerzone and Business Bay office parks nearby"
+  ],
+  "connectivity": [
+    "Pune-Ahmednagar highway (Nagar Road) runs along the area",
+    "Next to Pune airport; about 7.5 km from Pune Junction"
+  ],
+  "suits": "Professionals working in the eastern office hubs and frequent flyers who want to be near the airport.",
+  "nearby": [
+    "lohegaon",
+    "wadgaon-sheri",
+    "kharadi",
+    "kalyani-nagar"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Viman_Nagar",
+    "https://www.freepressjournal.in/pune/not-just-hinjawadi-from-kharadi-to-magarpatta-pune-has-these-it-parks-too-watch-videos"
+  ],
+  "updated": "2026-11-02"
+}

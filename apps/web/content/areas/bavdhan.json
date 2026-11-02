@@ -1,0 +1,31 @@
+{
+  "slug": "bavdhan",
+  "name": "Bavdhan",
+  "zone": "west",
+  "order": 6,
+  "civicBody": "PMC",
+  "civicNote": "Under PMC; Bavdhan Budruk is listed in the 2017 village merger.",
+  "summary": "A mainly residential suburb in south-west Pune, west of Kothrud and south of Pashan, made up largely of apartment complexes and housing societies.",
+  "knownFor": [
+    "Mostly residential, with apartment complexes and housing societies",
+    "Lies between Kothrud, Pashan and Sus"
+  ],
+  "connectivity": [
+    "Road links to Kothrud, Paud Road, Pashan, Baner and Sus",
+    "About 14 km from Pune Junction and about 22 km from Pune airport",
+    "About 10 km from Shivajinagar railway station"
+  ],
+  "suits": "Families who want a residential area near Kothrud with access to both the west Pune IT belt and the city.",
+  "nearby": [
+    "kothrud",
+    "pashan",
+    "sus",
+    "warje"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Bavdhan",
+    "https://en.wikipedia.org/wiki/Pune_Municipal_Corporation",
+    "https://www.thebridgechronicle.com/pune/state-govt-merge-11-villages-pmc-limits-2909"
+  ],
+  "updated": "2026-11-02"
+}

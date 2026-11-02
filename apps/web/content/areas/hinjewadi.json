@@ -1,0 +1,31 @@
+{
+  "slug": "hinjewadi",
+  "name": "Hinjewadi",
+  "zone": "west",
+  "order": 10,
+  "civicBody": "PMRDA",
+  "civicNote": "Outside PMC and PCMC: governed by MIDC, PMRDA and gram panchayats. A merger into PCMC was approved in principle in 2025 but had not taken effect as of September 2026.",
+  "summary": "A suburb north-west of Pune, best known for the Rajiv Gandhi Infotech Park. It sits outside both municipal corporations.",
+  "knownFor": [
+    "Rajiv Gandhi Infotech Park (MIDC), about 2,800 acres in three phases",
+    "Offices of major IT firms such as Infosys, Wipro, TCS and Cognizant"
+  ],
+  "connectivity": [
+    "Pune Metro Line 3 (Hinjewadi-Shivajinagar) starts here, opening in phases from November 2026",
+    "Mumbai-Pune Expressway lies close to Hinjewadi"
+  ],
+  "suits": "IT professionals working in the Rajiv Gandhi Infotech Park who want to live close to their offices.",
+  "nearby": [
+    "wakad",
+    "mahalunge",
+    "tathawade",
+    "punawale"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Hinjawadi",
+    "https://www.punekarnews.in/?p=243833",
+    "https://trak.in/stories/finally-hinjawadi-will-now-come-under-pcmc-limits/",
+    "https://www.freepressjournal.in/pune/pune-metro-line-3-hinjawadi-shivajinagar-route-to-open-on-nov-4-timings-ticket-fares-special-features-and-more"
+  ],
+  "updated": "2026-11-02"
+}

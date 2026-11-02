@@ -18,6 +18,26 @@ const services = defineCollection({
   }),
 });
 
+const areas = defineCollection({
+  name: "Area",
+  pattern: "areas/*.json",
+  schema: s.object({
+    slug: s.string().regex(/^[a-z]+(-[a-z]+)*$/),
+    name: s.string().min(3).max(40),
+    zone: s.enum(["west", "east"]),
+    order: s.number().int(),
+    civicBody: s.enum(["PMC", "PCMC", "PMRDA", "Mixed"]),
+    civicNote: s.string().min(10).max(260),
+    summary: s.string().min(40).max(240),
+    knownFor: s.array(s.string().min(5).max(110)).min(2).max(4),
+    connectivity: s.array(s.string().min(5).max(120)).min(1).max(4),
+    suits: s.string().min(20).max(180),
+    nearby: s.array(s.string()).min(2).max(5),
+    sources: s.array(s.string().url()).min(1),
+    updated: s.isodate(),
+  }),
+});
+
 export default defineConfig({
   root: "content",
   output: {
@@ -27,7 +47,7 @@ export default defineConfig({
     name: "[name]-[hash:6].[ext]",
     clean: true,
   },
-  collections: { services },
+  collections: { services, areas },
   // Fail the build on any schema error instead of skipping the entry.
   strict: true,
 });

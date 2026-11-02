@@ -1,0 +1,32 @@
+{
+  "slug": "aundh",
+  "name": "Aundh",
+  "zone": "west",
+  "order": 3,
+  "civicBody": "PMC",
+  "civicNote": "Within PMC limits; PMC's Smart City Pune project covers Aundh-Baner-Balewadi.",
+  "summary": "An established, largely self-contained residential neighbourhood in north-west Pune, along University Road and the Mula river.",
+  "knownFor": [
+    "Site of the 1817 Battle of Khadki, fought at the old Aundh village",
+    "Long-established residential area with its own retail and services",
+    "Part of the Aundh-Baner-Balewadi Smart City area"
+  ],
+  "connectivity": [
+    "University Road connects Aundh to Shivajinagar and central Pune",
+    "Rajiv Gandhi Bridge over the Mula links Aundh to Sangvi",
+    "Pune Metro Line 3 runs along nearby Ganeshkhind Road, opening in phases from November 2026"
+  ],
+  "suits": "Families and professionals who want an established neighbourhood with ready amenities, close to both the city centre and the western IT belt.",
+  "nearby": [
+    "baner",
+    "pashan",
+    "balewadi",
+    "pimple-saudagar"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Aundh,_Pune",
+    "https://en.wikipedia.org/wiki/Balewadi",
+    "https://themetrorailguy.com/pune-metro-line-3-project-information-route-map-fares-tenders-updates/"
+  ],
+  "updated": "2026-11-02"
+}

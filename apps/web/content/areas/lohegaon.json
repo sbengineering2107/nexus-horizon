@@ -1,0 +1,30 @@
+{
+  "slug": "lohegaon",
+  "name": "Lohegaon",
+  "zone": "east",
+  "order": 7,
+  "civicBody": "PMC",
+  "civicNote": "The remaining part of Lohegaon was formally merged into PMC on 4 Oct 2017.",
+  "summary": "A neighbourhood in north-east Pune best known as the site of Pune airport, lying between Vishrantwadi, Viman Nagar and Wagholi.",
+  "knownFor": [
+    "Pune International Airport",
+    "Indian Air Force Station Lohegaon (2 Wing), established in 1939"
+  ],
+  "connectivity": [
+    "Road to Wagholi connects to the Pune-Ahmednagar highway",
+    "Roads from Vishrantwadi, Dhanori and Wadgaon Sheri meet here, with access to Alandi Road"
+  ],
+  "suits": "Buyers wanting housing close to the airport and the north-eastern suburbs.",
+  "nearby": [
+    "dhanori",
+    "viman-nagar",
+    "wagholi",
+    "kharadi"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Lohegaon",
+    "https://www.thebridgechronicle.com/pune/state-govt-merge-11-villages-pmc-limits-2909",
+    "https://en.wikipedia.org/wiki/Pune_Municipal_Corporation"
+  ],
+  "updated": "2026-11-02"
+}

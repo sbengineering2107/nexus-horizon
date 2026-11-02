@@ -1,0 +1,32 @@
+{
+  "slug": "hadapsar",
+  "name": "Hadapsar",
+  "zone": "east",
+  "order": 9,
+  "civicBody": "PMC",
+  "civicNote": "Within PMC; its remaining Sade Satra Nali part was merged in 2017.",
+  "summary": "A large suburb in east Pune on the Pune-Solapur highway, combining an industrial estate, IT parks and large townships.",
+  "knownFor": [
+    "Hadapsar Industrial Estate",
+    "Magarpatta City, Amanora Park Town and SP Infocity",
+    "Site of the 1802 Battle of Poona"
+  ],
+  "connectivity": [
+    "NH65 (Pune-Solapur highway) runs through Hadapsar",
+    "Hadapsar railway station serves local trains",
+    "Kharadi bypass links Hadapsar to the Pune-Ahmednagar highway"
+  ],
+  "suits": "Professionals working in Magarpatta, SP Infocity or the industrial estate, and families wanting large townships.",
+  "nearby": [
+    "magarpatta",
+    "manjri",
+    "mundhwa",
+    "keshav-nagar"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Hadapsar",
+    "https://en.wikipedia.org/wiki/Pune_Municipal_Corporation",
+    "https://www.thebridgechronicle.com/pune/state-govt-merge-11-villages-pmc-limits-2909"
+  ],
+  "updated": "2026-11-02"
+}

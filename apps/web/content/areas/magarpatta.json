@@ -1,0 +1,31 @@
+{
+  "slug": "magarpatta",
+  "name": "Magarpatta",
+  "zone": "east",
+  "order": 10,
+  "civicBody": "PMC",
+  "civicNote": "Within PMC limits in Hadapsar; internal services are run by the Magarpatta township company.",
+  "summary": "A 182-hectare gated township in Hadapsar, east Pune, built from 2000 onwards, combining housing with the Cybercity office complex.",
+  "knownFor": [
+    "Magarpatta Cybercity, a 12-tower IT and office complex",
+    "Gated township run by Magarpatta Township Development & Construction Co.",
+    "Seasons Mall on the township's outskirts"
+  ],
+  "connectivity": [
+    "Located in Hadapsar, near NH65 (Pune-Solapur highway)",
+    "Hadapsar railway station serves the area"
+  ],
+  "suits": "Professionals working in Cybercity and families who want a planned, gated township.",
+  "nearby": [
+    "hadapsar",
+    "mundhwa",
+    "kharadi",
+    "keshav-nagar"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Magarpatta",
+    "https://en.wikipedia.org/wiki/Hadapsar",
+    "https://www.freepressjournal.in/pune/not-just-hinjawadi-from-kharadi-to-magarpatta-pune-has-these-it-parks-too-watch-videos"
+  ],
+  "updated": "2026-11-02"
+}

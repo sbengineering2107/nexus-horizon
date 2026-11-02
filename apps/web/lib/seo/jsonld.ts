@@ -1,6 +1,7 @@
 import type {
   BreadcrumbList,
   FAQPage,
+  Place,
   RealEstateAgent,
   Service as SchemaService,
   WebApplication,
@@ -103,5 +104,17 @@ export function webApplicationJsonLd(t: { title: string; short: string; path: st
     operatingSystem: "Any",
     offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
     provider: { "@id": orgId() },
+  };
+}
+
+export function placeJsonLd(a: { name: string; summary: string; path: string }): WithContext<Place> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Place",
+    name: `${a.name}, Pune`,
+    description: a.summary,
+    url: absoluteUrl(a.path),
+    address: { "@type": "PostalAddress", addressLocality: a.name, addressRegion: "Maharashtra", addressCountry: "IN" },
+    containedInPlace: { "@type": "City", name: "Pune" },
   };
 }

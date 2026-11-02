@@ -6,7 +6,7 @@ import { Logo } from "./logo";
 const NAV = [
   { href: "/services", label: "Our Services" },
   { href: "/calculators", label: "Home Loan Calculators" },
-  { href: "/#areas", label: "Areas We Serve" },
+  { href: "/pune", label: "Areas We Serve" },
 ];
 
 export function SiteHeader() {

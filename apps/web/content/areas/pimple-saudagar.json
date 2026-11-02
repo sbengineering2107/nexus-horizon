@@ -1,0 +1,27 @@
+{
+  "slug": "pimple-saudagar",
+  "name": "Pimple Saudagar",
+  "zone": "west",
+  "order": 15,
+  "civicBody": "PCMC",
+  "civicNote": "Governed by Pimpri-Chinchwad Municipal Corporation.",
+  "summary": "A residential neighbourhood in Pimpri-Chinchwad, east of Wakad and near Aundh, close to the Pavana and Mula rivers.",
+  "knownFor": [
+    "Housing societies with active resident associations",
+    "Located near the Pavana and Mula rivers"
+  ],
+  "connectivity": [
+    "PCMC bridge across the Pavana links it to Pimprigaon",
+    "Road access to Wakad to the west and Aundh to the south-east"
+  ],
+  "suits": "Families wanting a residential Pimpri-Chinchwad neighbourhood within reach of Wakad, Hinjewadi and Aundh.",
+  "nearby": [
+    "wakad",
+    "aundh"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Pimple_Saudagar",
+    "https://en.wikipedia.org/wiki/Wakad"
+  ],
+  "updated": "2026-11-02"
+}

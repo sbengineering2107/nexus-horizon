@@ -1,0 +1,30 @@
+{
+  "slug": "tathawade",
+  "name": "Tathawade",
+  "zone": "west",
+  "order": 12,
+  "civicBody": "PCMC",
+  "civicNote": "Brought into PCMC from gram panchayat in 1997.",
+  "summary": "A growing suburb in Pimpri-Chinchwad, north of Hinjewadi and near Wakad. It has grown largely because it is close to the Hinjewadi IT park.",
+  "knownFor": [
+    "Several college campuses, including JSPM and Indira College",
+    "Residential growth driven by nearness to Hinjewadi IT park"
+  ],
+  "connectivity": [
+    "Mumbai-Bengaluru highway runs alongside the area",
+    "Close to the Hinjewadi IT park and the Mumbai-Pune Expressway"
+  ],
+  "suits": "IT professionals and students who want to live near Hinjewadi and Wakad.",
+  "nearby": [
+    "wakad",
+    "punawale",
+    "hinjewadi",
+    "ravet"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Tathavade",
+    "https://www.freepressjournal.in/pune/pimpri-chinchwad-faces-traffic-pollution-water-crises-citizens-of-punawale-ravet-tathawade-warn-politicians-ahead-of-pcmc-polls",
+    "https://en.wikipedia.org/wiki/Pimpri-Chinchwad_Municipal_Corporation"
+  ],
+  "updated": "2026-11-02"
+}

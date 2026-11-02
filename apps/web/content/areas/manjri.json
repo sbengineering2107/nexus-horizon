@@ -1,0 +1,29 @@
+{
+  "slug": "manjri",
+  "name": "Manjri",
+  "zone": "east",
+  "order": 13,
+  "civicBody": "PMC",
+  "civicNote": "Manjari Budruk was among the 23 villages notified into PMC (2020-21); Manjari Khurd is not in that list.",
+  "summary": "A former village about 4 km beyond Hadapsar on Pune's eastern edge, now an industrial and residential growth area.",
+  "knownFor": [
+    "Serum Institute of India facility and a special economic zone",
+    "Vasantdada Sugar Institute campus"
+  ],
+  "connectivity": [
+    "Manjari Budruk railway station on the Pune-Daund suburban section",
+    "About 4 km from Hadapsar"
+  ],
+  "suits": "Buyers working in Hadapsar and east Pune who want newer housing at the city's eastern edge.",
+  "nearby": [
+    "hadapsar",
+    "keshav-nagar",
+    "magarpatta"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Manjri",
+    "https://www.thebridgechronicle.com/pune/pune-wagholi-sus-mhalunge-among-23-villages-now-under-civic-limits",
+    "https://vsisugar.com/location_map/"
+  ],
+  "updated": "2026-11-02"
+}
