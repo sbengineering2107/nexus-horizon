@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Button, Container } from "@nh/ui";
+import { Container } from "@nh/ui";
 import { areaFaqs, getArea, getAreas, ZONES } from "@/lib/content/areas";
 import { getServices } from "@/lib/content/services";
-import { enquiryHref } from "@/lib/enquiry";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { placeJsonLd } from "@/lib/seo/jsonld";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -60,16 +59,6 @@ export default async function AreaPage({ params }: Props) {
           <p className="mt-8 text-[0.95rem] font-semibold text-forest">{zone.name}</p>
           <h1 className="mt-2 max-w-3xl text-4xl sm:text-[3.2rem]">{a.name}, Pune: area guide</h1>
           <p className="mt-5 max-w-[62ch] text-lg text-slate">{a.summary}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild variant="primary">
-              <a href={enquiryHref({ area: a.name, pagePath: path })} target="_blank" rel="noopener">
-                Ask about {a.name}
-              </a>
-            </Button>
-            <Button asChild variant="secondary">
-              <Link href="/calculators/loan-eligibility-calculator">Check your loan eligibility</Link>
-            </Button>
-          </div>
         </Container>
       </section>
 
@@ -170,16 +159,7 @@ export default async function AreaPage({ params }: Props) {
           </article>
 
           <aside className="lg:sticky lg:top-24 lg:self-start">
-            <div className="rounded-lg border border-line bg-paper p-6">
-              <h2 className="text-xl">Looking in {a.name}?</h2>
-              <p className="mt-2 text-slate">Tell us your budget and timeline. We&rsquo;ll share current options and an honest view.</p>
-              <Button asChild variant="primary" className="mt-5 w-full">
-                <a href={enquiryHref({ area: a.name, pagePath: path })} target="_blank" rel="noopener">
-                  Ask about {a.name}
-                </a>
-              </Button>
-            </div>
-            <nav aria-label="Nearby areas" className="mt-8">
+            <nav aria-label="Nearby areas">
               <h2 className="font-sans text-base font-semibold text-basalt">Nearby areas</h2>
               <ul className="mt-3 space-y-2">
                 {nearby.map((n) => (

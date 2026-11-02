@@ -9,7 +9,7 @@ test("Pune hub groups 28 area pages under West and East", async ({ page }) => {
   await expect(page.locator('main a[href^="/pune/"]')).toHaveCount(28);
 });
 
-test("an area page has a guide, structured data, nearby links and an area enquiry", async ({ page }) => {
+test("an area page has a guide, structured data and nearby links, without enquiry buttons", async ({ page }) => {
   const res = await page.goto("/pune/baner");
   expect(res?.status()).toBe(200);
   await expect(page.locator("h1")).toContainText("Baner");
@@ -17,7 +17,9 @@ test("an area page has a guide, structured data, nearby links and an area enquir
   expect(ld).toContain('"Place"');
   expect(ld).toContain('"FAQPage"');
   expect(ld).toContain('"BreadcrumbList"');
-  await expect(page.locator('main a[href*="wa.me"][href*="in%20Baner"]').first()).toBeAttached();
+  await expect(page.locator("main").getByText(/Ask about Baner|Looking in Baner\?|Check your loan eligibility/)).toHaveCount(0);
+  await expect(page.locator('main a[href*="wa.me"]')).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Baner: frequently asked questions" })).toBeVisible();
   expect(await page.locator('main nav[aria-label="Nearby areas"] a[href^="/pune/"]').count()).toBeGreaterThanOrEqual(2);
 });
 
