@@ -44,16 +44,20 @@ export function SiteFooter() {
           <p className="mt-3">
             {address.street}
             <br />
-            {address.city} {address.postalCode}, {address.region}
+            {[address.city, address.postalCode].filter(Boolean).join(" ")}, {address.region}
           </p>
           <p className="mt-3">
             <a href={callHref} className="hover:text-marigold">
               {siteConfig.phone}
             </a>
-            <br />
-            <a href={`mailto:${siteConfig.email}`} className="hover:text-marigold">
-              {siteConfig.email}
-            </a>
+            {siteConfig.email && (
+              <>
+                <br />
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-marigold">
+                  {siteConfig.email}
+                </a>
+              </>
+            )}
           </p>
         </address>
       </Container>

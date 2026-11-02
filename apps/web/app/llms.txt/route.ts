@@ -12,7 +12,14 @@ export function GET(): Response {
     "",
     `> ${siteConfig.description}`,
     "",
-    `Pune-based real estate advisory. MahaRERA agent registration ${siteConfig.maharera}. Phone ${siteConfig.phone}. Email ${siteConfig.email}.`,
+    [
+      `Pune-based real estate advisory. MahaRERA agent registration ${siteConfig.maharera}.`,
+      `Phone and WhatsApp ${siteConfig.phone}.`,
+      siteConfig.email && `Email ${siteConfig.email}.`,
+      `Office: ${siteConfig.address.street}, ${siteConfig.address.city}.`,
+    ]
+      .filter(Boolean)
+      .join(" "),
     "",
     "## Services",
     "",

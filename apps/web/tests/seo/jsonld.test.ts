@@ -12,7 +12,10 @@ describe("JSON-LD builders", () => {
     expect(o.address.addressLocality).toBe("Pune");
     expect(JSON.stringify(o.areaServed)).toContain("Pune");
     expect(o.identifier).toMatchObject({ value: siteConfig.maharera });
-    expect(o.sameAs).toEqual(siteConfig.socials);
+    if (siteConfig.socials.length) expect(o.sameAs).toEqual(siteConfig.socials);
+    else expect(o).not.toHaveProperty("sameAs");
+    if (!siteConfig.email) expect(o).not.toHaveProperty("email");
+    if (!siteConfig.geo) expect(o).not.toHaveProperty("geo");
   });
 
   test("website points at the site URL", () => {

@@ -25,20 +25,20 @@ export function organizationJsonLd(): WithContext<RealEstateAgent> {
     url: siteConfig.url,
     logo: `${siteConfig.url}/icon.svg`,
     telephone: siteConfig.phone,
-    email: siteConfig.email,
+    ...(siteConfig.email ? { email: siteConfig.email } : {}),
     address: {
       "@type": "PostalAddress",
       streetAddress: address.street,
       addressLocality: address.city,
       addressRegion: address.region,
-      postalCode: address.postalCode,
+      ...(address.postalCode ? { postalCode: address.postalCode } : {}),
       addressCountry: address.country,
     },
-    geo: { "@type": "GeoCoordinates", latitude: geo.lat, longitude: geo.lng },
+    ...(geo ? { geo: { "@type": "GeoCoordinates", latitude: geo.lat, longitude: geo.lng } } : {}),
     areaServed: { "@type": "City", name: "Pune" },
     openingHours: siteConfig.hours,
     identifier: { "@type": "PropertyValue", propertyID: "MahaRERA", value: siteConfig.maharera },
-    sameAs: [...siteConfig.socials],
+    ...(siteConfig.socials.length ? { sameAs: [...siteConfig.socials] } : {}),
   };
 }
 

@@ -2,7 +2,7 @@ import { resolveSiteUrl } from "./lib/seo/site-url";
 
 /**
  * Single source of truth for business details.
- * Every value marked PLACEHOLDER must be replaced with real data before launch.
+ * Optional fields left empty are simply not shown or published.
  */
 export const siteConfig = {
   name: "Nexus Horizon Advisors",
@@ -10,23 +10,24 @@ export const siteConfig = {
   description:
     "Independent real estate advisors in Pune helping buyers choose new projects, ready-to-move homes, resale flats and commercial spaces with clarity.",
   url: resolveSiteUrl(process.env),
-  phone: "+91 98765 43210", // PLACEHOLDER
-  whatsapp: "+91 98765 43210", // PLACEHOLDER
-  email: "hello@nexushorizon.in", // PLACEHOLDER
+  phone: "+91 87884 32367",
+  whatsapp: "+91 87884 32367",
+  /** Add a business email when available; hidden while empty. */
+  email: "",
   address: {
-    street: "Office 401, Placeholder Business Park, Baner Road", // PLACEHOLDER
-    locality: "Baner",
+    street: "Near M-Connect, Bavdhan",
+    locality: "Bavdhan",
     city: "Pune",
     region: "Maharashtra",
-    postalCode: "411045", // PLACEHOLDER
+    /** Bavdhan uses 411021 and the newer 411071; set the office's PIN when confirmed. */
+    postalCode: "",
     country: "IN",
   },
-  geo: { lat: 18.559, lng: 73.7868 }, // PLACEHOLDER: office coordinates
+  /** Exact office coordinates (from a Google Maps pin); omitted from structured data while null. */
+  geo: null as { lat: number; lng: number } | null,
   maharera: "A031262605250", // MahaRERA agent registration no.
-  socials: [
-    "https://www.linkedin.com/company/nexus-horizon-advisors", // PLACEHOLDER
-    "https://www.instagram.com/nexushorizonadvisors", // PLACEHOLDER
-  ],
+  /** Official social profile URLs; published as sameAs once added. */
+  socials: [] as string[],
   hours: "Mo-Sa 10:00-19:00",
 } as const satisfies {
   name: string;
@@ -44,7 +45,7 @@ export const siteConfig = {
     postalCode: string;
     country: "IN";
   };
-  geo: { lat: number; lng: number };
+  geo: { lat: number; lng: number } | null;
   maharera: string;
   socials: readonly string[];
   hours: string;
