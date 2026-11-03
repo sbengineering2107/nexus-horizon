@@ -7,6 +7,7 @@ import { getService } from "@/lib/content/services";
 import { getArea } from "@/lib/content/areas";
 import { getTool } from "@/lib/content/tools";
 import { MdxContent } from "@/lib/content/mdx-content";
+import { officialSources, shortUrl, sourceName } from "@/lib/content/official-sources";
 import { absoluteUrl, buildMetadata } from "@/lib/seo/metadata";
 import { blogPostingJsonLd } from "@/lib/seo/jsonld";
 import { consultationHref, whatsappChatHref } from "@/lib/cta";
@@ -52,6 +53,7 @@ export default async function PostPage({ params }: Props) {
   const services = p.related.services.map(getService).filter((x) => x !== null);
   const areas = p.related.areas.map(getArea).filter((x) => x !== null);
   const updated = p.updated !== p.published;
+  const sources = officialSources(p.sources);
 
   return (
     <>
@@ -104,22 +106,30 @@ export default async function PostPage({ params }: Props) {
             <div className="mt-14 max-w-[68ch]">
               <FaqList faqs={p.faqs} />
             </div>
-            <div data-testid="post-sources" className="mt-10 max-w-[68ch] text-sm text-slate">
-              <h2 className="font-sans text-base font-semibold text-basalt">Sources</h2>
-              <ol className="mt-2 list-decimal space-y-1 pl-5">
-                {p.sources.map((src) => (
-                  <li key={src}>
-                    <a href={src} className="break-all underline" rel="noopener nofollow" target="_blank">
-                      {new URL(src).hostname.replace(/^www\./, "")}
-                      {new URL(src).pathname.length > 1 ? new URL(src).pathname.replace(/\/$/, "") : ""}
-                    </a>
-                  </li>
-                ))}
-              </ol>
+            <div className="mt-10 max-w-[68ch] text-sm text-slate">
+              {sources.length > 0 && (
+                <details data-testid="post-sources" className="group rounded-md border border-line bg-white">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-3 font-semibold text-basalt">
+                    Official sources ({sources.length})
+                    <svg viewBox="0 0 20 20" aria-hidden="true" className="h-4 w-4 text-navy transition-transform group-open:rotate-180" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 8l5 5 5-5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </summary>
+                  <ol className="list-decimal space-y-1.5 border-t border-line px-4 py-3 pl-9">
+                    {sources.map((src) => (
+                      <li key={src}>
+                        <a href={src} title={src} className="underline underline-offset-2" rel="noopener nofollow" target="_blank">
+                          {sourceName(src)}
+                        </a>
+                        <span className="block truncate text-xs text-slate/80">{shortUrl(src)}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </details>
+              )}
               <p className="mt-4">
-                This guide is general information as of{" "}
-                {dateFmt.format(new Date(p.updated))}, not legal, tax or financial advice. Rules and rates change;
-                confirm the figures for your own purchase before you commit.
+                This guide is general information as of {dateFmt.format(new Date(p.updated))}, not legal, tax or
+                financial advice. Rules and rates change; confirm the figures for your own purchase before you commit.
               </p>
             </div>
           </article>

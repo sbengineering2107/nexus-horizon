@@ -21,7 +21,13 @@ test("a guide has its answer first, FAQs, sources and article structured data", 
   await expect(page.getByTestId("post-summary")).not.toBeEmpty();
   await expect(page.getByText("By Nexus Horizon team")).toBeVisible();
   await expect(page.getByRole("heading", { name: "Frequently asked questions" })).toBeVisible();
-  await expect(page.getByTestId("post-sources").locator("a")).not.toHaveCount(0);
+  const sources = page.getByTestId("post-sources");
+  await expect(sources.locator("a").first()).toBeHidden();
+  await sources.locator("summary").click();
+  await expect(sources.locator("a").first()).toBeVisible();
+  for (const href of await sources.locator("a").evaluateAll((as) => as.map((a) => a.getAttribute("href") ?? ""))) {
+    expect(href).toMatch(/^https:\/\/[^/]*(\.gov\.in|\.nic\.in|\.bank\.in|rbi\.org\.in|punemetrorail\.org|mahametro\.org)\//);
+  }
   const data = await ld(page);
   expect(data).toContain('"BlogPosting"');
   expect(data).toContain('"FAQPage"');
