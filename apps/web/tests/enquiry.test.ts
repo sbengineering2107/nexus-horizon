@@ -2,21 +2,16 @@ import { describe, expect, test } from "vitest";
 import { enquiryHref } from "@/lib/enquiry";
 
 describe("enquiryHref", () => {
-  test("names the chosen service and source page in the WhatsApp message", () => {
-    const href = enquiryHref({ service: "Resale", pagePath: "/" });
+  test("opens WhatsApp with the chosen service in plain words", () => {
+    const href = enquiryHref("resale");
     expect(href).toMatch(/^https:\/\/wa\.me\/91\d{10}\?text=/);
     const text = decodeURIComponent(href.split("?text=")[1]!);
-    expect(text).toContain("Resale");
-    expect(text).toContain("(from /)");
-  });
-
-  test("names the chosen area", () => {
-    const text = decodeURIComponent(enquiryHref({ area: "Baner", pagePath: "/" }).split("?text=")[1]!);
-    expect(text).toContain("Baner");
+    expect(text).toContain("resale flat");
+    expect(text).not.toContain("(from");
   });
 
   test("falls back to a general consultation request", () => {
-    const text = decodeURIComponent(enquiryHref({ pagePath: "/services" }).split("?text=")[1]!);
+    const text = decodeURIComponent(enquiryHref().split("?text=")[1]!);
     expect(text).toContain("free consultation");
   });
 });

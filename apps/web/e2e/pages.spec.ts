@@ -31,7 +31,8 @@ for (const slug of SERVICES) {
     expect(ld.some((t) => t.includes('"FAQPage"'))).toBe(true);
     expect(ld.some((t) => t.includes('"BreadcrumbList"'))).toBe(true);
     const wa = page.locator('main a[href^="https://wa.me/"]').first();
-    await expect(wa).toHaveAttribute("href", new RegExp(encodeURIComponent(`/services/${slug}`)));
+    const words = { "new-projects": "under-construction", "ready-to-move": "ready-to-move", resale: "resale flat", commercial: "commercial" }[slug]!;
+    await expect(wa).toHaveAttribute("href", new RegExp(encodeURIComponent(words)));
   });
 }
 

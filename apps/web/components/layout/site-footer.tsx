@@ -65,7 +65,7 @@ export function SiteFooter() {
         </address>
       </Container>
       <div className="border-t border-paper/15">
-        <Container className="flex flex-col gap-2 py-5 text-sm text-mist/75 md:flex-row md:justify-between">
+        <Container className="flex flex-col gap-2 pt-5 pb-36 text-sm text-mist/75 md:flex-row md:justify-between md:pb-5">
           <p data-testid="maharera">MahaRERA registration no. {siteConfig.maharera}</p>
           <p>Images are illustrative and do not show specific projects.</p>
           <p>

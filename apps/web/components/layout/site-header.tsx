@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button, Container } from "@nh/ui";
-import { consultationHref } from "@/lib/cta";
+import { ConsultLink } from "@/components/contact/consult-link";
 import { Logo } from "./logo";
 
 const NAV = [
@@ -19,7 +19,7 @@ export function SiteHeader() {
         Skip to content
       </a>
       <Container className="flex h-16 items-center justify-between gap-6 lg:h-[4.5rem]">
-        <Link href="/" aria-label="Nexus Horizon Advisors, home" className="rounded-sm">
+        <Link href="/" aria-label="Nexus Horizon Advisors, home" className="shrink-0 rounded-sm">
           <Logo priority />
         </Link>
         <nav aria-label="Main" className="hidden items-center gap-7 text-[0.95rem] lg:flex">
@@ -30,9 +30,7 @@ export function SiteHeader() {
           ))}
         </nav>
         <Button asChild variant="primary" className="hidden min-h-10 whitespace-nowrap px-4 sm:inline-flex">
-          <a href={consultationHref("/")} target="_blank" rel="noopener">
-            Book a consultation
-          </a>
+          <ConsultLink>Book a consultation</ConsultLink>
         </Button>
         <nav aria-label="Main" className="flex gap-5 text-[0.95rem] font-semibold text-navy lg:hidden">
           <Link href="/services">Services</Link>

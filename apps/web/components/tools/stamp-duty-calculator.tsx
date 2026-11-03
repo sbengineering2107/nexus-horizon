@@ -19,8 +19,8 @@ export function StampDutyCalculator() {
   const result = calculateStampDuty({ agreementValue: agreement, readyReckonerValue: readyReckoner, buyer });
 
   const message = result
-    ? `Hi Nexus Horizon, I used your stamp duty calculator for a ${formatInr(result.dutiableValue)} property in Pune: estimated stamp duty and registration ${formatInr(result.total)}. I'd like help with the purchase. (from /calculators/stamp-duty-calculator)`
-    : "Hi Nexus Horizon, I have a question about stamp duty in Pune. (from /calculators/stamp-duty-calculator)";
+    ? `Hi Nexus Horizon, I used your stamp duty calculator for a ${formatInr(result.dutiableValue)} property in Pune: estimated stamp duty and registration ${formatInr(result.total)}. I'd like help with the purchase.`
+    : "Hi Nexus Horizon, I have a question about stamp duty in Pune.";
 
   return (
     <div className="grid gap-8 rounded-lg border border-mist-strong bg-white p-6 sm:p-8 lg:grid-cols-[1.1fr_1fr] lg:gap-12">

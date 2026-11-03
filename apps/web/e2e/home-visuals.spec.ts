@@ -13,7 +13,7 @@ test("choosing a service in the hero card pre-fills WhatsApp with it", async ({ 
   await expect(cta).toHaveText("Book a free consultation");
   await page.getByRole("button", { name: "Resale & Secondary Market" }).click();
   await expect(page.getByRole("button", { name: "Resale & Secondary Market" })).toHaveAttribute("aria-pressed", "true");
-  await expect(cta).toHaveAttribute("href", /Resale%20%26%20Secondary%20Market/);
+  await expect(cta).toHaveAttribute("href", /resale%20flat/);
 });
 
 test("service cards on home show photos and link to service pages", async ({ page }) => {

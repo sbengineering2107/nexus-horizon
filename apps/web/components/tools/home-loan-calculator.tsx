@@ -15,8 +15,8 @@ export function HomeLoanCalculator() {
   const maxYear = plan ? Math.max(...plan.schedule.map((y) => y.interest + y.principal)) : 1;
 
   const message = plan
-    ? `Hi Nexus Horizon, I'm planning a ${formatInr(price)} property with ${down}% down: loan ${formatInr(plan.loanAmount)}, EMI ${formatInr(plan.emi)}. I'd like advice. (from /calculators/home-loan-calculator)`
-    : "Hi Nexus Horizon, I'd like help planning my home loan. (from /calculators/home-loan-calculator)";
+    ? `Hi Nexus Horizon, I'm planning a ${formatInr(price)} property with ${down}% down: loan ${formatInr(plan.loanAmount)}, EMI ${formatInr(plan.emi)}. I'd like advice.`
+    : "Hi Nexus Horizon, I'd like help planning my home loan.";
 
   return (
     <div className="space-y-8">

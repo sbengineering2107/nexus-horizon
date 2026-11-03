@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { enquiryHref } from "@/lib/enquiry";
+import type { ServiceSlug } from "@/lib/content/services";
 
-type Option = { slug: string; title: string };
+type Option = { slug: ServiceSlug; title: string };
 
 /** Inline service picker under the hero copy: choose a service, continue on WhatsApp with it pre-filled. */
 export function EnquiryCard({ services }: { services: Option[] }) {
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selected, setSelected] = useState<ServiceSlug | null>(null);
   const chosen = services.find((s) => s.slug === selected);
   return (
     <div>
@@ -34,7 +35,7 @@ export function EnquiryCard({ services }: { services: Option[] }) {
       </div>
       <a
         data-testid="hero-enquiry"
-        href={enquiryHref({ service: chosen?.title, pagePath: "/" })}
+        href={enquiryHref(chosen?.slug)}
         target="_blank"
         rel="noopener"
         className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-md bg-navy px-6 sm:w-auto font-semibold text-paper transition-colors hover:bg-navy-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy"

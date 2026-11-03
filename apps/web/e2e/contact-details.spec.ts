@@ -11,7 +11,7 @@ test("footer shows the real phone number and Bavdhan address", async ({ page }) 
 
 test("call and WhatsApp buttons use the real number", async ({ page }) => {
   await page.goto("/");
-  const bar = page.getByTestId("mobile-cta-bar");
+  const bar = page.getByTestId("floating-contact");
   await expect(bar.locator('a[href="tel:+918788432367"]')).toBeAttached();
   await expect(bar.locator('a[href^="https://wa.me/918788432367"]')).toBeAttached();
 });
