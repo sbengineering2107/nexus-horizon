@@ -2,11 +2,13 @@ import Link from "next/link";
 import { Button, Container } from "@nh/ui";
 import { ConsultLink } from "@/components/contact/consult-link";
 import { Logo } from "./logo";
+import { MobileMenu } from "./mobile-menu";
 
 const NAV = [
   { href: "/services", label: "Our Services" },
   { href: "/calculators", label: "Home Loan Calculators" },
   { href: "/pune", label: "Areas We Serve" },
+  { href: "/blog", label: "Property Guides" },
 ];
 
 export function SiteHeader() {
@@ -29,13 +31,12 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <Button asChild variant="primary" className="hidden min-h-10 whitespace-nowrap px-4 sm:inline-flex">
-          <ConsultLink>Book a consultation</ConsultLink>
-        </Button>
-        <nav aria-label="Main" className="flex gap-5 text-[0.95rem] font-semibold text-navy lg:hidden">
-          <Link href="/services">Services</Link>
-          <Link href="/calculators">Calculators</Link>
-        </nav>
+        <div className="flex items-center gap-3">
+          <Button asChild variant="primary" className="hidden min-h-10 whitespace-nowrap px-4 sm:inline-flex">
+            <ConsultLink>Book a consultation</ConsultLink>
+          </Button>
+          <MobileMenu items={NAV} />
+        </div>
       </Container>
     </header>
   );

@@ -4,7 +4,7 @@ import { siteConfig } from "@/site.config";
 const ITEMS = [
   { label: "MahaRERA registered", detail: `Reg. no. ${siteConfig.maharera}` },
   { label: "Across Pune", detail: "East, west and central micro-markets" },
-  { label: "Free first consultation", detail: "On WhatsApp, a call or in person" },
+  { label: "Always free consultation", detail: "On WhatsApp, a call or in person" },
   { label: "One advisor", detail: "From first call to registration" },
 ];
 

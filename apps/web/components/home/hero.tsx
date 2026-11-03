@@ -37,7 +37,7 @@ export function Hero() {
             Property in Pune, chosen with clear eyes.
           </h1>
           <p className="mt-5 max-w-xl text-lg text-white/85 sm:text-xl">
-            We shortlist, verify and visit with you, so you buy on facts, not brochures. Your first consultation is
+            We shortlist, verify and visit with you, so you buy on facts, not brochures. Consultations are always
             free.
           </p>
         </div>

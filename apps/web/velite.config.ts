@@ -1,3 +1,4 @@
+import remarkGfm from "remark-gfm";
 import { defineCollection, defineConfig, s } from "velite";
 
 export const SERVICE_SLUGS = ["new-projects", "ready-to-move", "resale", "commercial"] as const;
@@ -38,7 +39,44 @@ const areas = defineCollection({
   }),
 });
 
+export const BLOG_CATEGORIES = ["buying-guides", "costs-and-loans", "area-comparisons", "commercial-and-investment"] as const;
+export const TOOL_SLUGS = [
+  "loan-eligibility-calculator",
+  "home-loan-calculator",
+  "emi-calculator",
+  "loan-transfer-calculator",
+  "stamp-duty-calculator",
+  "rental-yield-calculator",
+] as const;
+
+const posts = defineCollection({
+  name: "Post",
+  pattern: "blog/*.mdx",
+  schema: s.object({
+    slug: s.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/),
+    title: s.string().min(10).max(90),
+    seoTitle: s.string().min(10).max(62),
+    description: s.string().min(110).max(160),
+    category: s.enum(BLOG_CATEGORIES),
+    published: s.isodate(),
+    updated: s.isodate(),
+    summary: s.string().min(60).max(320),
+    related: s
+      .object({
+        services: s.array(s.enum(SERVICE_SLUGS)).default([]),
+        areas: s.array(s.string()).default([]),
+        tools: s.array(s.enum(TOOL_SLUGS)).default([]),
+      })
+      .default({ services: [], areas: [], tools: [] }),
+    faqs: s.array(s.object({ q: s.string().min(5), a: s.string().min(20) })).min(3).max(6),
+    sources: s.array(s.string().url()).min(2),
+    metadata: s.metadata(),
+    body: s.mdx(),
+  }),
+});
+
 export default defineConfig({
+  mdx: { remarkPlugins: [remarkGfm] },
   root: "content",
   output: {
     data: ".velite",
@@ -47,7 +85,7 @@ export default defineConfig({
     name: "[name]-[hash:6].[ext]",
     clean: true,
   },
-  collections: { services, areas },
+  collections: { services, areas, posts },
   // Fail the build on any schema error instead of skipping the entry.
   strict: true,
 });

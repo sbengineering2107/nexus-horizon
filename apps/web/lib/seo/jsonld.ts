@@ -1,4 +1,5 @@
 import type {
+  BlogPosting,
   BreadcrumbList,
   FAQPage,
   Place,
@@ -117,5 +118,33 @@ export function placeJsonLd(a: { name: string; summary: string; path: string }):
     url: absoluteUrl(a.path),
     address: { "@type": "PostalAddress", addressLocality: a.name, addressRegion: "Maharashtra", addressCountry: "IN" },
     containedInPlace: { "@type": "City", name: "Pune" },
+  };
+}
+
+export function blogPostingJsonLd(p: {
+  title: string;
+  description: string;
+  path: string;
+  published: string;
+  updated: string;
+  section: string;
+  wordCount: number;
+}): WithContext<BlogPosting> {
+  const url = absoluteUrl(p.path);
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: p.title,
+    description: p.description,
+    url,
+    mainEntityOfPage: url,
+    datePublished: p.published,
+    dateModified: p.updated,
+    articleSection: p.section,
+    wordCount: p.wordCount,
+    inLanguage: "en-IN",
+    image: `${siteConfig.url}/og-image.png`,
+    author: { "@type": "Organization", name: `${siteConfig.name} team`, url: siteConfig.url },
+    publisher: { "@id": orgId() },
   };
 }

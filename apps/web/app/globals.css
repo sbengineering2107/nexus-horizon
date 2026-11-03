@@ -68,6 +68,24 @@
   .prose-nh em {
     @apply text-slate;
   }
+  .prose-nh a {
+    @apply font-semibold text-navy underline decoration-navy/30 underline-offset-4 hover:decoration-navy;
+  }
+  .prose-nh .table-wrap {
+    @apply my-6 overflow-x-auto rounded-md border border-line;
+  }
+  .prose-nh table {
+    @apply w-full border-collapse text-[0.95rem];
+  }
+  .prose-nh th {
+    @apply bg-mist/60 px-4 py-2.5 text-left font-semibold text-navy-deep;
+  }
+  .prose-nh td {
+    @apply border-t border-line px-4 py-2.5 align-top;
+  }
+  .prose-nh blockquote {
+    @apply my-6 border-l-4 border-gold pl-5 text-slate;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

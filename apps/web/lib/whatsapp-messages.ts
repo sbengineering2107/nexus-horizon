@@ -9,6 +9,8 @@ export type PageInfo =
   | { kind: "area"; name: string }
   | { kind: "calculators" }
   | { kind: "calculator"; title: string }
+  | { kind: "blog" }
+  | { kind: "post"; title: string }
   | { kind: "other" };
 
 const HI = "Hi Nexus Horizon,";
@@ -37,6 +39,10 @@ export function chatMessage(p: PageInfo): string {
       return `${HI} I'd like help planning my home loan and property budget.`;
     case "calculator":
       return `${HI} I was using your ${p.title} and have a question.`;
+    case "blog":
+      return `${HI} I was reading your property guides and have a question.`;
+    case "post":
+      return `${HI} I read your guide "${p.title}" and have a question.`;
     case "other":
       return `${HI} I'd like some advice on property in Pune.`;
   }
@@ -53,6 +59,8 @@ export function consultationMessage(p: PageInfo): string {
       return `${ask}. I've been using your ${p.title}.`;
     case "calculators":
       return `${ask} about my home loan and property budget.`;
+    case "post":
+      return `${ask}. I've been reading your guide "${p.title}".`;
     default:
       return `${ask} about property in Pune.`;
   }

@@ -9,6 +9,8 @@ import { placeJsonLd } from "@/lib/seo/jsonld";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { FaqList } from "@/components/shared/faq-list";
+import { postsRelatedTo } from "@/lib/content/blog";
+import { RelatedGuides } from "@/components/blog/related-guides";
 
 type Props = { params: Promise<{ area: string }> };
 
@@ -174,6 +176,7 @@ export default async function AreaPage({ params }: Props) {
                 All Pune areas
               </Link>
             </nav>
+            <RelatedGuides posts={postsRelatedTo({ area: a.slug })} className="mt-8" />
           </aside>
         </div>
       </Container>

@@ -3,6 +3,7 @@ import { getServices } from "@/lib/content/services";
 import { getTools } from "@/lib/content/tools";
 import { getAreasByZone, ZONES } from "@/lib/content/areas";
 import { absoluteUrl } from "@/lib/seo/metadata";
+import { CATEGORIES, getPostsByCategory } from "@/lib/content/blog";
 
 export const dynamic = "force-static";
 
@@ -38,10 +39,23 @@ export function GET(): Response {
       ...getAreasByZone(z.id).map((a) => `- [${a.name}](${absoluteUrl(`/pune/${a.slug}`)}): ${a.summary}`),
       "",
     ]),
+    "## Guides",
+    "",
+    ...CATEGORIES.flatMap((c) => {
+      const list = getPostsByCategory(c.id);
+      if (list.length === 0) return [];
+      return [
+        `### ${c.name}`,
+        "",
+        ...list.map((p) => `- [${p.title}](${absoluteUrl(`/blog/${p.slug}`)}): ${p.summary}`),
+        "",
+      ];
+    }),
     "## Site",
     "",
     `- [Home](${absoluteUrl("/")})`,
     `- [All services](${absoluteUrl("/services")})`,
+    `- [All guides](${absoluteUrl("/blog")}) (RSS: ${absoluteUrl("/blog/rss.xml")})`,
     "",
   ];
   return new Response(lines.join("\n"), {

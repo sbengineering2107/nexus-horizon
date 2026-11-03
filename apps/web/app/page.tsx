@@ -9,6 +9,7 @@ import { WhyUs } from "@/components/home/why-us";
 import { Process } from "@/components/home/process";
 import { ToolsTeaser } from "@/components/home/tools-teaser";
 import { Testimonials } from "@/components/home/testimonials";
+import { LatestGuides } from "@/components/home/latest-guides";
 import { CtaBand } from "@/components/shared/cta-band";
 
 export const metadata: Metadata = {
@@ -31,6 +32,7 @@ export default function HomePage() {
       <WhyUs />
       <Process />
       <ToolsTeaser />
+      <LatestGuides />
       <Testimonials />
       <CtaBand
         pagePath="/"

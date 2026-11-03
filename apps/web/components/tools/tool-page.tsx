@@ -7,6 +7,8 @@ import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { FaqList } from "@/components/shared/faq-list";
 import { getTools, LOAN_JOURNEY } from "@/lib/content/tools";
 import { LoanGuide } from "./loan-guide";
+import { postsRelatedTo } from "@/lib/content/blog";
+import { RelatedGuides } from "@/components/blog/related-guides";
 
 const dateFmt = new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "long", year: "numeric" });
 
@@ -67,6 +69,7 @@ export function ToolPage({ tool, children, explainer }: { tool: Tool; children: 
                 </Link>
               </li>
             </ul>
+            <RelatedGuides posts={postsRelatedTo({ tool: tool.slug })} className="mt-8" />
           </aside>
         </div>
       </Container>

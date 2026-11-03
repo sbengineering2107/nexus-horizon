@@ -13,6 +13,8 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { FaqList } from "@/components/shared/faq-list";
 import { CtaBand } from "@/components/shared/cta-band";
+import { postsRelatedTo } from "@/lib/content/blog";
+import { RelatedGuides } from "@/components/blog/related-guides";
 
 type Props = { params: Promise<{ service: string }> };
 
@@ -90,7 +92,7 @@ export default async function ServicePage({ params }: Props) {
           <aside className="lg:sticky lg:top-24 lg:self-start">
             <div className="rounded-lg border border-line bg-paper p-6">
               <h2 className="text-xl">Talk to an advisor</h2>
-              <p className="mt-2 text-slate">Free first consultation, on WhatsApp or a call.</p>
+              <p className="mt-2 text-slate">Consultations are always free, on WhatsApp or a call.</p>
               <div className="mt-5 flex flex-col gap-3">
                 <Button asChild variant="primary">
                   <a href={consultationHref(path)} target="_blank" rel="noopener">
@@ -104,6 +106,7 @@ export default async function ServicePage({ params }: Props) {
                 </Button>
               </div>
             </div>
+            <RelatedGuides posts={postsRelatedTo({ service: service.slug })} className="mt-8" />
             <nav aria-label="Other services" className="mt-8">
               <h2 className="font-sans text-base font-semibold text-basalt">Other services</h2>
               <ul className="mt-3 space-y-2">
