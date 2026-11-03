@@ -34,7 +34,7 @@ export function EligibilityCalculator() {
           {r ? (
             <>
               <p className="text-sm text-slate">Estimated maximum loan</p>
-              <p data-testid="elig-max" className="mt-1 text-4xl font-medium tabular-nums text-forest-deep sm:text-5xl">
+              <p data-testid="elig-max" className="mt-1 text-4xl font-medium tabular-nums text-navy-deep sm:text-5xl">
                 {formatInr(r.maxLoan)}
               </p>
               <dl className="mt-6 space-y-3 border-t border-line pt-5 text-[0.95rem]">

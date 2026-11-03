@@ -11,7 +11,7 @@ afterEach(() => dirs.splice(0).forEach((d) => rmSync(d, { recursive: true, force
 function page(origin: string, { ogImage = true } = {}) {
   return `<html><head><title>T</title><meta name="description" content="D"/>
 <link rel="canonical" href="${origin}/x"/><meta property="og:url" content="${origin}/x"/>
-${ogImage ? `<meta property="og:image" content="${origin}/opengraph-image"/>` : ""}
+${ogImage ? `<meta property="og:image" content="${origin}/og-image.png"/>` : ""}
 <script type="application/ld+json">{"@context":"https://schema.org","url":"${origin}"}</script></head>
 <body><h1>H</h1></body></html>`;
 }

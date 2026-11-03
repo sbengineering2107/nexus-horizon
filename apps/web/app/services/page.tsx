@@ -28,13 +28,13 @@ export default function ServicesPage() {
           {services.map((s) => (
             <li key={s.slug} className="grid gap-3 py-8 md:grid-cols-[1fr_1.4fr] md:gap-10">
               <h2 className="text-2xl sm:text-3xl">
-                <Link href={`/services/${s.slug}`} className="hover:text-forest hover:underline">
+                <Link href={`/services/${s.slug}`} className="hover:text-navy hover:underline">
                   {s.title}
                 </Link>
               </h2>
               <div>
                 <p className="text-slate">{s.summary}</p>
-                <Link href={`/services/${s.slug}`} className="mt-3 inline-block font-semibold text-forest underline-offset-4 hover:underline">
+                <Link href={`/services/${s.slug}`} className="mt-3 inline-block font-semibold text-navy underline-offset-4 hover:underline">
                   How {s.title.toLowerCase()} works
                 </Link>
               </div>

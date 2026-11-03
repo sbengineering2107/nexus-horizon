@@ -15,7 +15,7 @@ export function TrustStrip() {
         <ul className="grid grid-cols-2 divide-line py-7 lg:grid-cols-4 lg:divide-x">
           {ITEMS.map((item) => (
             <li key={item.label} className="py-2 pr-4 lg:px-6 lg:first:pl-0">
-              <p className="font-semibold text-forest-deep">{item.label}</p>
+              <p className="font-semibold text-navy-deep">{item.label}</p>
               <p className="mt-0.5 text-sm text-slate">{item.detail}</p>
             </li>
           ))}

@@ -17,7 +17,7 @@
   h1,
   h2,
   h3 {
-    @apply font-display text-forest-deep;
+    @apply font-display text-navy-deep;
     font-optical-sizing: auto;
     font-weight: 450;
     letter-spacing: -0.02em;
@@ -32,7 +32,7 @@
     text-wrap: pretty;
   }
   :focus-visible {
-    outline: 2px solid var(--color-forest);
+    outline: 2px solid var(--color-navy);
     outline-offset: 2px;
   }
 }
@@ -63,7 +63,7 @@
     @apply mb-1.5;
   }
   .prose-nh strong {
-    @apply font-semibold text-forest-deep;
+    @apply font-semibold text-navy-deep;
   }
   .prose-nh em {
     @apply text-slate;
@@ -122,23 +122,23 @@
   height: 4px;
   border-radius: 999px;
   background: var(--color-mist-strong);
-  accent-color: var(--color-forest);
+  accent-color: var(--color-navy);
 }
 .nh-range::-webkit-slider-thumb {
   appearance: none;
   width: 20px;
   height: 20px;
   border-radius: 999px;
-  background: var(--color-forest);
+  background: var(--color-navy);
   border: 3px solid #fff;
-  box-shadow: 0 0 0 1px var(--color-forest);
+  box-shadow: 0 0 0 1px var(--color-navy);
   cursor: pointer;
 }
 .nh-range::-moz-range-thumb {
   width: 16px;
   height: 16px;
   border-radius: 999px;
-  background: var(--color-forest);
+  background: var(--color-navy);
   border: 3px solid #fff;
   cursor: pointer;
 }
@@ -187,10 +187,10 @@
 }
 @keyframes header-shadow {
   from {
-    box-shadow: 0 0 0 0 rgb(30 42 46 / 0);
+    box-shadow: 0 0 0 0 rgb(17 28 45 / 0);
   }
   to {
-    box-shadow: 0 6px 24px -12px rgb(30 42 46 / 0.18);
+    box-shadow: 0 6px 24px -12px rgb(17 28 45 / 0.18);
   }
 }
 

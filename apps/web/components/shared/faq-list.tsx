@@ -12,9 +12,9 @@ export function FaqList({ faqs, heading = "Frequently asked questions" }: { faqs
       <div className="mt-6 divide-y divide-mist-strong border-y border-mist-strong">
         {faqs.map((f) => (
           <details key={f.q} className="group py-4">
-            <summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-semibold text-forest-deep">
+            <summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-semibold text-navy-deep">
               {f.q}
-              <span aria-hidden="true" className="mt-0.5 text-xl leading-none text-forest transition-transform group-open:rotate-45">
+              <span aria-hidden="true" className="mt-0.5 text-xl leading-none text-navy transition-transform group-open:rotate-45">
                 +
               </span>
             </summary>

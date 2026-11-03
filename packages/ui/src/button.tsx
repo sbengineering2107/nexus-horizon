@@ -6,11 +6,11 @@ type Variant = "primary" | "secondary" | "ghost";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-forest text-paper hover:bg-forest-deep focus-visible:outline-forest",
+    "bg-navy text-paper hover:bg-navy-deep focus-visible:outline-navy",
   secondary:
-    "border border-forest/30 bg-transparent text-forest hover:border-forest hover:bg-forest/5 focus-visible:outline-forest",
+    "border border-navy/30 bg-transparent text-navy hover:border-navy hover:bg-navy/5 focus-visible:outline-navy",
   ghost:
-    "bg-transparent px-1 text-forest underline-offset-4 hover:underline focus-visible:outline-forest",
+    "bg-transparent px-1 text-navy underline-offset-4 hover:underline focus-visible:outline-navy",
 };
 
 export type ButtonProps = ComponentPropsWithoutRef<"button"> & {

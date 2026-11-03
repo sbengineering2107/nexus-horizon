@@ -39,7 +39,7 @@ export function WhyUs() {
           <dl className="mt-10 divide-y divide-line border-y border-line">
             {POINTS.map((p) => (
               <div key={p.title} className="py-6">
-                <dt className="font-display text-xl text-forest-deep">{p.title}</dt>
+                <dt className="font-display text-xl text-navy-deep">{p.title}</dt>
                 <dd className="mt-2 text-slate">{p.text}</dd>
               </div>
             ))}

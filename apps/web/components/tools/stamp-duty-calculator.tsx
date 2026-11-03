@@ -42,7 +42,7 @@ export function StampDutyCalculator() {
             {BUYERS.map((b) => (
               <label
                 key={b.value}
-                className="flex cursor-pointer items-center gap-3 rounded-md border border-mist-strong px-4 py-3 has-[:checked]:border-forest has-[:checked]:bg-mist/60"
+                className="flex cursor-pointer items-center gap-3 rounded-md border border-mist-strong px-4 py-3 has-[:checked]:border-navy has-[:checked]:bg-mist/60"
               >
                 <input
                   type="radio"
@@ -50,7 +50,7 @@ export function StampDutyCalculator() {
                   value={b.value}
                   checked={buyer === b.value}
                   onChange={() => setBuyer(b.value)}
-                  className="accent-[var(--color-forest)]"
+                  className="accent-[var(--color-navy)]"
                 />
                 {b.label}
               </label>
@@ -63,7 +63,7 @@ export function StampDutyCalculator() {
           <>
             <div>
               <p className="text-sm text-slate">Stamp duty + registration</p>
-              <p data-testid="duty-total" className="mt-1 font-display text-4xl tabular-nums text-forest-deep sm:text-5xl">
+              <p data-testid="duty-total" className="mt-1 font-display text-4xl tabular-nums text-navy-deep sm:text-5xl">
                 {formatInr(result.total)}
               </p>
               <p className="mt-2 text-sm text-slate">
@@ -97,7 +97,7 @@ export function StampDutyCalculator() {
           href={whatsappHref(siteConfig.whatsapp, message)}
           target="_blank"
           rel="noopener"
-          className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md bg-forest px-5 font-semibold text-paper transition-colors hover:bg-forest-deep"
+          className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md bg-navy px-5 font-semibold text-paper transition-colors hover:bg-navy-deep"
         >
           Talk to an expert
         </a>

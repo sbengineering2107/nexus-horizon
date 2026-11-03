@@ -37,7 +37,7 @@ export function NumberField({ label, value, onChange, min, max, step, display, s
         value={value === 0 && optional ? "" : value}
         placeholder={optional ? "Leave blank if unknown" : undefined}
         onChange={(e) => onChange(parse(e.target.value))}
-        className="mt-2 w-full rounded-md border border-mist-strong bg-white px-4 py-3 text-lg tabular-nums text-basalt focus:border-forest focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-forest"
+        className="mt-2 w-full rounded-md border border-mist-strong bg-white px-4 py-3 text-lg tabular-nums text-basalt focus:border-navy focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-navy"
       />
       {slider && (
         <input

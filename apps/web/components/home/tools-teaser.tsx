@@ -17,7 +17,7 @@ export function ToolsTeaser() {
               could earn.
             </p>
           </div>
-          <Link href="/calculators" className="font-semibold text-forest underline-offset-4 hover:underline">
+          <Link href="/calculators" className="font-semibold text-navy underline-offset-4 hover:underline">
             All calculators
           </Link>
         </div>

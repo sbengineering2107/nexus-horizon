@@ -14,9 +14,9 @@ export function LoanGuide({ current }: { current: ToolSlug }) {
           const here = slug === current;
           const body = (
             <>
-              <span className="text-sm font-semibold text-forest">Step {i + 1}</span>
+              <span className="text-sm font-semibold text-navy">Step {i + 1}</span>
               <span className="mt-1 block font-semibold text-basalt">{t.question}</span>
-              <span className={`mt-2 block text-sm ${here ? "text-slate" : "text-forest group-hover:underline"}`}>
+              <span className={`mt-2 block text-sm ${here ? "text-slate" : "text-navy group-hover:underline"}`}>
                 {here ? "You are on this calculator" : t.title}
               </span>
             </>
@@ -24,11 +24,11 @@ export function LoanGuide({ current }: { current: ToolSlug }) {
           return (
             <li key={slug}>
               {here ? (
-                <div aria-current="page" className="h-full rounded-md border-2 border-forest bg-mist/50 p-5">
+                <div aria-current="page" className="h-full rounded-md border-2 border-navy bg-mist/50 p-5">
                   {body}
                 </div>
               ) : (
-                <Link href={`/calculators/${slug}`} className="group block h-full rounded-md border border-line p-5 transition-colors hover:border-forest/50">
+                <Link href={`/calculators/${slug}`} className="group block h-full rounded-md border border-line p-5 transition-colors hover:border-navy/50">
                   {body}
                 </Link>
               )}

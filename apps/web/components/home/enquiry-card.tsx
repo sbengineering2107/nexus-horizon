@@ -24,7 +24,7 @@ export function EnquiryCard({ services }: { services: Option[] }) {
               aria-pressed={active}
               onClick={() => setSelected(active ? null : s.slug)}
               className={`rounded-full border px-3.5 py-1.5 text-sm transition-colors ${
-                active ? "border-forest bg-forest text-paper" : "border-line bg-white text-basalt hover:border-forest/50"
+                active ? "border-navy bg-navy text-paper" : "border-line bg-white text-basalt hover:border-navy/50"
               }`}
             >
               {s.title}
@@ -37,7 +37,7 @@ export function EnquiryCard({ services }: { services: Option[] }) {
         href={enquiryHref({ service: chosen?.title, pagePath: "/" })}
         target="_blank"
         rel="noopener"
-        className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-md bg-forest px-6 sm:w-auto font-semibold text-paper transition-colors hover:bg-forest-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+        className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-md bg-navy px-6 sm:w-auto font-semibold text-paper transition-colors hover:bg-navy-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy"
       >
         {chosen ? `Get advice on ${chosen.title.toLowerCase()}` : "Book a free consultation"}
       </a>

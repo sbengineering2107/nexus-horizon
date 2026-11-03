@@ -109,7 +109,7 @@ export default async function ServicePage({ params }: Props) {
               <ul className="mt-3 space-y-2">
                 {others.map((s) => (
                   <li key={s.slug}>
-                    <Link href={`/services/${s.slug}`} className="text-forest hover:underline">
+                    <Link href={`/services/${s.slug}`} className="text-navy hover:underline">
                       {s.title}
                     </Link>
                   </li>

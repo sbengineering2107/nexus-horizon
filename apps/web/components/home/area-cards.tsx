@@ -17,7 +17,7 @@ export function AreaCards() {
               who it suits.
             </p>
           </div>
-          <Link href="/pune" className="font-semibold text-forest underline-offset-4 hover:underline">
+          <Link href="/pune" className="font-semibold text-navy underline-offset-4 hover:underline">
             All area guides
           </Link>
         </div>

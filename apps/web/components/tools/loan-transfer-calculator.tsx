@@ -36,13 +36,13 @@ export function LoanTransferCalculator() {
               <p className="text-sm text-slate">Net saving after charges</p>
               <p
                 data-testid="transfer-net"
-                className={`mt-1 text-4xl font-medium tabular-nums sm:text-5xl ${r.worthIt ? "text-forest-deep" : "text-basalt"}`}
+                className={`mt-1 text-4xl font-medium tabular-nums sm:text-5xl ${r.worthIt ? "text-navy-deep" : "text-basalt"}`}
               >
                 {formatInr(r.netSaving)}
               </p>
               <p
                 data-testid="transfer-verdict"
-                className={`mt-3 inline-block rounded-full px-3 py-1 text-sm font-semibold ${r.worthIt ? "bg-forest/10 text-forest-deep" : "bg-marigold/20 text-basalt"}`}
+                className={`mt-3 inline-block rounded-full px-3 py-1 text-sm font-semibold ${r.worthIt ? "bg-navy/10 text-navy-deep" : "bg-gold/20 text-basalt"}`}
               >
                 {r.worthIt ? "Likely worth transferring" : "Probably not worth transferring"}
               </p>

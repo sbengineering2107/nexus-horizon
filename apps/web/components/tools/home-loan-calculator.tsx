@@ -34,7 +34,7 @@ export function HomeLoanCalculator() {
             {plan ? (
               <>
                 <p className="text-sm text-slate">Monthly EMI</p>
-                <p data-testid="plan-emi" className="mt-1 text-4xl font-medium tabular-nums text-forest-deep sm:text-5xl">
+                <p data-testid="plan-emi" className="mt-1 text-4xl font-medium tabular-nums text-navy-deep sm:text-5xl">
                   {formatInr(plan.emi)}
                 </p>
                 <dl className="mt-6 space-y-3 border-t border-line pt-5 text-[0.95rem]">
@@ -58,18 +58,18 @@ export function HomeLoanCalculator() {
             </h2>
             <div className="flex gap-5 text-sm text-slate">
               <span className="flex items-center gap-2">
-                <span className="h-3 w-3 rounded-sm bg-forest" /> Principal
+                <span className="h-3 w-3 rounded-sm bg-navy" /> Principal
               </span>
               <span className="flex items-center gap-2">
-                <span className="h-3 w-3 rounded-sm bg-marigold" /> Interest
+                <span className="h-3 w-3 rounded-sm bg-gold" /> Interest
               </span>
             </div>
           </div>
           <div aria-hidden="true" className="mt-6 flex h-40 items-end gap-1">
             {plan.schedule.map((y) => (
               <div key={y.year} className="flex h-full flex-1 flex-col justify-end" title={`Year ${y.year}`}>
-                <div className="rounded-t-sm bg-marigold" style={{ height: `${(y.interest / maxYear) * 100}%` }} />
-                <div className="bg-forest" style={{ height: `${(y.principal / maxYear) * 100}%` }} />
+                <div className="rounded-t-sm bg-gold" style={{ height: `${(y.interest / maxYear) * 100}%` }} />
+                <div className="bg-navy" style={{ height: `${(y.principal / maxYear) * 100}%` }} />
               </div>
             ))}
           </div>

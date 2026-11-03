@@ -9,7 +9,7 @@ export function AreaLinks({ zone, areas, size = "md" }: { zone: Zone; areas: Are
         <li key={a.slug}>
           <Link
             href={`/pune/${a.slug}`}
-            className={`inline-flex items-center rounded-full border border-line bg-white text-basalt transition-colors hover:border-forest hover:text-forest ${
+            className={`inline-flex items-center rounded-full border border-line bg-white text-basalt transition-colors hover:border-navy hover:text-navy ${
               size === "lg" ? "px-4 py-2 text-base" : "px-3.5 py-1.5 text-[0.95rem]"
             }`}
           >

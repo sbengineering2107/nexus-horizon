@@ -14,17 +14,17 @@ export function SiteHeader() {
     <header data-fx="header-shadow" className="fx-header-shadow sticky top-0 z-40 border-b border-line bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/80">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:rounded-sm focus:bg-forest focus:px-3 focus:py-2 focus:text-paper"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:rounded-sm focus:bg-navy focus:px-3 focus:py-2 focus:text-paper"
       >
         Skip to content
       </a>
-      <Container className="flex h-16 items-center justify-between gap-6">
+      <Container className="flex h-16 items-center justify-between gap-6 lg:h-[4.5rem]">
         <Link href="/" aria-label="Nexus Horizon Advisors, home" className="rounded-sm">
-          <Logo />
+          <Logo priority />
         </Link>
         <nav aria-label="Main" className="hidden items-center gap-7 text-[0.95rem] lg:flex">
           {NAV.map((item) => (
-            <Link key={item.href} href={item.href} className="whitespace-nowrap text-slate transition-colors hover:text-forest-deep">
+            <Link key={item.href} href={item.href} className="whitespace-nowrap text-slate transition-colors hover:text-navy-deep">
               {item.label}
             </Link>
           ))}
@@ -34,7 +34,7 @@ export function SiteHeader() {
             Book a consultation
           </a>
         </Button>
-        <nav aria-label="Main" className="flex gap-5 text-[0.95rem] font-semibold text-forest lg:hidden">
+        <nav aria-label="Main" className="flex gap-5 text-[0.95rem] font-semibold text-navy lg:hidden">
           <Link href="/services">Services</Link>
           <Link href="/calculators">Calculators</Link>
         </nav>

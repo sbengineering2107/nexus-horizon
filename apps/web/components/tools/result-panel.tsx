@@ -10,7 +10,7 @@ export function ResultPanel({ children, message }: { children: React.ReactNode; 
         href={whatsappHref(siteConfig.whatsapp, message)}
         target="_blank"
         rel="noopener"
-        className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md bg-forest px-5 font-semibold text-paper transition-colors hover:bg-forest-deep"
+        className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md bg-navy px-5 font-semibold text-paper transition-colors hover:bg-navy-deep"
       >
         Talk to an expert
       </a>

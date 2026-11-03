@@ -1,20 +1,21 @@
 /*
  * Nexus Horizon design tokens (Tailwind v4 theme).
- * Palette: Sahyadri forest, basalt, monsoon mist, paper, marigold.
+ * Palette from the brand kit (07_Guidelines): navy #1B2A41, muted gold #C9A227,
+ * white, warm neutral #F8F7F3. Tints are derived from navy.
  */
 @theme {
-  --color-forest: #0f4d47;
-  --color-forest-deep: #0a3632;
-  --color-forest-soft: #2e6b64;
-  --color-basalt: #1e2a2e;
-  --color-slate: #4a585c;
-  --color-mist: #e3ebe7;
-  --color-mist-strong: #c9d8d1;
-  --color-paper: #f7f9f8;
+  --color-navy: #1b2a41;
+  --color-navy-deep: #111c2d;
+  --color-navy-soft: #33476a;
+  --color-basalt: #18212f;
+  --color-slate: #4b5565;
+  --color-mist: #e8ebf0;
+  --color-mist-strong: #ccd3de;
+  --color-paper: #f8f7f3;
   --color-white: #ffffff;
-  --color-line: #e2e8e5;
-  --color-marigold: #e9a23b;
-  --color-marigold-deep: #c9831d;
+  --color-line: #e5e3dc;
+  --color-gold: #c9a227;
+  --color-gold-deep: #a5841c;
 
   --font-sans: var(--font-google-sans), var(--font-rupee), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-google-sans), var(--font-rupee), ui-sans-serif, system-ui, sans-serif;

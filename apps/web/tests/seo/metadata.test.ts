@@ -36,8 +36,8 @@ describe("buildMetadata", () => {
 
   test("always sets a share image for Open Graph and Twitter", () => {
     const m = buildMetadata({ title: "Resale", description: "Y", path: "/services/resale" });
-    expect(JSON.stringify(m.openGraph)).toContain("/opengraph-image");
-    expect(JSON.stringify(m.twitter)).toContain("/opengraph-image");
+    expect(JSON.stringify(m.openGraph)).toContain("/og-image.png");
+    expect(JSON.stringify(m.twitter)).toContain("/og-image.png");
   });
 
   test("sets Open Graph URL, title and en_IN locale", () => {

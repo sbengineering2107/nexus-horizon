@@ -18,7 +18,7 @@ export default function NotFound() {
       <ul className="mt-10 space-y-2">
         {getServices().map((s) => (
           <li key={s.slug}>
-            <Link href={`/services/${s.slug}`} className="text-forest hover:underline">
+            <Link href={`/services/${s.slug}`} className="text-navy hover:underline">
               {s.title}
             </Link>
           </li>

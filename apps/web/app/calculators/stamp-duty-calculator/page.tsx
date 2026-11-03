@@ -71,7 +71,7 @@ export default function StampDutyCalculatorPage() {
             <em>
               These are estimates for planning. Rates change by government notification, and outside municipal limits
               they differ. Confirm the final amount with the sub-registrar or{" "}
-              <a href={PUNE_RATES.official} className="text-forest underline" rel="noopener" target="_blank">
+              <a href={PUNE_RATES.official} className="text-navy underline" rel="noopener" target="_blank">
                 IGR Maharashtra
               </a>{" "}
               before registration.

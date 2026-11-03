@@ -37,10 +37,10 @@ export default function PuneHubPage() {
                     <li key={a.slug}>
                       <Link href={`/pune/${a.slug}`} className="group flex items-start justify-between gap-6 py-4">
                         <span>
-                          <span className="block text-lg font-semibold text-forest-deep group-hover:text-forest">{a.name}</span>
+                          <span className="block text-lg font-semibold text-navy-deep group-hover:text-navy">{a.name}</span>
                           <span className="mt-0.5 block text-[0.95rem] text-slate">{a.knownFor[0]}</span>
                         </span>
-                        <span aria-hidden="true" className="mt-1.5 text-forest transition-transform group-hover:translate-x-1"><svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 4l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
+                        <span aria-hidden="true" className="mt-1.5 text-navy transition-transform group-hover:translate-x-1"><svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 4l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
                       </Link>
                     </li>
                   ))}

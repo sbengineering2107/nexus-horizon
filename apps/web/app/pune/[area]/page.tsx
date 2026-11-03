@@ -56,7 +56,7 @@ export default async function AreaPage({ params }: Props) {
               { name: a.name, path },
             ]}
           />
-          <p className="mt-8 text-[0.95rem] font-semibold text-forest">{zone.name}</p>
+          <p className="mt-8 text-[0.95rem] font-semibold text-navy">{zone.name}</p>
           <h1 className="mt-2 max-w-3xl text-4xl sm:text-[3.2rem]">{a.name}, Pune: area guide</h1>
           <p className="mt-5 max-w-[62ch] text-lg text-slate">{a.summary}</p>
         </Container>
@@ -71,7 +71,7 @@ export default async function AreaPage({ params }: Props) {
                 <ul className="mt-4 space-y-2.5 text-slate">
                   {a.knownFor.map((k) => (
                     <li key={k} className="flex gap-3">
-                      <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-forest" />
+                      <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy" />
                       {k}
                     </li>
                   ))}
@@ -82,7 +82,7 @@ export default async function AreaPage({ params }: Props) {
                 <ul className="mt-4 space-y-2.5 text-slate">
                   {a.connectivity.map((c) => (
                     <li key={c} className="flex gap-3">
-                      <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-marigold" />
+                      <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
                       {c}
                     </li>
                   ))}
@@ -102,7 +102,7 @@ export default async function AreaPage({ params }: Props) {
                 {municipal ? (
                   <>
                     As a municipal area, the{" "}
-                    <Link href="/calculators/stamp-duty-calculator" className="font-semibold text-forest underline-offset-4 hover:underline">
+                    <Link href="/calculators/stamp-duty-calculator" className="font-semibold text-navy underline-offset-4 hover:underline">
                       Pune stamp duty calculator
                     </Link>{" "}
                     rates apply.
@@ -110,7 +110,7 @@ export default async function AreaPage({ params }: Props) {
                 ) : (
                   <>
                     Stamp duty outside municipal limits can differ from the{" "}
-                    <Link href="/calculators/stamp-duty-calculator" className="font-semibold text-forest underline-offset-4 hover:underline">
+                    <Link href="/calculators/stamp-duty-calculator" className="font-semibold text-navy underline-offset-4 hover:underline">
                       municipal rates in our calculator
                     </Link>
                     ; confirm with the sub-registrar for a specific property.
@@ -128,10 +128,10 @@ export default async function AreaPage({ params }: Props) {
                   <li key={s.slug}>
                     <Link
                       href={`/services/${s.slug}`}
-                      className="flex h-full items-center justify-between gap-4 rounded-md border border-line bg-white px-5 py-4 font-semibold text-forest-deep transition-colors hover:border-forest"
+                      className="flex h-full items-center justify-between gap-4 rounded-md border border-line bg-white px-5 py-4 font-semibold text-navy-deep transition-colors hover:border-navy"
                     >
                       {SERVICE_PHRASE[s.slug]?.(a.name) ?? s.title}
-                      <span aria-hidden="true" className="text-forest"><svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 4l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
+                      <span aria-hidden="true" className="text-navy"><svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 4l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
                     </Link>
                   </li>
                 ))}
@@ -164,13 +164,13 @@ export default async function AreaPage({ params }: Props) {
               <ul className="mt-3 space-y-2">
                 {nearby.map((n) => (
                   <li key={n.slug}>
-                    <Link href={`/pune/${n.slug}`} className="text-forest hover:underline">
+                    <Link href={`/pune/${n.slug}`} className="text-navy hover:underline">
                       {n.name}
                     </Link>
                   </li>
                 ))}
               </ul>
-              <Link href="/pune" className="mt-4 inline-block text-sm font-semibold text-forest hover:underline">
+              <Link href="/pune" className="mt-4 inline-block text-sm font-semibold text-navy hover:underline">
                 All Pune areas
               </Link>
             </nav>

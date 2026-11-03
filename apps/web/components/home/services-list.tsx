@@ -19,7 +19,7 @@ export function ServicesList() {
               checks and negotiations.
             </p>
           </div>
-          <Link href="/services" className="font-semibold text-forest underline-offset-4 hover:underline">
+          <Link href="/services" className="font-semibold text-navy underline-offset-4 hover:underline">
             Compare all services
           </Link>
         </div>
@@ -43,12 +43,12 @@ export function ServicesList() {
                   </div>
                   <div className="mt-6 flex items-start justify-between gap-6">
                     <div>
-                      <h3 className="text-2xl group-hover:text-forest sm:text-[1.75rem]">{s.title}</h3>
+                      <h3 className="text-2xl group-hover:text-navy sm:text-[1.75rem]">{s.title}</h3>
                       <p className="mt-3 max-w-[52ch] text-slate">{s.summary}</p>
                     </div>
                     <span
                       aria-hidden="true"
-                      className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-line text-forest transition-colors group-hover:border-forest group-hover:bg-forest group-hover:text-white"
+                      className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-line text-navy transition-colors group-hover:border-navy group-hover:bg-navy group-hover:text-white"
                     >
                       <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M4 10h11M11 5l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />

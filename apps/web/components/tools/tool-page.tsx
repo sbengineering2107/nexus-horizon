@@ -48,7 +48,7 @@ export function ToolPage({ tool, children, explainer }: { tool: Tool; children: 
             <ul className="mt-3 space-y-2">
               {other.map((t) => (
                 <li key={t.slug}>
-                  <Link href={`/calculators/${t.slug}`} className="text-forest hover:underline">
+                  <Link href={`/calculators/${t.slug}`} className="text-navy hover:underline">
                     {t.title}
                   </Link>
                 </li>
@@ -57,12 +57,12 @@ export function ToolPage({ tool, children, explainer }: { tool: Tool; children: 
             <h2 className="mt-8 font-sans text-base font-semibold text-basalt">Services</h2>
             <ul className="mt-3 space-y-2">
               <li>
-                <Link href="/services/new-projects" className="text-forest hover:underline">
+                <Link href="/services/new-projects" className="text-navy hover:underline">
                   New Project Advisory
                 </Link>
               </li>
               <li>
-                <Link href="/services/resale" className="text-forest hover:underline">
+                <Link href="/services/resale" className="text-navy hover:underline">
                   Resale &amp; Secondary Market
                 </Link>
               </li>

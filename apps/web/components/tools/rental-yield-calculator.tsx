@@ -36,13 +36,13 @@ export function RentalYieldCalculator() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <p className="text-sm text-slate">Gross yield</p>
-                  <p data-testid="yield-gross" className="mt-1 text-4xl font-medium tabular-nums text-forest-deep">
+                  <p data-testid="yield-gross" className="mt-1 text-4xl font-medium tabular-nums text-navy-deep">
                     {r.grossYieldPct}%
                   </p>
                 </div>
                 <div>
                   <p className="text-sm text-slate">Net yield</p>
-                  <p data-testid="yield-net" className="mt-1 text-4xl font-medium tabular-nums text-forest-deep">
+                  <p data-testid="yield-net" className="mt-1 text-4xl font-medium tabular-nums text-navy-deep">
                     {r.netYieldPct}%
                   </p>
                 </div>

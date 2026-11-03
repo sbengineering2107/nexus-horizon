@@ -7,7 +7,7 @@ export type MetadataInput = {
   description: string;
   /** Path beginning with "/". */
   path: string;
-  /** Absolute or root-relative image URL; defaults to the site's generated OG image. */
+  /** Absolute or root-relative image URL; defaults to the brand kit share image (1200x630). */
   image?: string;
   noindex?: boolean;
 };
@@ -19,7 +19,7 @@ export function absoluteUrl(path: string): string {
 export function buildMetadata({ title, description, path, image, noindex }: MetadataInput): Metadata {
   const url = absoluteUrl(path);
   const index = isIndexable() && !noindex;
-  const images = [{ url: image ?? "/opengraph-image", width: 1200, height: 630, alt: title }];
+  const images = [{ url: image ?? "/og-image.png", width: 1200, height: 630, alt: title }];
   return {
     title,
     description,

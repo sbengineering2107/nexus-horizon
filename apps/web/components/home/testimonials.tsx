@@ -26,7 +26,7 @@ export function Testimonials() {
               <figure className="flex h-full flex-col justify-between rounded-lg border border-line bg-white p-7">
                 <blockquote className="text-lg leading-relaxed text-basalt">“{t.quote}”</blockquote>
                 <figcaption className="mt-6 flex items-center gap-3 border-t border-line pt-5">
-                  <span aria-hidden="true" className="flex h-10 w-10 items-center justify-center rounded-full bg-mist text-sm font-semibold text-forest-deep">
+                  <span aria-hidden="true" className="flex h-10 w-10 items-center justify-center rounded-full bg-mist text-sm font-semibold text-navy-deep">
                     {initials(t.name)}
                   </span>
                   <span className="text-sm text-slate">

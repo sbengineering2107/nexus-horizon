@@ -30,7 +30,7 @@ export function EmiCalculator() {
           <>
             <div>
               <p className="text-sm text-slate">Monthly EMI</p>
-              <p data-testid="emi-value" className="mt-1 font-display text-4xl tabular-nums text-forest-deep sm:text-5xl">
+              <p data-testid="emi-value" className="mt-1 font-display text-4xl tabular-nums text-navy-deep sm:text-5xl">
                 {formatInr(result.emi)}
               </p>
             </div>
@@ -50,8 +50,8 @@ export function EmiCalculator() {
             </dl>
             <div className="mt-5" aria-hidden="true">
               <div className="flex h-2 overflow-hidden rounded-full bg-mist-strong">
-                <div className="bg-forest" style={{ width: `${100 - interestShare}%` }} />
-                <div className="bg-marigold" style={{ width: `${interestShare}%` }} />
+                <div className="bg-navy" style={{ width: `${100 - interestShare}%` }} />
+                <div className="bg-gold" style={{ width: `${interestShare}%` }} />
               </div>
               <div className="mt-2 flex justify-between text-xs text-slate">
                 <span>Principal {100 - interestShare}%</span>
@@ -66,7 +66,7 @@ export function EmiCalculator() {
           href={whatsappHref(siteConfig.whatsapp, message)}
           target="_blank"
           rel="noopener"
-          className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md bg-forest px-5 font-semibold text-paper transition-colors hover:bg-forest-deep"
+          className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md bg-navy px-5 font-semibold text-paper transition-colors hover:bg-navy-deep"
         >
           Talk to an expert
         </a>

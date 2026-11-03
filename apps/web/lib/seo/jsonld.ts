@@ -24,7 +24,8 @@ export function organizationJsonLd(): WithContext<RealEstateAgent> {
     legalName: siteConfig.legalName,
     description: siteConfig.description,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/icon.svg`,
+    logo: `${siteConfig.url}/brand/logo-square-512.png`,
+    image: `${siteConfig.url}/og-image.png`,
     telephone: siteConfig.phone,
     ...(siteConfig.email ? { email: siteConfig.email } : {}),
     address: {

@@ -4,15 +4,18 @@ import { siteConfig } from "@/site.config";
 import { getServices } from "@/lib/content/services";
 import { getTools } from "@/lib/content/tools";
 import { callHref } from "@/lib/cta";
-import { Logo } from "./logo";
+import { LogoBadge } from "./logo";
 
 export function SiteFooter() {
   const { address } = siteConfig;
   return (
-    <footer className="mt-auto bg-forest-deep text-mist">
+    <footer className="mt-auto bg-navy-deep text-mist">
       <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
-          <Logo tone="light" />
+          <div className="flex items-center gap-3">
+            <LogoBadge />
+            <span className="text-lg font-semibold text-paper">{siteConfig.name}</span>
+          </div>
           <p className="mt-4 max-w-sm text-mist/85">{siteConfig.description}</p>
         </div>
         <div>
@@ -20,7 +23,7 @@ export function SiteFooter() {
           <ul className="mt-3 space-y-2">
             {getServices().map((s) => (
               <li key={s.slug}>
-                <Link href={`/services/${s.slug}`} className="hover:text-marigold">
+                <Link href={`/services/${s.slug}`} className="hover:text-gold">
                   {s.title}
                 </Link>
               </li>
@@ -32,7 +35,7 @@ export function SiteFooter() {
           <ul className="mt-3 space-y-2">
             {getTools().map((t) => (
               <li key={t.slug}>
-                <Link href={`/calculators/${t.slug}`} className="hover:text-marigold">
+                <Link href={`/calculators/${t.slug}`} className="hover:text-gold">
                   {t.title}
                 </Link>
               </li>
@@ -47,13 +50,13 @@ export function SiteFooter() {
             {[address.city, address.postalCode].filter(Boolean).join(" ")}, {address.region}
           </p>
           <p className="mt-3">
-            <a href={callHref} className="hover:text-marigold">
+            <a href={callHref} className="hover:text-gold">
               {siteConfig.phone}
             </a>
             {siteConfig.email && (
               <>
                 <br />
-                <a href={`mailto:${siteConfig.email}`} className="hover:text-marigold">
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-gold">
                   {siteConfig.email}
                 </a>
               </>
