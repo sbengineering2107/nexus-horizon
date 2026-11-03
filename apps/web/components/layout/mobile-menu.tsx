@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 type Item = { href: string; label: string };
 
 /** Menu button for screens below lg: opens a panel under the header; closes on navigation or Escape. */
-export function MobileMenu({ items }: { items: Item[] }) {
+export function MobileMenu({ items, secondary = [] }: { items: Item[]; secondary?: Item[] }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
@@ -60,6 +60,17 @@ export function MobileMenu({ items }: { items: Item[] }) {
             </li>
           ))}
         </ul>
+        {secondary.length > 0 && (
+          <ul className="mx-auto flex max-w-6xl flex-wrap gap-x-6 gap-y-2 border-t border-line px-4 py-4 sm:px-6">
+            {secondary.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="text-[0.95rem] text-slate hover:text-navy">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </nav>
     </div>
   );

@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     description:
       "Independent real estate advisors in Pune for new projects, ready-to-move homes, resale flats and commercial space. MahaRERA checks, site visits and booking support.",
     path: "/",
+    image: "/og-image.png",
   }),
   title: { absolute: `${siteConfig.name} | Real Estate Advisors in Pune` },
 };

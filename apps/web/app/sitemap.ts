@@ -31,6 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
+    ...["/about", "/how-we-work", "/faq"].map((path) => ({
+      url: absoluteUrl(path),
+      lastModified: latest,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
     { url: absoluteUrl("/blog"), lastModified: getPosts()[0]?.updated ?? latest, changeFrequency: "weekly", priority: 0.8 },
     ...CATEGORIES.filter((c) => getPostsByCategory(c.id).length > 0).map((c) => ({
       url: absoluteUrl(`/blog/category/${c.id}`),

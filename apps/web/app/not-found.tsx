@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button, Container } from "@nh/ui";
 import { getServices } from "@/lib/content/services";
 
-export const metadata: Metadata = { title: "Page not found", robots: { index: false, follow: true } };
+export const metadata: Metadata = { title: "Page not found", robots: null };
 
 export default function NotFound() {
   return (

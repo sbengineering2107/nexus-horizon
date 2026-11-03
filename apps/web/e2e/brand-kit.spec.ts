@@ -27,8 +27,8 @@ test("favicons, apple touch icon and manifest come from the kit", async ({ page,
   for (const icon of manifest.icons) expect((await request.get(icon.src)).status(), icon.src).toBe(200);
 });
 
-test("social share image is the kit's 1200x630 image", async ({ page, request }) => {
-  await page.goto("/services/resale");
+test("home page share image is the kit's 1200x630 image", async ({ page, request }) => {
+  await page.goto("/");
   const og = await page.locator("meta[property='og:image']").getAttribute("content");
   expect(og).toMatch(/\/og-image\.png$/);
   const res = await request.get(new URL(og!).pathname);

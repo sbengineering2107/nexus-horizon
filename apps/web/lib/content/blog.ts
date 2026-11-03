@@ -19,6 +19,8 @@ export type Post = {
   metadata: { readingTime: number; wordCount: number };
   /** Compiled MDX function body; render with <MdxContent code={body} />. */
   body: string;
+  /** Markdown source. */
+  raw: string;
 };
 
 export type Category = { id: CategoryId; name: string; intro: string };

@@ -9,6 +9,8 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { FloatingContact } from "@/components/contact/floating-contact";
 import { PageMessagesProvider } from "@/components/contact/page-messages";
 import { buildPageMessages } from "@/lib/page-messages";
+import { Analytics } from "@/components/analytics/analytics";
+import { verificationMeta } from "@/lib/analytics/config";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,6 +21,7 @@ export const metadata: Metadata = {
   robots: { index: isIndexable(), follow: isIndexable() },
   openGraph: { siteName: siteConfig.name, locale: "en_IN", type: "website" },
   formatDetection: { telephone: false },
+  verification: verificationMeta(process.env),
 };
 
 export const viewport: Viewport = { themeColor: "#1B2A41" };
@@ -37,6 +40,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <SiteFooter />
           <FloatingContact />
         </PageMessagesProvider>
+        <Analytics />
       </body>
     </html>
   );

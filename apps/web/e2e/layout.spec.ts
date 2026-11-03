@@ -15,3 +15,9 @@ test("page language is en-IN", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("html")).toHaveAttribute("lang", "en-IN");
 });
+
+test("non-production builds load no analytics scripts", async ({ page }) => {
+  await page.goto("/");
+  const srcs = await page.locator("script[src]").evaluateAll((s) => s.map((x) => x.getAttribute("src") ?? ""));
+  expect(srcs.some((s) => /googletagmanager|clarity\.ms|speed-insights/.test(s))).toBe(false);
+});

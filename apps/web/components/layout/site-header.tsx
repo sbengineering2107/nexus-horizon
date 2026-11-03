@@ -11,6 +11,12 @@ const NAV = [
   { href: "/blog", label: "Property Guides" },
 ];
 
+const SECONDARY = [
+  { href: "/about", label: "About us" },
+  { href: "/how-we-work", label: "How we work" },
+  { href: "/faq", label: "FAQs" },
+];
+
 export function SiteHeader() {
   return (
     <header data-fx="header-shadow" className="fx-header-shadow sticky top-0 z-40 border-b border-line bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/80">
@@ -35,7 +41,7 @@ export function SiteHeader() {
           <Button asChild variant="primary" className="hidden min-h-10 whitespace-nowrap px-4 sm:inline-flex">
             <ConsultLink>Book a consultation</ConsultLink>
           </Button>
-          <MobileMenu items={NAV} />
+          <MobileMenu items={NAV} secondary={SECONDARY} />
         </div>
       </Container>
     </header>

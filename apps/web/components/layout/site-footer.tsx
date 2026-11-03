@@ -6,6 +6,13 @@ import { getTools } from "@/lib/content/tools";
 import { callHref } from "@/lib/cta";
 import { LogoBadge } from "./logo";
 
+const COMPANY = [
+  { href: "/about", label: "About us" },
+  { href: "/how-we-work", label: "How we work" },
+  { href: "/faq", label: "FAQs" },
+  { href: "/blog", label: "Property guides" },
+];
+
 export function SiteFooter() {
   const { address } = siteConfig;
   return (
@@ -17,6 +24,17 @@ export function SiteFooter() {
             <span className="text-lg font-semibold text-paper">{siteConfig.name}</span>
           </div>
           <p className="mt-4 max-w-sm text-mist/85">{siteConfig.description}</p>
+          <nav aria-label="Company" className="mt-6">
+            <ul className="flex flex-wrap gap-x-5 gap-y-2">
+              {COMPANY.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="font-semibold text-paper hover:text-gold">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
         <div>
           <h2 className="font-sans text-base font-semibold text-paper">Our Services</h2>

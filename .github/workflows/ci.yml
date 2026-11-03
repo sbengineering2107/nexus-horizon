@@ -31,3 +31,24 @@ jobs:
       - run: pnpm --filter @nh/web e2e
         env:
           CI: "true"
+
+  lighthouse:
+    needs: checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Build as production (indexable) so SEO is scored as it will be live
+        run: pnpm build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://example.com
+          VERCEL_ENV: production
+          SITE_INDEXING: "on"
+      - name: Lighthouse (mobile) on core templates
+        working-directory: apps/web
+        run: npx --yes @lhci/cli@0.14.0 autorun

@@ -73,3 +73,14 @@ test("WhatsApp from a guide mentions the guide", async ({ page }) => {
   const href = await page.getByRole("link", { name: "Chat on WhatsApp" }).getAttribute("href");
   expect(decodeURIComponent(href!.split("?text=")[1]!)).toContain("guide");
 });
+
+test("each page type has its own generated share image", async ({ page, request }) => {
+  for (const path of ["/blog/baner-vs-wakad", "/services/resale", "/pune/baner", "/calculators/emi-calculator", "/about"]) {
+    await page.goto(path);
+    const og = await page.locator('meta[property="og:image"]').first().getAttribute("content");
+    expect(og, path).toContain(`${path}/opengraph-image`);
+    const res = await request.get(new URL(og!).pathname + new URL(og!).search);
+    expect(res.status(), path).toBe(200);
+    expect(res.headers()["content-type"]).toBe("image/png");
+  }
+});

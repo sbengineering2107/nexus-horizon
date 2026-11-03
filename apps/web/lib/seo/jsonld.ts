@@ -1,4 +1,5 @@
 import type {
+  AboutPage,
   BlogPosting,
   BreadcrumbList,
   FAQPage,
@@ -146,5 +147,17 @@ export function blogPostingJsonLd(p: {
     image: `${siteConfig.url}/og-image.png`,
     author: { "@type": "Organization", name: `${siteConfig.name} team`, url: siteConfig.url },
     publisher: { "@id": orgId() },
+  };
+}
+
+export function aboutPageJsonLd(p: { title: string; description: string; path: string }): WithContext<AboutPage> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: p.title,
+    description: p.description,
+    url: absoluteUrl(p.path),
+    inLanguage: "en-IN",
+    mainEntity: { "@id": orgId() },
   };
 }

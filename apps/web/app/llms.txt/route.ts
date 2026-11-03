@@ -55,7 +55,11 @@ export function GET(): Response {
     "",
     `- [Home](${absoluteUrl("/")})`,
     `- [All services](${absoluteUrl("/services")})`,
+    `- [About us](${absoluteUrl("/about")}): who we are, MahaRERA registration and office`,
+    `- [How we work](${absoluteUrl("/how-we-work")}): our four-step process and what we check`,
+    `- [FAQs](${absoluteUrl("/faq")})`,
     `- [All guides](${absoluteUrl("/blog")}) (RSS: ${absoluteUrl("/blog/rss.xml")})`,
+    `- [Full site content for AI assistants](${absoluteUrl("/llms-full.txt")})`,
     "",
   ];
   return new Response(lines.join("\n"), {

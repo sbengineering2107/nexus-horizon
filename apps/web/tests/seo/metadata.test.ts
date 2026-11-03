@@ -34,10 +34,12 @@ describe("buildMetadata", () => {
     expect(robotsOf(buildMetadata({ title: "X", description: "Y", path: "/", noindex: true })).index).toBe(false);
   });
 
-  test("always sets a share image for Open Graph and Twitter", () => {
-    const m = buildMetadata({ title: "Resale", description: "Y", path: "/services/resale" });
+  test("leaves the share image to the route's opengraph-image unless one is passed", () => {
+    expect(JSON.stringify(buildMetadata({ title: "R", description: "Y", path: "/x" }).openGraph)).not.toContain("images");
+    const m = buildMetadata({ title: "Resale", description: "Y", path: "/", image: "/og-image.png" });
     expect(JSON.stringify(m.openGraph)).toContain("/og-image.png");
-    expect(JSON.stringify(m.twitter)).toContain("/og-image.png");
+    expect(m.twitter).toMatchObject({ card: "summary_large_image" });
+    expect(JSON.stringify(m.twitter)).not.toContain("images");
   });
 
   test("sets Open Graph URL, title and en_IN locale", () => {

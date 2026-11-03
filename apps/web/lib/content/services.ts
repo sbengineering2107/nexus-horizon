@@ -13,6 +13,8 @@ export type Service = {
   updated: string;
   /** Compiled MDX function body; render with <MdxContent code={body} />. */
   body: string;
+  /** Markdown source. */
+  raw: string;
 };
 
 const all: Service[] = [...(services as Service[])].sort((a, b) => a.order - b.order);

@@ -16,6 +16,8 @@ const services = defineCollection({
     updated: s.isodate(),
     faqs: s.array(s.object({ q: s.string().min(5), a: s.string().min(20) })).min(3),
     body: s.mdx(),
+    /** Markdown source, for llms-full.txt. */
+    raw: s.raw(),
   }),
 });
 
@@ -72,6 +74,8 @@ const posts = defineCollection({
     sources: s.array(s.string().url()).min(2),
     metadata: s.metadata(),
     body: s.mdx(),
+    /** Markdown source, for llms-full.txt. */
+    raw: s.raw(),
   }),
 });
 
