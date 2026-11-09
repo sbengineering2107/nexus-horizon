@@ -1,8 +1,6 @@
 "use client";
 
-import { whatsappHref } from "@/lib/contact-links";
-import { usePublishSummary } from "./calc-summary";
-import { siteConfig } from "@/site.config";
+import { ExpertLink, usePublishSummary } from "./calc-summary";
 
 /** Right-hand results column shared by the calculators. */
 export function ResultPanel({ children, message }: { children: React.ReactNode; message: string }) {
@@ -10,14 +8,7 @@ export function ResultPanel({ children, message }: { children: React.ReactNode; 
   return (
     <div aria-live="polite" className="flex flex-col justify-between rounded-md bg-paper p-6">
       <div>{children}</div>
-      <a
-        href={whatsappHref(siteConfig.whatsapp, message)}
-        target="_blank"
-        rel="noopener"
-        className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md bg-navy px-5 font-semibold text-paper transition-colors hover:bg-navy-deep"
-      >
-        Talk to an expert
-      </a>
+      <ExpertLink message={message} />
     </div>
   );
 }

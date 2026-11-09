@@ -38,6 +38,7 @@ test.describe("floating contact buttons", () => {
   });
 
   test("the hero picker sends a plain-English message", async ({ page }) => {
+    test.skip(Boolean(process.env.DATABASE_URL), "with lead forms on, the picker opens the contact form instead");
     await page.goto("/");
     await page.getByRole("button", { name: "New Project Advisory" }).click();
     const t = text(await page.getByTestId("hero-enquiry").getAttribute("href"));

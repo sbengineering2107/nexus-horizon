@@ -15,7 +15,7 @@ import { FaqList } from "@/components/shared/faq-list";
 import { CtaBand } from "@/components/shared/cta-band";
 import { postsRelatedTo } from "@/lib/content/blog";
 import { RelatedGuides } from "@/components/blog/related-guides";
-import { LeadForm } from "@/components/leads/lead-form";
+import { CallBackBox } from "@/components/leads/call-back-box";
 import { leadsEnabled } from "@/lib/leads/store";
 
 type Props = { params: Promise<{ service: string }> };
@@ -93,19 +93,7 @@ export default async function ServicePage({ params }: Props) {
           </article>
           <aside className={leadsEnabled() ? "" : "lg:sticky lg:top-24 lg:self-start"}>
             {leadsEnabled() ? (
-              <div id="call-back" className="rounded-lg border border-line bg-paper p-6">
-                <h2 className="text-xl">Request a call back</h2>
-                <p className="mt-2 text-slate">Free, no obligation. An advisor will call you about {service.title}.</p>
-                <div className="mt-5">
-                  <LeadForm formType="quick" sourcePage={path} service={service.slug} compact />
-                </div>
-                <p className="mt-5 border-t border-line pt-4 text-sm text-slate">
-                  Prefer chat?{" "}
-                  <a href={whatsappChatHref(path)} target="_blank" rel="noopener" className="font-semibold text-navy underline-offset-4 hover:underline">
-                    Ask on WhatsApp
-                  </a>
-                </p>
-              </div>
+              <CallBackBox path={path} service={service.slug} intro={`Free, no obligation. An advisor will call you about ${service.title}.`} />
             ) : (
             <div className="rounded-lg border border-line bg-paper p-6">
               <h2 className="text-xl">Talk to an advisor</h2>

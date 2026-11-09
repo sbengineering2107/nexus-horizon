@@ -7,13 +7,14 @@ test("hero shows a described photo", async ({ page }) => {
   expect((await img.getAttribute("alt"))?.length ?? 0).toBeGreaterThan(10);
 });
 
-test("choosing a service in the hero card pre-fills WhatsApp with it", async ({ page }) => {
+test("choosing a service in the hero card carries it to the enquiry", async ({ page }) => {
   await page.goto("/");
   const cta = page.getByTestId("hero-enquiry");
   await expect(cta).toHaveText("Book a free consultation");
   await page.getByRole("button", { name: "Resale & Secondary Market" }).click();
   await expect(page.getByRole("button", { name: "Resale & Secondary Market" })).toHaveAttribute("aria-pressed", "true");
-  await expect(cta).toHaveAttribute("href", /resale%20flat/);
+  // Lead forms on: the contact form with the service chosen; off: WhatsApp with it in the message.
+  await expect(cta).toHaveAttribute("href", process.env.DATABASE_URL ? "/contact?service=resale" : /resale%20flat/);
 });
 
 test("service cards on home show photos and link to service pages", async ({ page }) => {

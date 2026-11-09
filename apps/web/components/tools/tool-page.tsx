@@ -32,10 +32,11 @@ export function ToolPage({ tool, children, explainer }: { tool: Tool; children: 
         />
         <h1 className="mt-8 max-w-3xl text-4xl sm:text-5xl">{tool.title}</h1>
         <p className="mt-4 max-w-[62ch] text-lg text-slate">{tool.short}</p>
-        <CalcSummaryProvider>
+        <CalcSummaryProvider formEnabled={leadsEnabled()}>
           <div className="mt-10">{children}</div>
           {leadsEnabled() && (
             <section
+              id="calc-lead-section"
               aria-labelledby="calc-lead"
               className="mt-8 grid gap-6 rounded-lg border border-line bg-paper p-6 sm:p-8 lg:grid-cols-[1fr_1.4fr] lg:gap-12"
             >

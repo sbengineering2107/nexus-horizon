@@ -16,6 +16,8 @@ import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { FaqList } from "@/components/shared/faq-list";
 import { CtaBand } from "@/components/shared/cta-band";
 import { PostCard, dateFmt } from "@/components/blog/post-card";
+import { CallBackBox } from "@/components/leads/call-back-box";
+import { leadsEnabled } from "@/lib/leads/store";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -134,7 +136,10 @@ export default async function PostPage({ params }: Props) {
             </div>
           </article>
 
-          <aside className="space-y-8 lg:sticky lg:top-24 lg:self-start">
+          <aside className={`space-y-8 ${leadsEnabled() ? "" : "lg:sticky lg:top-24 lg:self-start"}`}>
+            {leadsEnabled() ? (
+              <CallBackBox path={path} intro="Questions about this guide or your own purchase? Consultations are always free." />
+            ) : (
             <div className="rounded-lg border border-line bg-paper p-6">
               <h2 className="text-xl">Talk to an advisor</h2>
               <p className="mt-2 text-slate">Consultations are always free, on WhatsApp or a call.</p>
@@ -151,6 +156,7 @@ export default async function PostPage({ params }: Props) {
                 </Button>
               </div>
             </div>
+            )}
             {tools.length + services.length + areas.length > 0 && (
               <nav aria-label="Useful next steps">
                 <h2 className="font-sans text-base font-semibold text-basalt">Useful next</h2>

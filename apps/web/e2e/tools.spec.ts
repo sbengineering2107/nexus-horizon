@@ -16,7 +16,13 @@ test("EMI calculator updates the monthly EMI as inputs change", async ({ page })
   await expect(page.getByTestId("emi-value")).toHaveText("₹43,391");
   await expect(page.getByTestId("emi-interest")).toHaveText("₹54,13,879");
   const cta = page.getByRole("link", { name: "Talk to an expert" });
-  await expect(cta).toHaveAttribute("href", /wa\.me\/91\d{10}\?text=.*43%2C391/);
+  if (process.env.DATABASE_URL) {
+    // The form under the calculator carries the same result text.
+    await expect(cta).toHaveAttribute("href", "#calc-lead");
+    await expect(page.getByTestId("lead-form-calculator").locator('input[name="message"]')).toHaveValue(/43,391/);
+  } else {
+    await expect(cta).toHaveAttribute("href", /wa\.me\/91\d{10}\?text=.*43%2C391/);
+  }
 });
 
 test("stamp duty calculator uses the higher value and the buyer rate", async ({ page }) => {

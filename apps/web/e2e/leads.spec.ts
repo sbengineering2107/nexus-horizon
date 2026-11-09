@@ -124,3 +124,44 @@ test("header Book a consultation opens the contact page", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("header").getByRole("link", { name: "Book a consultation" })).toHaveAttribute("href", "/contact");
 });
+
+test.describe("consultation buttons lead to the forms", () => {
+  test("blog article sidebar has a call-back form instead of a WhatsApp button", async ({ page }) => {
+    await page.goto("/blog/total-cost-of-buying-a-flat-in-pune");
+    const box = page.locator("#call-back");
+    await expect(box.getByTestId("lead-form-quick")).toBeVisible();
+    await expect(box.locator('input[name="sourcePage"]')).toHaveValue("/blog/total-cost-of-buying-a-flat-in-pune");
+    await expect(box.getByLabel("What are you looking for?")).toBeVisible();
+  });
+
+  test("home picker opens the contact form with the chosen service selected", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("button", { name: "Resale & Secondary Market" }).click();
+    const cta = page.getByTestId("hero-enquiry");
+    await expect(cta).toHaveAttribute("href", "/contact?service=resale");
+    await cta.click();
+    await expect(page).toHaveURL(/\/contact\?service=resale$/);
+    await expect(page.getByTestId("lead-form-consultation").getByLabel("What are you looking for?")).toHaveValue("resale");
+  });
+
+  test("calculator 'Talk to an expert' takes you to the form under the result", async ({ page }) => {
+    for (const path of ["/calculators/emi-calculator", "/calculators/stamp-duty-calculator", "/calculators/rental-yield-calculator"]) {
+      await page.goto(path);
+      const cta = page.getByRole("link", { name: "Talk to an expert" });
+      await expect(cta, path).toHaveAttribute("href", "#calc-lead");
+      await cta.click();
+      await expect(page.getByTestId("lead-form-calculator").getByLabel("Your name"), path).toBeFocused();
+    }
+  });
+
+  test("no page's consultation button opens WhatsApp", async ({ page }) => {
+    for (const path of ["/", "/services/resale", "/blog", "/blog/baner-vs-wakad", "/about", "/how-we-work", "/faq", "/calculators/emi-calculator", "/pune"]) {
+      await page.goto(path);
+      const hrefs = await page
+        .locator("main a")
+        .filter({ hasText: /consultation|talk to an expert|get advice/i })
+        .evaluateAll((as) => as.map((a) => a.getAttribute("href") ?? ""));
+      for (const h of hrefs) expect(h, `${path}: ${h}`).not.toMatch(/wa\.me/);
+    }
+  });
+});

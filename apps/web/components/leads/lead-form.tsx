@@ -95,6 +95,14 @@ export function LeadForm({ formType, sourcePage, service, services, areas, messa
     ? ["name", "phone", "email", "service", "area", "budgetRange", "timeline", "message", "consent"]
     : ["name", "phone", "consent"];
 
+  // Arriving from the home page picker (/contact?service=resale) pre-selects that service.
+  useEffect(() => {
+    if (service || !services) return;
+    const wanted = new URLSearchParams(window.location.search).get("service");
+    const select = formRef.current?.querySelector<HTMLSelectElement>('select[name="service"]');
+    if (wanted && select && services.some((s) => s.value === wanted)) select.value = wanted;
+  }, [service, services]);
+
   // Server-side rejections use the same inline messages (adjusting state during render,
   // React's recommended pattern for deriving from a changed prop/state).
   const [seenState, setSeenState] = useState(state);

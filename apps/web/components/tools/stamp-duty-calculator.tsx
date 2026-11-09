@@ -3,9 +3,7 @@
 import { useState } from "react";
 import { calculateStampDuty, type Buyer } from "@/lib/calculators/stamp-duty";
 import { formatInr, formatInrShort } from "@/lib/format";
-import { whatsappHref } from "@/lib/contact-links";
-import { usePublishSummary } from "./calc-summary";
-import { siteConfig } from "@/site.config";
+import { ExpertLink, usePublishSummary } from "./calc-summary";
 import { NumberField } from "./number-field";
 
 const BUYERS: { value: Buyer; label: string }[] = [
@@ -95,14 +93,7 @@ export function StampDutyCalculator() {
         ) : (
           <p className="text-slate">Enter the agreement value to see the estimate.</p>
         )}
-        <a
-          href={whatsappHref(siteConfig.whatsapp, message)}
-          target="_blank"
-          rel="noopener"
-          className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md bg-navy px-5 font-semibold text-paper transition-colors hover:bg-navy-deep"
-        >
-          Talk to an expert
-        </a>
+        <ExpertLink message={message} />
       </div>
     </div>
   );

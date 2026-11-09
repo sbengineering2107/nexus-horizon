@@ -5,6 +5,7 @@ import { heroImage } from "@/lib/images";
 import { getServices } from "@/lib/content/services";
 import { siteConfig } from "@/site.config";
 import { EnquiryCard } from "./enquiry-card";
+import { leadsEnabled } from "@/lib/leads/store";
 
 export function Hero() {
   const services = getServices().map((s) => ({ slug: s.slug, title: s.title }));
@@ -42,7 +43,7 @@ export function Hero() {
           </p>
         </div>
         <div className="hero-rise mt-9 max-w-2xl rounded-lg bg-white p-5 shadow-2xl shadow-black/25 [animation-delay:120ms] sm:p-6">
-          <EnquiryCard services={services} />
+          <EnquiryCard services={services} formsEnabled={leadsEnabled()} />
           <p className="mt-4 text-sm text-slate">
             Planning a budget?{" "}
             <Link href="/calculators/loan-eligibility-calculator" className="font-semibold text-navy underline-offset-4 hover:underline">
