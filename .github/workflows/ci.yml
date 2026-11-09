@@ -12,6 +12,9 @@ concurrency:
 jobs:
   checks:
     runs-on: ubuntu-latest
+    env:
+      # Embedded Postgres so the lead forms are built and exercised end to end.
+      DATABASE_URL: pglite:/tmp/nh-e2e-db
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4

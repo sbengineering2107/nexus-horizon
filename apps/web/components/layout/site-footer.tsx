@@ -24,6 +24,7 @@ const COMPANY = [
   { href: "/about", label: "About us" },
   { href: "/how-we-work", label: "How we work" },
   { href: "/faq", label: "FAQs" },
+  { href: "/contact", label: "Contact us" },
 ];
 
 const MAPS = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(

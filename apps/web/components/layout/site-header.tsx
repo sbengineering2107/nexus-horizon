@@ -3,6 +3,7 @@ import { Button, Container } from "@nh/ui";
 import { ConsultLink } from "@/components/contact/consult-link";
 import { Logo } from "./logo";
 import { MobileMenu } from "./mobile-menu";
+import { leadsEnabled } from "@/lib/leads/store";
 
 const NAV = [
   { href: "/services", label: "Our Services" },
@@ -15,6 +16,7 @@ const SECONDARY = [
   { href: "/about", label: "About us" },
   { href: "/how-we-work", label: "How we work" },
   { href: "/faq", label: "FAQs" },
+  { href: "/contact", label: "Contact us" },
 ];
 
 export function SiteHeader() {
@@ -39,7 +41,7 @@ export function SiteHeader() {
         </nav>
         <div className="flex items-center gap-3">
           <Button asChild variant="primary" className="hidden min-h-10 whitespace-nowrap px-4 sm:inline-flex">
-            <ConsultLink>Book a consultation</ConsultLink>
+            {leadsEnabled() ? <Link href="/contact">Book a consultation</Link> : <ConsultLink>Book a consultation</ConsultLink>}
           </Button>
           <MobileMenu items={NAV} secondary={SECONDARY} />
         </div>

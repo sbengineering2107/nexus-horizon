@@ -4,6 +4,7 @@ import { useState } from "react";
 import { calculateStampDuty, type Buyer } from "@/lib/calculators/stamp-duty";
 import { formatInr, formatInrShort } from "@/lib/format";
 import { whatsappHref } from "@/lib/contact-links";
+import { usePublishSummary } from "./calc-summary";
 import { siteConfig } from "@/site.config";
 import { NumberField } from "./number-field";
 
@@ -21,6 +22,7 @@ export function StampDutyCalculator() {
   const message = result
     ? `Hi Nexus Horizon, I used your stamp duty calculator for a ${formatInr(result.dutiableValue)} property in Pune: estimated stamp duty and registration ${formatInr(result.total)}. I'd like help with the purchase.`
     : "Hi Nexus Horizon, I have a question about stamp duty in Pune.";
+  usePublishSummary(message);
 
   return (
     <div className="grid gap-8 rounded-lg border border-mist-strong bg-white p-6 sm:p-8 lg:grid-cols-[1.1fr_1fr] lg:gap-12">

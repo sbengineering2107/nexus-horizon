@@ -1,5 +1,6 @@
 import type {
   AboutPage,
+  ContactPage,
   BlogPosting,
   BreadcrumbList,
   FAQPage,
@@ -154,6 +155,18 @@ export function aboutPageJsonLd(p: { title: string; description: string; path: s
   return {
     "@context": "https://schema.org",
     "@type": "AboutPage",
+    name: p.title,
+    description: p.description,
+    url: absoluteUrl(p.path),
+    inLanguage: "en-IN",
+    mainEntity: { "@id": orgId() },
+  };
+}
+
+export function contactPageJsonLd(p: { title: string; description: string; path: string }): WithContext<ContactPage> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
     name: p.title,
     description: p.description,
     url: absoluteUrl(p.path),

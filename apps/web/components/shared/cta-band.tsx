@@ -1,5 +1,7 @@
 import { Button, Container } from "@nh/ui";
+import Link from "next/link";
 import { callHref, consultationHref } from "@/lib/cta";
+import { leadsEnabled } from "@/lib/leads/store";
 
 export function CtaBand({ pagePath, heading, text }: { pagePath: string; heading: string; text: string }) {
   return (
@@ -12,9 +14,13 @@ export function CtaBand({ pagePath, heading, text }: { pagePath: string; heading
           </div>
           <div className="flex flex-wrap gap-3">
             <Button asChild variant="primary">
-              <a href={consultationHref(pagePath)} target="_blank" rel="noopener">
-                Book a free consultation
-              </a>
+              {leadsEnabled() ? (
+                <Link href="/contact">Book a free consultation</Link>
+              ) : (
+                <a href={consultationHref(pagePath)} target="_blank" rel="noopener">
+                  Book a free consultation
+                </a>
+              )}
             </Button>
             <Button asChild variant="secondary">
               <a href={callHref}>Call us</a>

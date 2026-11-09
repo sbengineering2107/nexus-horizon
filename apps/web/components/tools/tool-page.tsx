@@ -9,6 +9,9 @@ import { getTools, LOAN_JOURNEY } from "@/lib/content/tools";
 import { LoanGuide } from "./loan-guide";
 import { postsRelatedTo } from "@/lib/content/blog";
 import { RelatedGuides } from "@/components/blog/related-guides";
+import { CalcSummaryProvider } from "./calc-summary";
+import { CalculatorLeadForm } from "@/components/leads/calculator-lead-form";
+import { leadsEnabled } from "@/lib/leads/store";
 
 const dateFmt = new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "long", year: "numeric" });
 
@@ -29,7 +32,26 @@ export function ToolPage({ tool, children, explainer }: { tool: Tool; children: 
         />
         <h1 className="mt-8 max-w-3xl text-4xl sm:text-5xl">{tool.title}</h1>
         <p className="mt-4 max-w-[62ch] text-lg text-slate">{tool.short}</p>
-        <div className="mt-10">{children}</div>
+        <CalcSummaryProvider>
+          <div className="mt-10">{children}</div>
+          {leadsEnabled() && (
+            <section
+              aria-labelledby="calc-lead"
+              className="mt-8 grid gap-6 rounded-lg border border-line bg-paper p-6 sm:p-8 lg:grid-cols-[1fr_1.4fr] lg:gap-12"
+            >
+              <div>
+                <h2 id="calc-lead" className="text-2xl">
+                  Want an advisor to check these numbers?
+                </h2>
+                <p className="mt-2 text-slate">
+                  Leave your number and we&apos;ll call you back. Your current result is sent along, so you won&apos;t have
+                  to explain it again.
+                </p>
+              </div>
+              <CalculatorLeadForm sourcePage={path} />
+            </section>
+          )}
+        </CalcSummaryProvider>
         {LOAN_JOURNEY.includes(tool.slug) && (
           <div className="mt-10">
             <LoanGuide current={tool.slug} />

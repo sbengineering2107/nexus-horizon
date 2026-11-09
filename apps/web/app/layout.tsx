@@ -10,6 +10,8 @@ import { FloatingContact } from "@/components/contact/floating-contact";
 import { PageMessagesProvider } from "@/components/contact/page-messages";
 import { buildPageMessages } from "@/lib/page-messages";
 import { Analytics } from "@/components/analytics/analytics";
+import { AttributionCapture } from "@/components/leads/attribution-capture";
+import { leadsEnabled } from "@/lib/leads/store";
 import { verificationMeta } from "@/lib/analytics/config";
 import "./globals.css";
 
@@ -41,6 +43,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <FloatingContact />
         </PageMessagesProvider>
         <Analytics />
+        {leadsEnabled() && <AttributionCapture />}
       </body>
     </html>
   );

@@ -31,7 +31,9 @@ test.describe("floating contact buttons", () => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto("/services/resale");
     const book = page.locator("header").getByRole("link", { name: "Book a consultation" });
-    expect(text(await book.getAttribute("href"))).toContain("resale flat");
+    const href = await book.getAttribute("href");
+    // With lead forms on, it opens the contact page; otherwise WhatsApp with the page's message.
+    if (href !== "/contact") expect(text(href)).toContain("resale flat");
     await expect(page.getByRole("link", { name: "Chat on WhatsApp" })).toBeHidden();
   });
 

@@ -15,6 +15,8 @@ import { FaqList } from "@/components/shared/faq-list";
 import { CtaBand } from "@/components/shared/cta-band";
 import { postsRelatedTo } from "@/lib/content/blog";
 import { RelatedGuides } from "@/components/blog/related-guides";
+import { LeadForm } from "@/components/leads/lead-form";
+import { leadsEnabled } from "@/lib/leads/store";
 
 type Props = { params: Promise<{ service: string }> };
 
@@ -89,7 +91,22 @@ export default async function ServicePage({ params }: Props) {
               <FaqList faqs={service.faqs} />
             </div>
           </article>
-          <aside className="lg:sticky lg:top-24 lg:self-start">
+          <aside className={leadsEnabled() ? "" : "lg:sticky lg:top-24 lg:self-start"}>
+            {leadsEnabled() ? (
+              <div id="call-back" className="rounded-lg border border-line bg-paper p-6">
+                <h2 className="text-xl">Request a call back</h2>
+                <p className="mt-2 text-slate">Free, no obligation. An advisor will call you about {service.title}.</p>
+                <div className="mt-5">
+                  <LeadForm formType="quick" sourcePage={path} service={service.slug} compact />
+                </div>
+                <p className="mt-5 border-t border-line pt-4 text-sm text-slate">
+                  Prefer chat?{" "}
+                  <a href={whatsappChatHref(path)} target="_blank" rel="noopener" className="font-semibold text-navy underline-offset-4 hover:underline">
+                    Ask on WhatsApp
+                  </a>
+                </p>
+              </div>
+            ) : (
             <div className="rounded-lg border border-line bg-paper p-6">
               <h2 className="text-xl">Talk to an advisor</h2>
               <p className="mt-2 text-slate">Consultations are always free, on WhatsApp or a call.</p>
@@ -106,6 +123,7 @@ export default async function ServicePage({ params }: Props) {
                 </Button>
               </div>
             </div>
+            )}
             <RelatedGuides posts={postsRelatedTo({ service: service.slug })} className="mt-8" />
             <nav aria-label="Other services" className="mt-8">
               <h2 className="font-sans text-base font-semibold text-basalt">Other services</h2>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { calculateEmi } from "@/lib/calculators/emi";
 import { formatInr, formatInrShort } from "@/lib/format";
 import { whatsappHref } from "@/lib/contact-links";
+import { usePublishSummary } from "./calc-summary";
 import { siteConfig } from "@/site.config";
 import { NumberField } from "./number-field";
 
@@ -17,6 +18,7 @@ export function EmiCalculator() {
   const message = result
     ? `Hi Nexus Horizon, I used your EMI calculator: loan ${formatInr(principal)} at ${rate}% for ${years} years, EMI ${formatInr(result.emi)}. I'd like advice on what I can afford.`
     : "Hi Nexus Horizon, I'd like advice on my home loan budget.";
+  usePublishSummary(message);
 
   return (
     <div className="grid gap-8 rounded-lg border border-mist-strong bg-white p-6 sm:p-8 lg:grid-cols-[1.1fr_1fr] lg:gap-12">

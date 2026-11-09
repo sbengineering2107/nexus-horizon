@@ -14,4 +14,5 @@ export const STATIC_OG: Record<string, { kicker: string; title: string }> = {
   "/about": { kicker: "About us", title: "MahaRERA-registered real estate advisors in Pune" },
   "/how-we-work": { kicker: "How we work", title: "From your brief to registration, in four steps" },
   "/faq": { kicker: "FAQs", title: "Buying property in Pune: your questions answered" },
+  "/contact": { kicker: "Contact us", title: "Book a free property consultation in Pune" },
 };

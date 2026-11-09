@@ -1,8 +1,12 @@
+"use client";
+
 import { whatsappHref } from "@/lib/contact-links";
+import { usePublishSummary } from "./calc-summary";
 import { siteConfig } from "@/site.config";
 
 /** Right-hand results column shared by the calculators. */
 export function ResultPanel({ children, message }: { children: React.ReactNode; message: string }) {
+  usePublishSummary(message);
   return (
     <div aria-live="polite" className="flex flex-col justify-between rounded-md bg-paper p-6">
       <div>{children}</div>
