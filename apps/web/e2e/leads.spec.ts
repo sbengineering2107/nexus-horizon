@@ -44,30 +44,54 @@ test("calculator form carries the current result as its message", async ({ page 
   await expect(page).toHaveURL(/\/thank-you\?form=calculator$/);
 });
 
-test("server-side validation shows field errors when the browser checks are bypassed", async ({ page }) => {
+test("fields are checked as you go: error on leaving the field, cleared live once fixed", async ({ page }) => {
   await page.goto("/services/resale");
   const form = page.getByTestId("lead-form-quick");
-  await form.evaluate((f: HTMLFormElement) => (f.noValidate = true));
-  await form.getByLabel("Your name").fill("A");
-  await form.getByLabel("Mobile number").fill("12345");
-  await form.getByRole("button", { name: "Request a call back" }).click();
-  await expect(form.locator('[data-field-error="name"]')).toBeVisible();
-  await expect(form.locator('[data-field-error="phone"]')).toContainText("10-digit");
-  await expect(form.locator('[data-field-error="consent"]')).toBeVisible();
+  const phone = form.getByLabel("Mobile number");
+  await phone.fill("12345");
+  await form.getByLabel("Your name").focus(); // leave the phone field
+  await expect(form.locator('[data-field-error="phone"]')).toContainText("10-digit Indian mobile number");
+  await expect(phone).toHaveAttribute("aria-invalid", "true");
+  // Fixing it clears the error while typing, without submitting, and confirms the number.
+  await phone.fill("98765 43210");
+  await expect(form.locator('[data-field-error="phone"]')).toHaveCount(0);
+  await expect(form.locator('[data-field-hint="phone"]')).toHaveText("We'll call +91 98765 43210");
   await expect(page).toHaveURL(/\/services\/resale$/);
-  // What the visitor typed is kept, and focus moves to the first problem field.
-  await expect(form.getByLabel("Your name")).toHaveValue("A");
-  await expect(form.getByLabel("Your name")).toBeFocused();
-  await expect(form.getByRole("alert")).toContainText("3 highlighted fields");
 });
 
-test("the browser checks the mobile number before sending", async ({ page }) => {
+test("one style of messages: no browser pop-ups, all errors inline on submit", async ({ page }) => {
   await page.goto("/services/resale");
-  const phone = page.getByTestId("lead-form-quick").getByLabel("Mobile number");
-  await phone.fill("12-ab");
-  expect(await phone.evaluate((el: HTMLInputElement) => el.validity.patternMismatch || el.validity.tooShort)).toBe(true);
-  await phone.fill("+91 98765-43210");
-  expect(await phone.evaluate((el: HTMLInputElement) => el.validity.valid)).toBe(true);
+  const form = page.getByTestId("lead-form-quick");
+  await expect(form).toHaveAttribute("novalidate", "");
+  await form.getByLabel("Your name").fill("A");
+  await form.getByRole("button", { name: "Request a call back" }).click();
+  await expect(form.locator('[data-field-error="name"]')).toHaveText("Please enter your name");
+  await expect(form.locator('[data-field-error="phone"]')).toBeVisible();
+  await expect(form.locator('[data-field-error="consent"]')).toHaveText("Please agree so we can contact you");
+  await expect(form.getByRole("alert")).toContainText("3 highlighted fields");
+  // Nothing was sent, what was typed is kept, and focus is on the first problem.
+  await expect(page).toHaveURL(/\/services\/resale$/);
+  await expect(form.getByLabel("Your name")).toHaveValue("A");
+  await expect(form.getByLabel("Your name")).toBeFocused();
+  // Ticking consent clears its error immediately.
+  await form.getByRole("checkbox").check();
+  await expect(form.locator('[data-field-error="consent"]')).toHaveCount(0);
+});
+
+test.describe("without JavaScript", () => {
+  test.use({ javaScriptEnabled: false });
+
+  // Static pages can't echo server messages back without JavaScript, but the server still
+  // refuses invalid data (field-by-field messages are covered by the unit tests).
+  test("the server still refuses invalid data", async ({ page }) => {
+    await page.goto("/services/resale");
+    const form = page.getByTestId("lead-form-quick");
+    await form.getByLabel("Your name").fill("A");
+    await form.getByLabel("Mobile number").fill("12345");
+    await form.getByRole("button", { name: "Request a call back" }).click();
+    await page.waitForLoadState("load");
+    await expect(page).not.toHaveURL(/thank-you/);
+  });
 });
 
 test("a filled honeypot is accepted silently", async ({ page }) => {

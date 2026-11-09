@@ -1,9 +1,10 @@
 "use client";
 
-import { startTransition, useActionState, useEffect, useId, useRef } from "react";
+import { startTransition, useActionState, useEffect, useId, useRef, useState } from "react";
 import { submitLead, type LeadState } from "@/app/actions/lead";
 import { CONSENT_TEXT } from "@/lib/leads/submit-text";
 import { BUDGETS, TIMELINES } from "@/lib/leads/options";
+import { formatPhone, validateField, validateFields, type FieldName } from "@/lib/leads/validate";
 import { callHref } from "@/lib/contact-links-client";
 import { usePageWhatsApp } from "@/components/contact/page-messages";
 import type { FormType } from "@/lib/leads/submit-text";
@@ -24,65 +25,136 @@ type Props = {
   compact?: boolean;
 };
 
+type Errors = Partial<Record<FieldName, string>>;
+
 const inputClass =
-  "mt-1.5 w-full rounded-md border border-mist-strong bg-white px-3.5 py-2.5 text-base text-basalt placeholder:text-slate/70 focus:border-navy focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-navy aria-[invalid=true]:border-red-700";
+  "mt-1.5 w-full rounded-md border border-mist-strong bg-white px-3.5 py-2.5 text-base text-basalt placeholder:text-slate/70 transition-colors focus:border-navy focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-navy aria-[invalid=true]:border-red-700 aria-[invalid=true]:bg-red-50/40 data-[valid=true]:border-emerald-700";
 
 function Field({
   label,
   name,
   error,
+  hint,
   optional,
   children,
 }: {
   label: string;
-  name: string;
+  name: FieldName;
   error?: string;
+  /** Shown under a valid field, e.g. the number we will call. */
+  hint?: string | null;
   optional?: boolean;
   children: (props: { id: string; "aria-invalid": boolean; "aria-describedby"?: string }) => React.ReactNode;
 }) {
   const id = useId();
-  const errId = `${id}-err`;
+  const msgId = `${id}-msg`;
+  const describe = error || hint ? msgId : undefined;
   return (
     <div>
       <label htmlFor={id} className="text-[0.95rem] font-semibold text-basalt">
         {label}
         {optional && <span className="font-normal text-slate"> (optional)</span>}
       </label>
-      {children({ id, "aria-invalid": Boolean(error), "aria-describedby": error ? errId : undefined })}
-      {error && (
-        <p id={errId} data-field-error={name} className="mt-1 text-sm text-red-700">
+      {children({ id, "aria-invalid": Boolean(error), "aria-describedby": describe })}
+      {error ? (
+        <p id={msgId} data-field-error={name} className="mt-1 flex items-start gap-1.5 text-sm text-red-700">
+          <svg viewBox="0 0 16 16" aria-hidden="true" className="mt-0.5 h-3.5 w-3.5 shrink-0" fill="currentColor">
+            <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm-.75 3.5h1.5v5h-1.5zm0 6.25h1.5v1.5h-1.5z" />
+          </svg>
           {error}
         </p>
-      )}
+      ) : hint ? (
+        <p id={msgId} data-field-hint={name} className="mt-1 text-sm text-emerald-800">
+          {hint}
+        </p>
+      ) : null}
     </div>
   );
 }
 
 /**
- * One form for every lead entry point. Uses native validation first, then the server
- * re-validates; on a database problem it offers WhatsApp and call instead.
+ * One form for every lead entry point. Each field is checked as the visitor leaves it and
+ * re-checked live while they fix it, using the server's own rules and wording; the server
+ * validates again on submit. On a database problem it offers WhatsApp and call instead.
  */
 export function LeadForm({ formType, sourcePage, service, services, areas, message, submitLabel, compact }: Props) {
   const [state, action, pending] = useActionState<LeadState, FormData>(submitLead, { status: "idle" });
   const { chat } = usePageWhatsApp();
-  const errors = state.status === "invalid" ? state.errors : {};
   const full = formType === "consultation";
   const formRef = useRef<HTMLFormElement>(null);
+  const [errors, setErrors] = useState<Errors>({});
+  const [touched, setTouched] = useState<Partial<Record<FieldName, boolean>>>({});
+  const [phoneHint, setPhoneHint] = useState<string | null>(null);
+  /** Fields that have a value which passed the check (shown with a green border). */
+  const [ok, setOk] = useState<Partial<Record<FieldName, boolean>>>({});
+  /** Counts rejected submit attempts; focus moves to the first error only when it changes. */
+  const [attempts, setAttempts] = useState(0);
 
-  // After a server-side rejection, move focus to the first field with an error.
+  // Fields this form actually shows, in screen order (for "focus the first problem").
+  const checked: FieldName[] = full
+    ? ["name", "phone", "email", "service", "area", "budgetRange", "timeline", "message", "consent"]
+    : ["name", "phone", "consent"];
+
+  // Server-side rejections use the same inline messages (adjusting state during render,
+  // React's recommended pattern for deriving from a changed prop/state).
+  const [seenState, setSeenState] = useState(state);
+  if (state !== seenState) {
+    setSeenState(state);
+    if (state.status === "invalid") {
+      setErrors(state.errors as Errors);
+      setAttempts((n) => n + 1);
+    }
+  }
+
   useEffect(() => {
-    if (state.status !== "invalid") return;
-    formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus();
-  }, [state]);
+    if (attempts) formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus();
+  }, [attempts]);
 
-  // Submit through a transition instead of the form action, so React keeps what the visitor
-  // typed when the server sends errors back. Without JavaScript the form posts normally.
+  const valueOf = (el: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement) =>
+    el instanceof HTMLInputElement && el.type === "checkbox" ? (el.checked ? "on" : undefined) : el.value;
+
+  const check = (name: FieldName, value: unknown) => {
+    const msg = validateField(name, value);
+    setErrors((e) => ({ ...e, [name]: msg }));
+    setOk((o) => ({ ...o, [name]: !msg && typeof value === "string" && value.trim() !== "" }));
+    if (name === "phone") setPhoneHint(msg ? null : formatPhone(String(value ?? "")));
+    return msg;
+  };
+
+  // Validate when a field loses focus...
+  const onBlur = (e: React.FocusEvent<HTMLFormElement>) => {
+    const el = e.target as unknown as HTMLInputElement;
+    const name = el.name as FieldName;
+    if (!checked.includes(name) || el.type === "checkbox") return;
+    // Leaving an untouched field empty isn't an error yet; empty required fields are flagged on submit.
+    if (!touched[name] && el.value === "") return;
+    setTouched((t) => ({ ...t, [name]: true }));
+    check(name, valueOf(el));
+  };
+
+  // ...and live while typing once it has been visited or flagged, so errors clear as soon as fixed.
+  const onChange = (e: React.ChangeEvent<HTMLFormElement>) => {
+    const el = e.target as unknown as HTMLInputElement;
+    const name = el.name as FieldName;
+    if (!checked.includes(name)) return;
+    if (el.type === "checkbox" || el.tagName === "SELECT" || touched[name] || errors[name]) check(name, valueOf(el));
+    else if (name === "phone") setPhoneHint(formatPhone(el.value));
+  };
+
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
+    const values = Object.fromEntries(checked.map((n) => [n, data.get(n) ?? undefined]));
+    const found = validateFields(values, checked);
+    setTouched(Object.fromEntries(checked.map((n) => [n, true])));
+    setErrors(found);
+    setOk(Object.fromEntries(checked.map((n) => [n, !found[n] && typeof values[n] === "string" && String(values[n]).trim() !== ""])));
+    if (Object.keys(found).length) {
+      setAttempts((n) => n + 1);
+      return;
+    }
     startTransition(() => action(data));
   };
-  const errorCount = Object.keys(errors).length;
 
   if (state.status === "failed") {
     return (
@@ -101,16 +173,24 @@ export function LeadForm({ formType, sourcePage, service, services, areas, messa
     );
   }
 
+  const errorCount = Object.values(errors).filter(Boolean).length;
+  const valid = (n: FieldName) => Boolean(ok[n] && !errors[n]);
+
   return (
     <form
       ref={formRef}
       action={action}
       onSubmit={onSubmit}
+      onBlur={onBlur}
+      onChange={onChange}
+      noValidate
       className={compact ? "space-y-4" : "space-y-5"}
       data-testid={`lead-form-${formType}`}
     >
-      <p role="alert" className={errorCount ? "rounded-md bg-red-50 px-3 py-2 text-sm text-red-800" : "sr-only"}>
-        {errorCount ? `Please check ${errorCount === 1 ? "the highlighted field" : `the ${errorCount} highlighted fields`}.` : ""}
+      <p role="alert" className={attempts && errorCount ? "rounded-md bg-red-50 px-3 py-2 text-sm text-red-800" : "sr-only"}>
+        {attempts && errorCount
+          ? `Please check ${errorCount === 1 ? "the highlighted field" : `the ${errorCount} highlighted fields`}.`
+          : ""}
       </p>
       <input type="hidden" name="formType" value={formType} />
       <input type="hidden" name="sourcePage" value={sourcePage} />
@@ -126,9 +206,11 @@ export function LeadForm({ formType, sourcePage, service, services, areas, messa
 
       <div className={full ? "grid gap-5 sm:grid-cols-2" : "space-y-4"}>
         <Field label="Your name" name="name" error={errors.name}>
-          {(p) => <input {...p} name="name" type="text" required minLength={2} maxLength={80} autoComplete="name" className={inputClass} />}
+          {(p) => (
+            <input {...p} name="name" type="text" required maxLength={80} autoComplete="name" data-valid={valid("name")} className={inputClass} />
+          )}
         </Field>
-        <Field label="Mobile number" name="phone" error={errors.phone}>
+        <Field label="Mobile number" name="phone" error={errors.phone} hint={!errors.phone && phoneHint ? `We'll call ${phoneHint}` : null}>
           {(p) => (
             <input
               {...p}
@@ -138,14 +220,15 @@ export function LeadForm({ formType, sourcePage, service, services, areas, messa
               inputMode="tel"
               autoComplete="tel-national"
               placeholder="10-digit mobile"
-              pattern="[\d\s+\-\(\)]{10,16}"
+              maxLength={16}
+              data-valid={valid("phone")}
               className={inputClass}
             />
           )}
         </Field>
         {full && (
           <Field label="Email" name="email" error={errors.email} optional>
-            {(p) => <input {...p} name="email" type="email" maxLength={120} autoComplete="email" className={inputClass} />}
+            {(p) => <input {...p} name="email" type="email" maxLength={120} autoComplete="email" data-valid={valid("email")} className={inputClass} />}
           </Field>
         )}
         {!service && services && (
@@ -220,12 +303,15 @@ export function LeadForm({ formType, sourcePage, service, services, areas, messa
             required
             aria-invalid={Boolean(errors.consent)}
             aria-describedby={errors.consent ? `${formType}-consent-err` : undefined}
-            className="mt-0.5 h-5 w-5 shrink-0 accent-navy"
+            className="mt-0.5 h-5 w-5 shrink-0 accent-navy aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-offset-2 aria-[invalid=true]:outline-red-700"
           />
           <span>{CONSENT_TEXT}</span>
         </label>
         {errors.consent && (
-          <p id={`${formType}-consent-err`} data-field-error="consent" className="mt-1 text-sm text-red-700">
+          <p id={`${formType}-consent-err`} data-field-error="consent" className="mt-1 flex items-start gap-1.5 text-sm text-red-700">
+            <svg viewBox="0 0 16 16" aria-hidden="true" className="mt-0.5 h-3.5 w-3.5 shrink-0" fill="currentColor">
+              <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm-.75 3.5h1.5v5h-1.5zm0 6.25h1.5v1.5h-1.5z" />
+            </svg>
             {errors.consent}
           </p>
         )}

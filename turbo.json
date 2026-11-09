@@ -3,6 +3,7 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
+      "passThroughEnv": ["DATABASE_*"],
       "env": ["NEXT_PUBLIC_SITE_URL", "VERCEL_ENV", "VERCEL_PROJECT_PRODUCTION_URL", "SITE_INDEXING", "DATABASE_URL", "NEXT_PUBLIC_GA_ID", "NEXT_PUBLIC_CLARITY_ID", "GOOGLE_SITE_VERIFICATION", "BING_SITE_VERIFICATION"],
       "outputs": [".next/**", "!.next/cache/**", ".velite/**", "public/static/**"]
     },

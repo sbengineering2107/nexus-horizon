@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { FORM_TYPES, SERVICE_SLUGS } from "@nh/db/schema";
+import { FORM_TYPES, SERVICE_SLUGS } from "@nh/db/constants";
 import { BUDGETS, TIMELINES } from "./options";
 
 /** Indian mobile number → +91XXXXXXXXXX, or null if it isn't one. */

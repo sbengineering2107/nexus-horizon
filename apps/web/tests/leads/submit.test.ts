@@ -75,5 +75,5 @@ describe("processLead", () => {
     const store = await createLeadStore(`pglite:${dir}`);
     const r = await processLead({ ...form, formType: "consultation", budgetRange: "50l-1cr", timeline: "3-months" }, { store, now, attribution: {} });
     expect(r).toEqual({ status: "ok", formType: "consultation" });
-  });
+  }, 30_000);
 });

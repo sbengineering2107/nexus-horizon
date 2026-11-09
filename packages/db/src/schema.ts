@@ -1,8 +1,8 @@
 import { boolean, pgEnum, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
 
-export const SERVICE_SLUGS = ["new-projects", "ready-to-move", "resale", "commercial"] as const;
-export const FORM_TYPES = ["quick", "consultation", "calculator"] as const;
-export const LEAD_STATUSES = ["new", "contacted", "closed"] as const;
+import { FORM_TYPES, LEAD_STATUSES, SERVICE_SLUGS } from "./constants";
+
+export { FORM_TYPES, LEAD_STATUSES, SERVICE_SLUGS };
 
 export const serviceEnum = pgEnum("service", SERVICE_SLUGS);
 export const formTypeEnum = pgEnum("form_type", FORM_TYPES);
