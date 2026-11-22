@@ -34,6 +34,23 @@ describe("processLead", () => {
     );
   });
 
+  test("hands the stored lead to onStored (for the email alert)", async () => {
+    const onStored = vi.fn();
+    await processLead(form, { store: { insertLead: async () => {} }, now, attribution: { utm_source: "google" }, onStored });
+    expect(onStored).toHaveBeenCalledWith(expect.objectContaining({ name: "Asha Kulkarni", phone: "+919876543210", utmSource: "google" }));
+  });
+
+  test("does not call onStored for spam, invalid input or a failed save", async () => {
+    const onStored = vi.fn();
+    const log = vi.spyOn(console, "error").mockImplementation(() => {});
+    const store = { insertLead: async () => {} };
+    await processLead({ ...form, nh_hp_extra: "x" }, { store, now, attribution: {}, onStored });
+    await processLead({ ...form, phone: "1" }, { store, now, attribution: {}, onStored });
+    await processLead(form, { store: { insertLead: async () => { throw new Error("db"); } }, now, attribution: {}, onStored });
+    expect(onStored).not.toHaveBeenCalled();
+    log.mockRestore();
+  });
+
   test("filled honeypot looks like success but stores nothing", async () => {
     const insertLead = vi.fn();
     const r = await processLead({ ...form, nh_hp_extra: "http://spam" }, { store: { insertLead }, now, attribution: {} });

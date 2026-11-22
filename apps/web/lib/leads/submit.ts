@@ -2,6 +2,7 @@ import type { LeadStore } from "@nh/db";
 import { leadSchema } from "./schema";
 import { CONSENT_VERSION, type FormType } from "./submit-text";
 import type { Attribution } from "./attribution";
+import type { AlertLead } from "./alert";
 
 export { CONSENT_TEXT, CONSENT_VERSION, type FormType } from "./submit-text";
 
@@ -10,13 +11,19 @@ export type LeadResult =
   | { status: "invalid"; errors: Partial<Record<string, string>> }
   | { status: "failed" };
 
-type Deps = { store: LeadStore | null; now: Date; attribution: Attribution };
+type Deps = {
+  store: LeadStore | null;
+  now: Date;
+  attribution: Attribution;
+  /** Called once the lead is safely saved (used for the team's email alert). */
+  onStored?: (lead: AlertLead) => void;
+};
 
 /**
  * Validate and store one enquiry. A filled honeypot ("nh_hp_extra") pretends to succeed.
  * Database problems return "failed" so the form can offer WhatsApp and call instead.
  */
-export async function processLead(fields: Record<string, unknown>, { store, now, attribution }: Deps): Promise<LeadResult> {
+export async function processLead(fields: Record<string, unknown>, { store, now, attribution, onStored }: Deps): Promise<LeadResult> {
   const formType = (["quick", "consultation", "calculator"] as const).find((t) => t === fields.formType) ?? "quick";
   if (typeof fields.nh_hp_extra === "string" && fields.nh_hp_extra.trim() !== "") return { status: "ok", formType };
 
@@ -64,5 +71,13 @@ export async function processLead(fields: Record<string, unknown>, { store, now,
     console.error(`[leads] insert failed (${(err as Error).name ?? "Error"}, code ${code})`);
     return { status: "failed" };
   }
+  onStored?.({
+    ...d,
+    utmSource: attribution.utm_source,
+    utmMedium: attribution.utm_medium,
+    utmCampaign: attribution.utm_campaign,
+    referrer: attribution.referrer,
+    landingPage: attribution.landing_page,
+  });
   return { status: "ok", formType: d.formType };
 }
