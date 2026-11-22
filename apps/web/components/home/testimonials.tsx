@@ -10,8 +10,15 @@ function initials(name: string) {
     .toUpperCase();
 }
 
+type Testimonial = { quote: string; name: string; detail: string };
+
+/**
+ * Client quotes from content/home/testimonials.json. Hidden while the list is empty: add real,
+ * permissioned quotes to the file and the section appears again.
+ */
 export function Testimonials() {
-  const items = testimonials.slice(0, 3);
+  const items = (testimonials as Testimonial[]).slice(0, 3);
+  if (items.length === 0) return null;
   return (
     <section aria-labelledby="testimonials-heading" className="border-t border-line bg-paper py-20 sm:py-28">
       <Container>

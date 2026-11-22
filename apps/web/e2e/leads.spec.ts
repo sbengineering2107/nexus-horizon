@@ -165,3 +165,8 @@ test.describe("consultation buttons lead to the forms", () => {
     }
   });
 });
+
+test("the consent text links to the privacy policy", async ({ page }) => {
+  await page.goto("/contact");
+  await expect(page.getByTestId("lead-form-consultation").getByRole("link", { name: "privacy policy" })).toHaveAttribute("href", "/privacy-policy");
+});

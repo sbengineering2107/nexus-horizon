@@ -7,6 +7,7 @@ import { CATEGORIES } from "@/lib/content/blog";
 import { callHref } from "@/lib/cta";
 import { WhatsAppLink } from "@/components/contact/whatsapp-link";
 import { LogoBadge } from "./logo";
+import { SocialLinks } from "./social-links";
 
 /** Footer labels for calculators: the page titles are long for a link list. */
 const TOOL_LABEL: Record<ToolSlug, string> = {
@@ -27,9 +28,7 @@ const COMPANY = [
   { href: "/contact", label: "Contact us" },
 ];
 
-const MAPS = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-  `${siteConfig.address.street}, ${siteConfig.address.city}`,
-)}`;
+const MAPS = siteConfig.mapsUrl;
 
 const linkClass =
   "inline-flex min-h-8 items-center rounded-sm py-1 text-[0.95rem] text-mist/90 underline-offset-4 transition-colors hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold";
@@ -128,6 +127,7 @@ export function SiteFooter() {
                 </li>
               )}
             </ul>
+            <SocialLinks />
           </div>
 
           <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 lg:pt-2">
@@ -190,8 +190,13 @@ export function SiteFooter() {
             MahaRERA registration no. {siteConfig.maharera}
           </p>
           <p>Images are illustrative and do not show specific projects.</p>
-          <p>
-            © {new Date().getFullYear()} {siteConfig.legalName}
+          <p className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <Link href="/privacy-policy" className="underline-offset-4 hover:text-white hover:underline">
+              Privacy policy
+            </Link>
+            <span>
+              © {new Date().getFullYear()} {siteConfig.legalName}
+            </span>
           </p>
         </div>
       </div>

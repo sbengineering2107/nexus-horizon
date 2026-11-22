@@ -17,6 +17,7 @@ test("call and WhatsApp buttons use the real number", async ({ page }) => {
 });
 
 test("structured data carries the real phone and Bavdhan locality, no placeholder email or socials", async ({ page }) => {
+  // Real social profiles are checked in launch-ready.spec.ts; only the old placeholders must be gone.
   await page.goto("/");
   const ld = (await page.locator('script[type="application/ld+json"]').allTextContents()).join(" ");
   expect(ld).toContain("+91 87884 32367");

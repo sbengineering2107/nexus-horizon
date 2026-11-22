@@ -27,7 +27,13 @@ export const siteConfig = {
   geo: null as { lat: number; lng: number } | null,
   maharera: "A031262605250", // MahaRERA agent registration no.
   /** Official social profile URLs; published as sameAs once added. */
-  socials: [] as string[],
+  socials: [
+    "https://www.instagram.com/nexushorizonadvisors/",
+    "https://www.linkedin.com/in/nexus-horizon-advisor-28545a44a",
+    "https://maps.app.goo.gl/26VY3NgoPBhVfAjTA",
+  ] as string[],
+  /** Google Maps pin for the office (Google Business Profile). */
+  mapsUrl: "https://maps.app.goo.gl/26VY3NgoPBhVfAjTA",
   hours: "Mo-Sa 10:00-19:00",
 } as const satisfies {
   name: string;
@@ -48,6 +54,7 @@ export const siteConfig = {
   geo: { lat: number; lng: number } | null;
   maharera: string;
   socials: readonly string[];
+  mapsUrl: string;
   hours: string;
 };
 

@@ -21,9 +21,7 @@ export const metadata: Metadata = buildMetadata({
   path: "/contact",
 });
 
-const MAPS = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-  `${siteConfig.address.street}, ${siteConfig.address.city}`,
-)}`;
+const MAPS = siteConfig.mapsUrl;
 
 export default function ContactPage() {
   const enabled = leadsEnabled();

@@ -313,7 +313,13 @@ export function LeadForm({ formType, sourcePage, service, services, areas, messa
             aria-describedby={errors.consent ? `${formType}-consent-err` : undefined}
             className="mt-0.5 h-5 w-5 shrink-0 accent-navy aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-offset-2 aria-[invalid=true]:outline-red-700"
           />
-          <span>{CONSENT_TEXT}</span>
+          <span>
+            {CONSENT_TEXT.split("privacy policy")[0]}
+            <a href="/privacy-policy" target="_blank" rel="noopener" className="font-semibold text-navy underline underline-offset-2">
+              privacy policy
+            </a>
+            {CONSENT_TEXT.split("privacy policy")[1]}
+          </span>
         </label>
         {errors.consent && (
           <p id={`${formType}-consent-err`} data-field-error="consent" className="mt-1 flex items-start gap-1.5 text-sm text-red-700">
