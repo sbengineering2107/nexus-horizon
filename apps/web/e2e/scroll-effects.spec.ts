@@ -1,7 +1,11 @@
 import { expect, test } from "@playwright/test";
 
+/** The header's shadow lives on its ::after layer (opacity-only animation). */
 const anim = (sel: string) => (page: import("@playwright/test").Page) =>
-  page.locator(sel).first().evaluate((el) => getComputedStyle(el).animationName);
+  page
+    .locator(sel)
+    .first()
+    .evaluate((el, pseudo) => getComputedStyle(el, pseudo).animationName, sel.includes("header") ? "::after" : null);
 
 const EFFECTS: [string, string][] = [
   ['[data-fx="hero-parallax"]', "hero-parallax"],

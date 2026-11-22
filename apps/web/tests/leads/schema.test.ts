@@ -1,6 +1,13 @@
 import { describe, expect, test } from "vitest";
 import { leadSchema, normalisePhone } from "@/lib/leads/schema";
 
+/** First message per field, from a failed parse. */
+const fieldErrors = (issues: { path: PropertyKey[]; message: string }[]) => {
+  const out: Record<string, string[]> = {};
+  for (const i of issues) (out[String(i.path[0])] ??= []).push(i.message);
+  return out;
+};
+
 const base = {
   name: "Asha Kulkarni",
   phone: "98765 43210",
@@ -34,7 +41,7 @@ describe("leadSchema", () => {
   test("requires consent", () => {
     const r = leadSchema.safeParse({ ...base, consent: undefined });
     expect(r.success).toBe(false);
-    expect(r.error?.flatten().fieldErrors.consent?.[0]).toMatch(/agree/i);
+    expect(fieldErrors(r.error!.issues).consent?.[0]).toMatch(/agree/i);
   });
 
   test("rejects short names, bad phones, bad emails, long messages and unknown options", () => {
@@ -48,7 +55,7 @@ describe("leadSchema", () => {
       service: "villas",
     });
     expect(bad.success).toBe(false);
-    expect(Object.keys(bad.error!.flatten().fieldErrors).sort()).toEqual(
+    expect(Object.keys(fieldErrors(bad.error!.issues)).sort()).toEqual(
       ["budgetRange", "email", "message", "name", "phone", "service"].sort(),
     );
   });

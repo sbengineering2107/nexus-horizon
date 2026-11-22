@@ -180,7 +180,12 @@
       animation-range: cover;
     }
     /* Header separates from content once you leave the top. */
-    .fx-header-shadow {
+    .fx-header-shadow::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      box-shadow: 0 6px 24px -12px rgb(17 28 45 / 0.18);
       animation: header-shadow linear both;
       animation-timeline: scroll(root);
       animation-range: 0 120px;
@@ -203,12 +208,13 @@
     transform: scale(1.12) translateY(5%);
   }
 }
+/* Opacity only, so the browser animates it off the main thread. */
 @keyframes header-shadow {
   from {
-    box-shadow: 0 0 0 0 rgb(17 28 45 / 0);
+    opacity: 0;
   }
   to {
-    box-shadow: 0 6px 24px -12px rgb(17 28 45 / 0.18);
+    opacity: 1;
   }
 }
 

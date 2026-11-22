@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // Put the (small, Tailwind) stylesheet in the HTML so it doesn't block the first paint.
+  experimental: { inlineCss: true },
   transpilePackages: ["@nh/ui", "@nh/db"],
   // PGlite (local/test database) ships WebAssembly and data files; load it from node_modules.
   serverExternalPackages: ["@electric-sql/pglite"],

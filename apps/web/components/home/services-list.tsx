@@ -34,8 +34,8 @@ export function ServicesList() {
                       src={img.src}
                       alt={img.alt}
                       fill
-                      sizes="(min-width: 768px) 50vw, 100vw"
-                      quality={75}
+                      sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, calc(100vw - 2.5rem)"
+                      quality={60}
                       placeholder="blur"
                       className="fx-card-parallax object-cover"
                       data-fx="card-parallax"

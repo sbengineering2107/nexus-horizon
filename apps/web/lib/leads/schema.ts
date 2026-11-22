@@ -1,6 +1,11 @@
-import { z } from "zod";
+import * as z from "zod/mini";
 import { FORM_TYPES, SERVICE_SLUGS } from "@nh/db/constants";
 import { BUDGETS, TIMELINES } from "./options";
+
+/*
+ * Lead form rules, shared by the browser (live checks) and the server (final check).
+ * Uses zod/mini: same rules and messages as full zod at a fraction of the bundle size.
+ */
 
 /** Indian mobile number → +91XXXXXXXXXX, or null if it isn't one. */
 export function normalisePhone(raw: string): string | null {
@@ -11,34 +16,39 @@ export function normalisePhone(raw: string): string | null {
   return /^[6-9]\d{9}$/.test(digits) ? `+91${digits}` : null;
 }
 
-/** Empty or whitespace-only strings count as "not given". */
-const optional = <T extends z.ZodType>(schema: T) =>
-  z.preprocess((v) => (typeof v === "string" && v.trim() === "" ? undefined : typeof v === "string" ? v.trim() : v), schema.optional());
+/** Empty or whitespace-only strings count as "not given"; other strings are trimmed. */
+const optional = <T extends z.ZodMiniType>(schema: T) =>
+  z.pipe(
+    z.transform((v: unknown) => (typeof v === "string" ? (v.trim() === "" ? undefined : v.trim()) : v)),
+    z.optional(schema),
+  );
 
-const values = <T extends readonly { value: string }[]>(list: T) => list.map((o) => o.value) as [T[number]["value"], ...T[number]["value"][]];
+const values = <T extends readonly { value: string }[]>(list: T) =>
+  list.map((o) => o.value) as [T[number]["value"], ...T[number]["value"][]];
 
-/** Shared by every lead form; the server action re-validates with it. */
+const NAME = "Please enter your name";
+const PHONE = "Please enter a 10-digit Indian mobile number";
+
 export const leadSchema = z.object({
   name: z
-    .string({ error: "Please enter your name" })
-    .trim()
-    .min(2, "Please enter your name")
-    .max(80, "Please keep the name under 80 characters"),
-  phone: z
-    .string({ error: "Please enter a 10-digit mobile number" })
-    .transform((v, ctx) => {
+    .string({ error: NAME })
+    .check(z.trim(), z.minLength(2, NAME), z.maxLength(80, "Please keep the name under 80 characters")),
+  phone: z.pipe(
+    z.string({ error: PHONE }),
+    z.transform((v, ctx) => {
       const p = normalisePhone(v);
-      if (!p) ctx.addIssue({ code: "custom", message: "Please enter a 10-digit Indian mobile number" });
+      if (!p) ctx.issues.push({ code: "custom", message: PHONE, input: v });
       return p ?? "";
     }),
-  email: optional(z.email("Please check the email address").max(120)),
+  ),
+  email: optional(z.email("Please check the email address").check(z.maxLength(120))),
   service: optional(z.enum(SERVICE_SLUGS, "Please choose a service from the list")),
-  area: optional(z.string().max(60)),
+  area: optional(z.string().check(z.maxLength(60))),
   budgetRange: optional(z.enum(values(BUDGETS), "Please choose a budget from the list")),
   timeline: optional(z.enum(values(TIMELINES), "Please choose a timeline from the list")),
-  message: optional(z.string().max(2000, "Please keep the message under 2,000 characters")),
+  message: optional(z.string().check(z.maxLength(2000, "Please keep the message under 2,000 characters"))),
   formType: z.enum(FORM_TYPES),
-  sourcePage: z.string().regex(/^\/[\w\-/]*$/).max(200),
+  sourcePage: z.string().check(z.regex(/^\/[\w\-/]*$/), z.maxLength(200)),
   consent: z.literal(["on", "true", true], { error: "Please agree so we can contact you" }),
 });
 
