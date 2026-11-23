@@ -48,3 +48,15 @@ test("footer links to the trust pages", async ({ page }) => {
     await expect(footer.getByRole("link", { name, exact: true })).toHaveAttribute("href", href);
   }
 });
+
+test("terms page states the disclaimers, MahaRERA number and governing law, and is linked from the footer", async ({ page }) => {
+  const res = await page.goto("/terms");
+  expect(res?.status()).toBe(200);
+  await expect(page.locator("h1")).toHaveText("Terms of use and disclaimer");
+  const main = page.locator("main");
+  await expect(main).toContainText("A031262605250");
+  await expect(main).toContainText("not an offer");
+  await expect(main).toContainText("Pune");
+  await expect(main).not.toContainText(/\d(\.\d)?\s?%\s*(brokerage|commission|fee)/i);
+  await expect(page.locator('footer a[href="/terms"]')).toBeAttached();
+});

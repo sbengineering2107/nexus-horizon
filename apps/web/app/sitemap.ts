@@ -4,12 +4,14 @@ import { getTools } from "@/lib/content/tools";
 import { getAreas } from "@/lib/content/areas";
 import { CATEGORIES, getPosts, getPostsByCategory } from "@/lib/content/blog";
 import { absoluteUrl } from "@/lib/seo/metadata";
+import { PAGE_UPDATED } from "@/lib/seo/page-dates";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const services = getServices();
   const latest = services.map((s) => s.updated).sort().at(-1);
+  const home = [latest, PAGE_UPDATED["/"]].filter(Boolean).sort().at(-1);
   return [
-    { url: absoluteUrl("/"), lastModified: latest, changeFrequency: "weekly", priority: 1 },
+    { url: absoluteUrl("/"), lastModified: home, changeFrequency: "weekly", priority: 1 },
     { url: absoluteUrl("/services"), lastModified: latest, changeFrequency: "monthly", priority: 0.8 },
     ...services.map((s) => ({
       url: absoluteUrl(`/services/${s.slug}`),
@@ -31,9 +33,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
-    ...["/about", "/how-we-work", "/faq", "/contact", "/privacy-policy"].map((path) => ({
+    ...["/about", "/how-we-work", "/faq", "/contact", "/privacy-policy", "/terms"].map((path) => ({
       url: absoluteUrl(path),
-      lastModified: latest,
+      lastModified: PAGE_UPDATED[path] ?? latest,
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),

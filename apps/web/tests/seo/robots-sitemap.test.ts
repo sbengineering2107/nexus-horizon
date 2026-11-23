@@ -41,6 +41,19 @@ describe("robots", () => {
 });
 
 describe("sitemap", () => {
+  const lastmod = (path: string) =>
+    sitemap().find((e) => e.url === `${siteConfig.url}${path === "/" ? "" : path}`)?.lastModified;
+
+  test("trust and legal pages carry the date they last changed, not a shared one", () => {
+    expect(lastmod("/privacy-policy")).toBe("2026-11-22");
+    expect(lastmod("/terms")).toBe("2026-11-24");
+    expect(lastmod("/about")).toBe("2026-11-03");
+  });
+
+  test("home page date is no older than its latest change", () => {
+    expect(String(lastmod("/")) >= "2026-11-22").toBe(true);
+  });
+
   test("lists home, services hub and all service pages as absolute URLs", () => {
     const urls = sitemap().map((e) => e.url);
     for (const path of ["", "/services", "/services/new-projects", "/services/ready-to-move", "/services/resale", "/services/commercial", "/calculators", "/calculators/emi-calculator", "/calculators/stamp-duty-calculator", "/calculators/home-loan-calculator", "/calculators/loan-eligibility-calculator", "/calculators/loan-transfer-calculator", "/calculators/rental-yield-calculator", "/pune", "/pune/baner", "/pune/kharadi", "/pune/pimple-saudagar"]) {

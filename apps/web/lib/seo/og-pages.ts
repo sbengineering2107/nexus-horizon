@@ -16,4 +16,5 @@ export const STATIC_OG: Record<string, { kicker: string; title: string }> = {
   "/faq": { kicker: "FAQs", title: "Buying property in Pune: your questions answered" },
   "/contact": { kicker: "Contact us", title: "Book a free property consultation in Pune" },
   "/privacy-policy": { kicker: "Privacy policy", title: "How we collect, use and protect your details" },
+  "/terms": { kicker: "Terms of use", title: "How to read and use the information on this site" },
 };

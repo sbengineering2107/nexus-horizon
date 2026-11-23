@@ -194,6 +194,9 @@ export function SiteFooter() {
             <Link href="/privacy-policy" className="underline-offset-4 hover:text-white hover:underline">
               Privacy policy
             </Link>
+            <Link href="/terms" className="underline-offset-4 hover:text-white hover:underline">
+              Terms and disclaimer
+            </Link>
             <span>
               © {new Date().getFullYear()} {siteConfig.legalName}
             </span>
