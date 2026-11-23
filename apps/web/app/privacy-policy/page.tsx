@@ -12,7 +12,7 @@ const EFFECTIVE = "22 November 2026";
 export const metadata: Metadata = buildMetadata({
   title: "Privacy Policy",
   description:
-    "How Nexus Horizon Advisors collects, uses and protects the details you share through our website, and your rights under India's Digital Personal Data Protection Act.",
+    "How Nexus Horizon Advisors collects, uses and protects the details you share on this website, and your rights under India's DPDP Act, 2023.",
   path: "/privacy-policy",
 });
 

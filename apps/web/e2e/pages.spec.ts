@@ -42,3 +42,15 @@ test("unknown service returns the 404 page with a link home", async ({ page }) =
   await expect(page.locator("h1")).toContainText("Page not found");
   await expect(page.locator('main a[href="/"]')).toBeAttached();
 });
+
+test("service page headings name Pune", async ({ page }) => {
+  for (const s of ["new-projects", "ready-to-move", "resale", "commercial"]) {
+    await page.goto(`/services/${s}`);
+    await expect(page.locator("h1"), s).toHaveText(/ in Pune$/);
+  }
+});
+
+test("home opening line names the service and city", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator("main section").first()).toContainText("Independent real estate advisors in Pune");
+});

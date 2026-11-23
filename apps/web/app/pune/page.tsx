@@ -9,7 +9,7 @@ import { CtaBand } from "@/components/shared/cta-band";
 export const metadata: Metadata = buildMetadata({
   title: "Pune Area Guides: West and East Pune Micro-Markets",
   description:
-    "Area guides for 28 Pune micro-markets across West and East Pune: Baner, Hinjewadi, Wakad, Kharadi, Viman Nagar, Hadapsar and more, with connectivity and who each suits.",
+    "Guides to 28 Pune areas, from Baner, Hinjewadi and Wakad to Kharadi, Viman Nagar and Hadapsar: connectivity, local body and who each area suits.",
   path: "/pune",
 });
 

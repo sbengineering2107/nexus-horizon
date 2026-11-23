@@ -29,11 +29,16 @@ for (const file of files) {
   const html = readFileSync(file, "utf8");
   const page = relative(root, file);
   const isNotFound = page === "_not-found.html";
+  const decode = (s) => s.replace(/&amp;/g, "&").replace(/&#x27;|&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">");
   const fail = (msg) => problems.push(`${page}: ${msg}`);
 
-  if (!/<title>[^<]+<\/title>/.test(html)) fail("missing <title>");
+  const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
+  if (!title) fail("missing <title>");
+  else if (decode(title).length > 60) fail(`title over 60 characters (${decode(title).length}): ${decode(title)}`);
   if (!isNotFound) {
-    if (!/<meta name="description" content="[^"]+"/.test(html)) fail("missing meta description");
+    const description = html.match(/<meta name="description" content="([^"]+)"/)?.[1];
+    if (!description) fail("missing meta description");
+    else if (decode(description).length > 160) fail(`meta description over 160 characters (${decode(description).length})`);
     if (!/<link rel="canonical" href="https?:\/\/[^"]+"/.test(html)) fail("missing absolute canonical");
     if (!/<meta property="og:image" content="[^"]+"/.test(html)) fail("missing og:image");
   }

@@ -44,4 +44,20 @@ describe("Pune areas", () => {
     expect(faqs.length).toBeGreaterThanOrEqual(3);
     for (const f of faqs) expect(f.q).toContain("Kharadi");
   });
+
+  test("FAQ answers add to the page instead of repeating it", () => {
+    for (const a of getAreas()) {
+      const answers = areaFaqs(a).map((f) => f.a);
+      expect(answers, a.slug).not.toContain(a.summary);
+      expect(answers, a.slug).not.toContain(a.connectivity.join(" "));
+      expect(answers.join(" "), a.slug).toContain("MahaRERA");
+    }
+  });
+
+  test("stamp duty answer gives the municipal rate only where municipal rates apply", () => {
+    const pmc = areaFaqs(getArea("baner")!).find((f) => /stamp duty/i.test(f.q))!;
+    expect(pmc.a).toMatch(/7%/);
+    const other = getAreas().find((a) => a.civicBody === "PMRDA");
+    if (other) expect(areaFaqs(other).find((f) => /stamp duty/i.test(f.q))!.a).not.toMatch(/7%/);
+  });
 });

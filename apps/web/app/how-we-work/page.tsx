@@ -11,7 +11,7 @@ import { StepIllustration } from "@/components/home/step-illustrations";
 export const metadata: Metadata = buildMetadata({
   title: "How We Work: From Brief to Registration",
   description:
-    "How Nexus Horizon Advisors works with Pune property buyers: brief, verified shortlist, accompanied site visits, then negotiation, documents and registration.",
+    "How we work with Pune property buyers: your brief, a verified shortlist, site visits together, then negotiation, documents and registration.",
   path: "/how-we-work",
 });
 

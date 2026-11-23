@@ -38,8 +38,8 @@ export function Hero() {
             Property in Pune, chosen with clear eyes.
           </h1>
           <p className="mt-5 max-w-xl text-lg text-white/85 sm:text-xl">
-            We shortlist, verify and visit with you, so you buy on facts, not brochures. Consultations are always
-            free.
+            Independent real estate advisors in Pune. We shortlist, verify and visit with you. Consultations are
+            always free.
           </p>
         </div>
         <div className="hero-rise mt-9 max-w-2xl rounded-lg bg-white p-5 shadow-2xl shadow-black/25 [animation-delay:120ms] sm:p-6">

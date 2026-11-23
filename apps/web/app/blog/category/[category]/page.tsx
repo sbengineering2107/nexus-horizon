@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!c) return {};
   return buildMetadata({
     title: `${c.name}: Pune Property Guides`,
-    description: c.intro,
+    description: c.description,
     path: `/blog/category/${c.id}`,
   });
 }
@@ -42,6 +42,7 @@ export default async function CategoryPage({ params }: Props) {
         />
         <h1 className="mt-8 max-w-3xl text-4xl sm:text-5xl">{c.name}</h1>
         <p className="mt-4 max-w-2xl text-lg text-slate">{c.intro}</p>
+        <p className="mt-4 max-w-2xl text-basalt">{c.more}</p>
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {getPostsByCategory(c.id).map((p) => (
             <PostCard key={p.slug} post={p} headingLevel={2} />

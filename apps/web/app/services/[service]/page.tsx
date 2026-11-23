@@ -59,7 +59,7 @@ export default async function ServicePage({ params }: Props) {
           />
           <div className="mt-8 grid items-end gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
             <div className="hero-rise">
-              <h1 className="text-4xl sm:text-[3.2rem]">{service.title}</h1>
+              <h1 className="text-4xl sm:text-[3.2rem]">{service.title} in Pune</h1>
               <p className="mt-5 max-w-[56ch] text-lg text-slate">{service.summary}</p>
             </div>
             <div className="hero-rise relative aspect-[16/9] overflow-hidden rounded-lg [animation-delay:120ms]">

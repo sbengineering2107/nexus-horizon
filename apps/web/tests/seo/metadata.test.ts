@@ -46,4 +46,40 @@ describe("buildMetadata", () => {
     const m = buildMetadata({ title: "Resale", description: "Y", path: "/services/resale" });
     expect(m.openGraph).toMatchObject({ url: `${siteConfig.url}/services/resale`, title: "Resale", locale: "en_IN" });
   });
+
+  test("adds the brand to titles that stay within 60 characters", () => {
+    const m = buildMetadata({ title: "Resale Flats in Pune", description: "Y", path: "/x" });
+    expect(m.title).toEqual({ absolute: "Resale Flats in Pune | Nexus Horizon Advisors" });
+  });
+
+  test("drops the brand when it would push the title past 60 characters", () => {
+    const t = "Home Loan Eligibility Calculator: How Much Can I Borrow?";
+    const m = buildMetadata({ title: t, description: "Y", path: "/x" });
+    expect(m.title).toEqual({ absolute: t });
+  });
+});
+
+describe("description", () => {
+  test("clipDescription keeps short text and cuts long text at a word, under 156 characters", async () => {
+    const { clipDescription } = await import("@/lib/seo/metadata");
+    expect(clipDescription("Short and sweet.")).toBe("Short and sweet.");
+    const long =
+      "A residential area in south-west Pune at the end of Karve Road, beyond Kothrud, on the Mutha river where the Mumbai-Bengaluru bypass crosses it. Connectivity, water and schools.";
+    const c = clipDescription(long);
+    expect(c.length).toBeLessThanOrEqual(155);
+    expect(c).toBe(
+      "A residential area in south-west Pune at the end of Karve Road, beyond Kothrud, on the Mutha river where the Mumbai-Bengaluru bypass crosses it.",
+    );
+    const noStop = "word ".repeat(40).trim();
+    expect(clipDescription(noStop)).toMatch(/word…$/);
+    expect(clipDescription(noStop).length).toBeLessThanOrEqual(155);
+  });
+
+  test("clipDescription never returns more than 155 characters, even when a sentence ends just past it", async () => {
+    const { clipDescription } = await import("@/lib/seo/metadata");
+    const text = `${"a".repeat(120)} first ends here. ${"b".repeat(5)} second ends.`;
+    expect(text.length).toBe(156);
+    expect(clipDescription(text).length).toBeLessThanOrEqual(155);
+    expect(clipDescription(text)).toBe(`${"a".repeat(120)} first ends here.`);
+  });
 });

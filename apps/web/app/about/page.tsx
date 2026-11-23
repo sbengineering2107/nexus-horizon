@@ -12,7 +12,7 @@ import { CtaBand } from "@/components/shared/cta-band";
 
 const TITLE = "About Nexus Horizon Advisors";
 const DESCRIPTION =
-  "Nexus Horizon Advisors is a MahaRERA-registered real estate advisory in Bavdhan, Pune, helping buyers with new projects, ready-to-move homes, resale and commercial space.";
+  "A MahaRERA-registered real estate advisory in Bavdhan, Pune, helping buyers with new projects, ready-to-move homes, resale flats and commercial space.";
 
 export const metadata: Metadata = buildMetadata({
   title: "About Us: MahaRERA-Registered Real Estate Advisors in Pune",

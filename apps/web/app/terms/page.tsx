@@ -11,7 +11,7 @@ const EFFECTIVE = "24 November 2026";
 export const metadata: Metadata = buildMetadata({
   title: "Terms of Use and Disclaimer",
   description:
-    "The terms for using the Nexus Horizon Advisors website: how to read property information, prices and calculator results, our MahaRERA registration, and governing law.",
+    "Terms for using this website: how to read property information, prices and calculator results, our MahaRERA registration and governing law.",
   path: "/terms",
 });
 
