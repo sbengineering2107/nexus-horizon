@@ -14,6 +14,19 @@ import type {
 import { siteConfig } from "@/site.config";
 import type { Service } from "@/lib/content/services";
 import { absoluteUrl } from "./metadata";
+import { getAreas } from "@/lib/content/areas";
+
+/** Topics the firm advises on, for entity understanding by search and AI engines. */
+const KNOWS_ABOUT = [
+  "Pune real estate",
+  "New residential projects",
+  "Ready-to-move homes",
+  "Resale flats",
+  "Commercial and office space",
+  "MahaRERA",
+  "Stamp duty in Maharashtra",
+  "Home loans",
+];
 
 const orgId = () => `${siteConfig.url}/#organization`;
 
@@ -40,7 +53,16 @@ export function organizationJsonLd(): WithContext<RealEstateAgent> {
       addressCountry: address.country,
     },
     ...(geo ? { geo: { "@type": "GeoCoordinates", latitude: geo.lat, longitude: geo.lng } } : {}),
-    areaServed: { "@type": "City", name: "Pune" },
+    areaServed: [
+      { "@type": "City", name: "Pune" },
+      ...getAreas().map((a) => ({
+        "@type": "Place" as const,
+        name: `${a.name}, Pune`,
+        url: absoluteUrl(`/pune/${a.slug}`),
+      })),
+    ],
+    hasMap: siteConfig.mapsUrl,
+    knowsAbout: KNOWS_ABOUT,
     openingHours: siteConfig.hours,
     identifier: { "@type": "PropertyValue", propertyID: "MahaRERA", value: siteConfig.maharera },
     ...(siteConfig.socials.length ? { sameAs: [...siteConfig.socials] } : {}),

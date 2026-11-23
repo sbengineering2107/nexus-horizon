@@ -16,4 +16,15 @@ describe("llms.txt", () => {
       expect(body).toContain(`${siteConfig.url}/calculators/${slug}`);
     }
   });
+
+  test("states the firm's key facts plainly, for answers about the firm itself", async () => {
+    const body = await (await GET()).text();
+    const facts = body.slice(body.indexOf("## Key facts"), body.indexOf("## Services"));
+    expect(facts).toContain("Consultations are always free");
+    expect(facts).toContain("Monday to Saturday, 10:00 to 19:00");
+    expect(facts).toContain("28 Pune areas");
+    expect(facts).toContain("not a developer, bank or lender");
+    expect(facts).toContain(siteConfig.maharera);
+    for (const path of ["/contact", "/privacy-policy", "/terms"]) expect(body).toContain(`${siteConfig.url}${path}`);
+  });
 });

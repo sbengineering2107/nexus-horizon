@@ -18,6 +18,17 @@ describe("JSON-LD builders", () => {
     if (!siteConfig.geo) expect(o).not.toHaveProperty("geo");
   });
 
+  test("organization names the Pune areas it serves, its map and its topics", () => {
+    const o = organizationJsonLd() as Record<string, any>;
+    const served = (o.areaServed as any[]).map((a) => a.name);
+    expect(served).toContain("Pune");
+    expect(served).toContain("Baner, Pune");
+    expect(served).toContain("Bavdhan, Pune");
+    expect(served.length).toBe(29);
+    expect(o.hasMap).toBe(siteConfig.mapsUrl);
+    expect(o.knowsAbout).toEqual(expect.arrayContaining(["MahaRERA", "Resale flats", "Stamp duty in Maharashtra"]));
+  });
+
   test("website points at the site URL", () => {
     expect((websiteJsonLd() as Record<string, any>).url).toBe(siteConfig.url);
   });
